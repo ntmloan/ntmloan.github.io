@@ -4,7 +4,8 @@ import { defineI18nUI } from 'fumadocs-ui/i18n';
 export const i18n = defineI18n({
   languages: ['en', 'vi'],
   defaultLanguage: 'en',
-  hideLocale: 'default-locale',
+  // Static export (GitHub Pages) has no server to rewrite an unprefixed
+  // "/docs" to "/en/docs", so every language keeps its locale prefix.
 });
 
 export const i18nUI = defineI18nUI(i18n, {
