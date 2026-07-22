@@ -2,6 +2,11 @@ import Link from 'next/link';
 import type { Folder, Item } from 'fumadocs-core/page-tree';
 import { Card, Cards } from 'fumadocs-ui/components/card';
 import { source } from '@/lib/source';
+import { i18n } from '@/lib/i18n';
+
+export function generateStaticParams() {
+  return i18n.languages.map((lang) => ({ lang }));
+}
 
 export default async function HomePage({ params }: PageProps<'/[lang]'>) {
   const { lang } = await params;

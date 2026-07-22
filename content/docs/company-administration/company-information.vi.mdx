@@ -1,0 +1,222 @@
+---
+title: Thông tin công ty
+description: Xem và quản lý thông tin công ty, tích hợp CRM và cập nhật các thông tin được phép chỉnh sửa.
+icon: Info
+---
+
+# Thông tin công ty
+
+<Callout type="info">
+Trang **Thông tin công ty** cho phép Quản trị viên của công ty xem thông tin doanh nghiệp, kết nối với Porters CRM và cập nhật các thông tin được phép chỉnh sửa.
+
+Một số thông tin ở cấp hệ thống chỉ có thể được quản lý bởi Workflow Super Administrator và không thể chỉnh sửa tại trang này.
+
+</Callout>
+
+## Tổng quan
+
+Trang **Thông tin công ty** là nơi tập trung toàn bộ thông tin cơ bản của doanh nghiệp trong Workflow.
+
+Tại đây, Quản trị viên có thể:
+
+- Xem thông tin công ty.
+- Kết nối hoặc ngắt kết nối với **Porters CRM**.
+- Chỉnh sửa các thông tin được phép cập nhật.
+- Xem gói Workflow hiện đang sử dụng.
+- Xem thông tin thanh toán của công ty.
+
+![Thông tin công ty](/images/company-information.png)
+
+---
+
+## Tích hợp Porters CRM
+
+Workflow hỗ trợ tích hợp với **Porters CRM** để đồng bộ dữ liệu giữa hai hệ thống.
+
+### Kết nối CRM
+
+Nếu công ty chưa được kết nối với Porters CRM, hệ thống sẽ hiển thị nút **Connect CRM**.
+
+<Steps>
+
+### Nhấn **Connect CRM**
+
+Workflow sẽ chuyển hướng sang trang xác thực của Porters CRM.
+
+### Xác thực
+
+Đăng nhập và cấp quyền để Workflow truy cập dữ liệu của tổ chức trên Porters CRM.
+
+### Quay lại Workflow
+
+Sau khi xác thực thành công, người dùng sẽ được chuyển trở lại trang **Thông tin công ty**.
+
+### Kết nối thành công
+
+Nút **Connect CRM** sẽ được thay thế bằng **Remove CRM Connection**, cho biết công ty đã được kết nối với Porters CRM.
+
+</Steps>
+
+<Callout type="tip">
+  Workflow sử dụng cơ chế xác thực OAuth tiêu chuẩn, vì vậy không cần thực hiện
+  thêm bất kỳ cấu hình nào sau khi cấp quyền.
+</Callout>
+
+### Ngắt kết nối CRM
+
+Nếu không còn nhu cầu đồng bộ với Porters CRM, Quản trị viên có thể ngắt kết nối.
+
+Sau khi ngắt kết nối:
+
+- Việc đồng bộ dữ liệu với Porters CRM sẽ dừng ngay lập tức.
+- Dữ liệu hiện có trong Workflow vẫn được giữ nguyên.
+- Có thể kết nối lại bất cứ lúc nào.
+
+---
+
+## Chỉnh sửa thông tin công ty
+
+Quản trị viên có thể cập nhật thông tin công ty bằng cách nhấn vào biểu tượng **Edit** bên cạnh tên công ty.
+
+![Chỉnh sửa thông tin công ty](/images/company-information-general.png)
+
+Hộp thoại chỉnh sửa gồm ba nhóm thông tin.
+
+<Tabs items={["Thông tin chung", "Gói Workflow", "Thông tin thanh toán"]}>
+
+<Tab value="Thông tin chung">
+
+### Thông tin chung
+
+Đây là các thông tin cơ bản của công ty.
+
+Có thể cập nhật:
+
+- Logo công ty
+- Tên công ty
+- Quốc gia
+- Mã số thuế
+- Người đại diện pháp luật
+- Email
+- Số điện thoại
+- Địa chỉ
+- Phòng ban
+- Chức vụ
+
+Các thay đổi sẽ được áp dụng ngay sau khi lưu.
+
+</Tab>
+
+<Tab value="Gói Workflow">
+
+![Workflow Package](/images/company-information-package.png)
+
+### Gói Workflow
+
+Hiển thị thông tin về gói dịch vụ hiện tại của công ty.
+
+Bao gồm:
+
+- Tên gói
+- Giới hạn của gói
+- Thời gian sử dụng
+
+<Callout type="warning">
+Thông tin gói dịch vụ chỉ có thể xem.
+
+Nếu cần thay đổi hoặc nâng cấp gói dịch vụ, vui lòng liên hệ bộ phận hỗ trợ của Workflow.
+
+</Callout>
+
+</Tab>
+
+<Tab value="Thông tin thanh toán">
+
+![Payment Information](/images/company-information-payment.png)
+
+### Thông tin thanh toán
+
+Đây là thông tin được sử dụng cho việc xuất hóa đơn và thanh toán.
+
+Quản trị viên có thể cập nhật:
+
+- Tên công ty
+- Mã số thuế
+- Người đại diện pháp luật
+- Số điện thoại
+- Email
+- Địa chỉ
+- Phòng ban
+- Chức vụ
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Thông tin do Workflow quản lý
+
+Một số thông tin của công ty được quản lý ở cấp hệ thống và không thể chỉnh sửa bởi Quản trị viên công ty.
+
+Bao gồm:
+
+- Client ID
+- Thông tin khởi tạo công ty
+- Cấu hình gói dịch vụ
+- Các cấu hình hệ thống
+
+<Callout type="info">
+  Nếu cần thay đổi các thông tin này, vui lòng liên hệ bộ phận hỗ trợ của
+  Workflow.
+</Callout>
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Ai có thể chỉnh sửa thông tin công ty?">
+
+Chỉ Quản trị viên công ty có quyền phù hợp mới được phép cập nhật các thông tin có thể chỉnh sửa.
+
+</Accordion>
+
+<Accordion title="Ai quản lý việc tạo công ty?">
+
+Workflow Super Administrator chịu trách nhiệm tạo công ty và quản lý các cấu hình ở cấp hệ thống. Các thông tin này không thể chỉnh sửa từ trang Thông tin công ty.
+
+</Accordion>
+
+<Accordion title="Có thể thay đổi gói Workflow không?">
+
+Không.
+
+Thông tin gói dịch vụ chỉ mang tính tham khảo. Mọi thay đổi về gói cần được thực hiện thông qua bộ phận hỗ trợ của Workflow.
+
+</Accordion>
+
+<Accordion title="Ngắt kết nối CRM có làm mất dữ liệu không?">
+
+Không.
+
+Việc ngắt kết nối chỉ dừng giao tiếp giữa Workflow và Porters CRM. Toàn bộ dữ liệu đã có trong Workflow vẫn được giữ nguyên.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Phân quyền
+
+| Thao tác                               | Company Admin | Workflow Super Admin |
+| -------------------------------------- | :-----------: | :------------------: |
+| Xem thông tin công ty                  |      ✅       |          ✅          |
+| Kết nối Porters CRM                    |      ✅       |          ✅          |
+| Ngắt kết nối CRM                       |      ✅       |          ✅          |
+| Chỉnh sửa thông tin công ty            |      ✅       |          ✅          |
+| Xem gói Workflow                       |      ✅       |          ✅          |
+| Thay đổi gói Workflow                  |      ❌       |          ✅          |
+| Quản lý thông tin hệ thống của công ty |      ❌       |          ✅          |

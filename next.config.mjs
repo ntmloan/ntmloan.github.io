@@ -11,6 +11,9 @@ const config = {
   // root, so no basePath prefix is needed.
   output: 'export',
   trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default withMDX(config);

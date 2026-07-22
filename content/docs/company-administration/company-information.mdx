@@ -1,0 +1,218 @@
+---
+title: Company Information
+description: View and manage your company profile, CRM integration, and editable company information.
+icon: Info
+---
+
+# Company Information
+
+<Callout type="info">
+The **Company Information** page allows Company Administrators to view their organization's profile, manage the integration with Porters CRM, and update editable company information.
+
+Some company settings are managed exclusively by Workflow Super Administrators and cannot be modified from this page.
+
+</Callout>
+
+## Overview
+
+The **Company Information** page is the central place for administrators to review their organization's information in Workflow.
+
+From this page, administrators can:
+
+- View the company's basic information.
+- Connect or disconnect the company from **Porters CRM**.
+- Edit selected company information.
+- View the current Workflow subscription.
+- View payment information used for billing.
+
+![Company Information](/images/company-information.png)
+
+---
+
+## CRM Integration
+
+Workflow supports integration with **Porters CRM** to synchronize company data between both systems.
+
+### Connect CRM
+
+When the company has not yet been connected to Porters CRM, the **Connect CRM** button is displayed.
+
+<Steps>
+
+### Click **Connect CRM**
+
+Workflow redirects the administrator to the Porters CRM authorization page.
+
+### Authorize Workflow
+
+Sign in to Porters CRM and grant Workflow permission to access the organization.
+
+### Return to Workflow
+
+After authorization is completed successfully, the administrator is redirected back to the Company Information page automatically.
+
+### CRM Connected
+
+The **Connect CRM** button changes to **Remove CRM Connection**, indicating that the integration has been established successfully.
+
+</Steps>
+
+<Callout type="tip">
+  Workflow uses the standard OAuth authorization flow. No additional
+  configuration is required after authorization.
+</Callout>
+
+### Remove CRM Connection
+
+If the organization no longer wants to synchronize with Porters CRM, administrators can remove the connection.
+
+After the connection is removed:
+
+- Synchronization with Porters CRM stops immediately.
+- Existing Workflow data is preserved.
+- The company can reconnect at any time.
+
+---
+
+## Edit Company Information
+
+Administrators can update company information by clicking the **Edit** icon next to the company name.
+
+![Edit Company Information - General](/images/company-information-general.png)
+
+The edit dialog is divided into three sections.
+
+<Tabs items={["General Info", "Workflow Package", "Payment Info"]}>
+
+<Tab value="General Info">
+
+### General Info
+
+This section contains the company's primary profile information.
+
+Administrators can update:
+
+- Company logo
+- Company name
+- Country
+- Tax code
+- Legal representative
+- Email
+- Phone number
+- Address
+- Department
+- Title
+
+Changes take effect immediately after saving.
+
+</Tab>
+
+<Tab value="Workflow Package">
+
+![Workflow Package](/images/company-information-package.png)
+
+### Workflow Package
+
+Displays the current subscription information for the company.
+
+Available information includes:
+
+- Current package
+- Package limitations
+- Subscription period
+
+<Callout type="warning">
+The Workflow Package is read-only.
+
+To modify the subscription or upgrade the package, please contact the Workflow support team.
+
+</Callout>
+
+</Tab>
+
+<Tab value="Payment Info">
+
+![Payment Information](/images/company-information-payment.png)
+
+### Payment Information
+
+This section stores the billing information used for invoice issuance.
+
+Administrators can update:
+
+- Company name
+- Tax code
+- Legal representative
+- Phone number
+- Email
+- Address
+- Department
+- Title
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Information Managed by Workflow
+
+Some company information is maintained by Workflow and cannot be edited by Company Administrators.
+
+Examples include:
+
+- Client ID
+- Company provisioning settings
+- Subscription configuration
+- Internal system configuration
+
+<Callout type="info">
+  If any of these values need to be updated, please contact the Workflow support
+  team.
+</Callout>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Who can edit company information?">
+
+Only Company Administrators with the appropriate permission can update editable company information.
+
+</Accordion>
+
+<Accordion title="Who creates and manages companies?">
+
+Companies are created and managed by Workflow Super Administrators. System-level company information is not editable by Company Administrators.
+
+</Accordion>
+
+<Accordion title="Can Workflow Package information be modified?">
+
+No. Package information is provided for reference only. Any subscription changes must be requested through Workflow support.
+
+</Accordion>
+
+<Accordion title="Does removing the CRM connection delete data?">
+
+No. Removing the CRM connection only disconnects Workflow from Porters CRM. Existing data inside Workflow remains unchanged.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Permissions
+
+| Action                      | Company Admin | Workflow Super Admin |
+| --------------------------- | :-----------: | :------------------: |
+| View company information    |      ✅       |          ✅          |
+| Connect Porters CRM         |      ✅       |          ✅          |
+| Remove CRM connection       |      ✅       |          ✅          |
+| Edit General Information    |      ✅       |          ✅          |
+| View Workflow Package       |      ✅       |          ✅          |
+| Modify Workflow Package     |      ❌       |          ✅          |
+| Manage company provisioning |      ❌       |          ✅          |

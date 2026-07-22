@@ -1,0 +1,532 @@
+---
+title: Employee Management
+description: Manage employee accounts, user information, and access within the organization.
+icon: Users
+---
+
+# Employee Management
+
+<Callout type="info">
+Employee Management is the central place for managing all users within a company.
+
+Administrators can create employee accounts individually or in bulk, manage account status, update user information, and export employee data for administrative purposes.
+
+</Callout>
+
+## Overview
+
+The **Employee List** provides a complete overview of every employee who can access Workflow.
+
+From this page, administrators can:
+
+- View employee information.
+- Search and filter employees.
+- Create new employee accounts.
+- Import employees using an Excel template.
+- Export employee information.
+- Update employee information.
+- Delete employee accounts.
+
+![Employee List](/images/employee-list.png)
+
+---
+
+## Employee List
+
+The Employee List displays all employees that belong to the current company.
+
+Each row represents one employee account together with its current status and profile information.
+
+### Employee Information
+
+The list displays the following information:
+
+| Column           | Description                                                   |
+| ---------------- | ------------------------------------------------------------- |
+| Status           | Indicates whether the employee account is Active or Inactive. |
+| Code             | Internal employee code.                                       |
+| Full Name        | Employee display name.                                        |
+| Email            | Registered email address.                                     |
+| Joined Date      | Employee joining date.                                        |
+| Start Using Date | Date when the account becomes available for login.            |
+| End Using Date   | Date when the account expires.                                |
+| Language         | User interface language.                                      |
+| Action           | Edit or delete the employee.                                  |
+
+---
+
+### Employee Status
+
+Workflow supports two account statuses.
+
+| Status   | Description                                                                |
+| -------- | -------------------------------------------------------------------------- |
+| Active   | The employee can access Workflow according to the configured usage period. |
+| Inactive | The employee account is disabled and cannot access Workflow.               |
+
+<Callout type="tip">
+  An employee may also become unavailable automatically when the current date is
+  outside the configured usage period.
+</Callout>
+
+---
+
+## Search Employees
+
+Administrators can quickly locate employees using the search box.
+
+The search supports searching by:
+
+- Employee code
+- Employee name
+- Email address
+
+The employee list updates immediately as the search keyword changes.
+
+---
+
+## Filter Employees
+
+Click **Filter** to narrow down the employee list.
+
+![Employee Filter](/images/employee-filter.png)
+
+Available filters include:
+
+| Filter      | Description                             |
+| ----------- | --------------------------------------- |
+| Department  | Filter employees by department.         |
+| Status      | Active or Inactive accounts.            |
+| Joined Date | Filter employees by joining date range. |
+
+Multiple filters can be combined.
+
+Administrators may:
+
+- Apply filters
+- Reset all filters
+- Close the filter panel without applying changes
+
+---
+
+## Add Employee
+
+Workflow supports two methods for creating employee accounts.
+
+- Add one employee
+- Import multiple employees
+
+![Add Employee Menu](/images/add-employee-menu.png)
+
+---
+
+### Add One Employee
+
+Click **Add New Employee → Add one employee**.
+
+![Add Employee](/images/add-employee-dialog.png)
+
+Administrators can configure the following information.
+
+| Field            | Required | Description                                 |
+| ---------------- | :------: | ------------------------------------------- |
+| Email            |    ✅    | Employee login account.                     |
+| Full Name        |    ✅    | Employee display name.                      |
+| Active           |    ✅    | Determines whether the account is enabled.  |
+| User Type        |    ✅    | User permission level.                      |
+| Code             | Optional | Internal employee code.                     |
+| External ID      | Optional | Identifier used for external integrations.  |
+| Phone Number     | Optional | Employee contact number.                    |
+| Joined Date      | Optional | Employee joining date.                      |
+| Start Using Date |    ✅    | First day the employee can access Workflow. |
+| End Using Date   | Optional | Account expiration date.                    |
+| Timezone         | Optional | Employee timezone.                          |
+| Language         | Optional | Preferred display language.                 |
+
+---
+
+### User Type
+
+Workflow currently supports two user types.
+
+| User Type | Description                                                   |
+| --------- | ------------------------------------------------------------- |
+| User      | Standard employee account.                                    |
+| Admin     | Company administrator with access to administrative features. |
+
+<Callout type="info">
+  Only Company Administrators can access administration features such as
+  Employee Management, Organization Management, Application Definition, and
+  Company Settings.
+</Callout>
+
+---
+
+### Employee Availability
+
+The account availability is determined by both **Status** and **Usage Period**.
+
+An employee can access Workflow only when:
+
+- Status is **Active**.
+- Current date is greater than or equal to **Start Using Date**.
+- Current date is earlier than **End Using Date** (if specified).
+
+---
+
+### External ID
+
+The **External ID** field is intended for integration with external HR, ERP, or identity management systems.
+
+Workflow does not enforce any format restrictions on this value.
+
+---
+
+### Employee Code
+
+Employee Code provides an internal identifier for employees.
+
+This value is commonly used for:
+
+- HR management
+- External synchronization
+- Internal reporting
+
+---
+
+## Edit Employee
+
+Administrators can update employee information at any time.
+
+Click **Edit** from the employee action menu.
+
+Changes are applied immediately after saving.
+
+Editable information includes:
+
+- Personal information
+- Status
+- Usage period
+- Language
+- Timezone
+- Contact information
+
+---
+
+## Delete Employee
+
+Click **Delete** from the employee action menu.
+
+Workflow asks for confirmation before removing the employee.
+
+![Delete Employee](/images/delete-employee.png)
+
+<Callout type="warning">
+Deleting an employee permanently removes the employee account from the company.
+
+If the employee is currently referenced by other Workflow configurations, deletion may be restricted until those references are removed.
+
+</Callout>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Who can manage employees?">
+
+Only Company Administrators can create, update, import, export, or delete employee accounts.
+
+</Accordion>
+
+<Accordion title="Can two employees share the same email address?">
+
+No.
+
+Each employee must have a unique email address because it is used as the login account.
+
+</Accordion>
+
+<Accordion title="Is Employee Code required?">
+
+No.
+
+Employee Code is optional and can be used for internal management or external integrations.
+
+</Accordion>
+
+<Accordion title="Is External ID required?">
+
+No.
+
+External ID is optional and primarily intended for integrations with external systems.
+
+</Accordion>
+
+<Accordion title="Can an inactive employee log in?">
+
+No.
+
+Inactive employees cannot access Workflow regardless of their configured usage period.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Import Employees
+
+Workflow supports bulk employee creation using an Excel template.
+
+Administrators can import multiple employees in a single operation, significantly reducing manual data entry when onboarding new employees.
+
+Click **Add New Employee → Import employee**.
+
+![Import Employee](/images/import-employee-dialog.png)
+
+---
+
+### Download Import Template
+
+Before importing employees, download the latest template provided by Workflow.
+
+The template contains:
+
+- Required columns.
+- Optional columns.
+- Sample data.
+- Supported data formats.
+
+Using the official template helps prevent validation errors during import.
+
+---
+
+### Prepare the Import File
+
+Fill in employee information according to the template.
+
+Typical fields include:
+
+| Field            | Required |
+| ---------------- | :------: |
+| Email            |    ✅    |
+| Full Name        |    ✅    |
+| User Type        |    ✅    |
+| Status           |    ✅    |
+| Start Using Date |    ✅    |
+| Employee Code    | Optional |
+| External ID      | Optional |
+| Phone Number     | Optional |
+| Joined Date      | Optional |
+| End Using Date   | Optional |
+| Timezone         | Optional |
+| Language         | Optional |
+
+<Callout type="tip">
+  Do not modify the column names or worksheet structure of the template.
+</Callout>
+
+---
+
+### Upload the File
+
+After preparing the template:
+
+<Steps>
+
+#### Select Import File
+
+Choose the completed Excel file from your computer.
+
+#### Validate Data
+
+Workflow validates all employee records before importing.
+
+Validation includes:
+
+- Required fields
+- Duplicate email addresses
+- Invalid date formats
+- Invalid language values
+- Invalid user type values
+
+#### Import Employees
+
+If validation succeeds, all valid employee records are created automatically.
+
+</Steps>
+
+---
+
+### Import Validation
+
+If validation fails, the import is cancelled and Workflow displays the corresponding validation errors.
+
+Common validation errors include:
+
+- Missing required fields.
+- Duplicate email addresses.
+- Invalid date values.
+- Invalid user type.
+- Invalid language.
+- Incorrect file format.
+
+Administrators should correct the data and upload the file again.
+
+---
+
+## Export Employees
+
+Employee information can be exported at any time.
+
+Click **Export** from the Employee List page.
+
+Workflow generates an Excel file containing employee information.
+
+![Export Employees](/images/export-employees.png)
+
+---
+
+### Export Behavior
+
+The exported file contains all employees currently displayed in the Employee List.
+
+If search conditions or filters are applied, only the filtered results are exported.
+
+Exported information includes:
+
+- Employee profile
+- Status
+- User type
+- Contact information
+- Usage period
+- Language
+- Timezone
+
+---
+
+## Employee Lifecycle
+
+Employee accounts generally follow the lifecycle below.
+
+```text
+Create Employee
+        │
+        ▼
+Active
+        │
+        ├─────────────► Update Information
+        │
+        ├─────────────► Change Usage Period
+        │
+        ├─────────────► Deactivate
+        │
+        ▼
+Inactive
+        │
+        ▼
+Delete (Optional)
+```
+
+---
+
+## Best Practices
+
+<Callout type="tip">
+
+When managing employees, consider the following recommendations:
+
+- Use Employee Code consistently across HR systems.
+- Configure Start Using Date for future employees before their first working day.
+- Configure End Using Date instead of deleting employees whenever historical workflow records should be preserved.
+- Use External ID only when integrating with external systems.
+- Use Import Employee for large onboarding activities.
+
+</Callout>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can administrators import existing employees?">
+
+If an imported employee already exists based on the configured unique identifier (typically Email), Workflow rejects the duplicated record instead of creating another employee.
+
+</Accordion>
+
+<Accordion title="What happens when Start Using Date is in the future?">
+
+The employee account is created successfully but cannot sign in until the configured Start Using Date.
+
+</Accordion>
+
+<Accordion title="What happens after End Using Date?">
+
+Once the current date exceeds End Using Date, the employee account becomes unavailable for login.
+
+</Accordion>
+
+<Accordion title="Does exporting respect search filters?">
+
+Yes.
+
+Export always follows the current search keyword and filter conditions shown in the Employee List.
+
+</Accordion>
+
+<Accordion title="Can imported employees receive notifications immediately?">
+
+Yes.
+
+Once an employee account becomes active and is within its usage period, the user participates in Workflow like any manually created employee.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Permissions
+
+| Action             | Company Admin | Standard User |
+| ------------------ | :-----------: | :-----------: |
+| View Employee List |      ✅       |      ❌       |
+| Search Employees   |      ✅       |      ❌       |
+| Filter Employees   |      ✅       |      ❌       |
+| Add Employee       |      ✅       |      ❌       |
+| Import Employees   |      ✅       |      ❌       |
+| Export Employees   |      ✅       |      ❌       |
+| Edit Employee      |      ✅       |      ❌       |
+| Delete Employee    |      ✅       |      ❌       |
+
+---
+
+## Related Features
+
+<Card
+title="Organization Management"
+href="/organization-management">
+
+Assign employees to departments and organizational units.
+
+</Card>
+
+<Card
+title="Approver Level"
+href="/approver-level">
+
+Configure approval roles used by workflow routing.
+
+</Card>
+
+<Card
+title="Application Definition"
+href="/application-definition">
+
+Use employees and approver levels when configuring application workflows.
+
+</Card>

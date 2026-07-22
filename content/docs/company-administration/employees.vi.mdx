@@ -1,0 +1,543 @@
+---
+title: Quản lý nhân viên
+description: Quản lý tài khoản nhân viên, thông tin người dùng và quyền truy cập trong tổ chức.
+icon: Users
+---
+
+# Quản lý nhân viên
+
+<Callout type="info">
+**Quản lý nhân viên** là nơi tập trung toàn bộ các chức năng quản lý người dùng trong công ty.
+
+Quản trị viên có thể tạo tài khoản nhân viên, cập nhật thông tin, quản lý trạng thái hoạt động, nhập danh sách nhân viên từ Excel và xuất dữ liệu nhân viên phục vụ công tác quản lý.
+
+</Callout>
+
+## Tổng quan
+
+Trang **Danh sách nhân viên** hiển thị toàn bộ người dùng thuộc công ty hiện tại.
+
+Từ trang này, Quản trị viên có thể:
+
+- Xem danh sách nhân viên.
+- Tìm kiếm và lọc nhân viên.
+- Tạo tài khoản nhân viên mới.
+- Nhập danh sách nhân viên từ tệp Excel.
+- Xuất danh sách nhân viên.
+- Cập nhật thông tin nhân viên.
+- Xóa tài khoản nhân viên.
+
+![Employee List](/images/employee-list.png)
+
+---
+
+## Danh sách nhân viên
+
+Danh sách nhân viên hiển thị tất cả người dùng thuộc công ty hiện tại.
+
+Mỗi dòng đại diện cho một tài khoản nhân viên cùng với trạng thái và các thông tin cơ bản.
+
+### Thông tin hiển thị
+
+| Cột                   | Mô tả                                                                               |
+| --------------------- | ----------------------------------------------------------------------------------- |
+| Trạng thái            | Cho biết tài khoản đang **Hoạt động (Active)** hoặc **Ngừng hoạt động (Inactive)**. |
+| Mã nhân viên          | Mã định danh nội bộ của nhân viên.                                                  |
+| Họ và tên             | Tên hiển thị của nhân viên.                                                         |
+| Email                 | Địa chỉ email đăng nhập.                                                            |
+| Ngày gia nhập         | Ngày nhân viên gia nhập công ty.                                                    |
+| Ngày bắt đầu sử dụng  | Ngày tài khoản bắt đầu được phép sử dụng Workflow.                                  |
+| Ngày kết thúc sử dụng | Ngày tài khoản hết hiệu lực (nếu có).                                               |
+| Ngôn ngữ              | Ngôn ngữ hiển thị của tài khoản.                                                    |
+| Thao tác              | Chỉnh sửa hoặc xóa nhân viên.                                                       |
+
+---
+
+### Trạng thái tài khoản
+
+Workflow hỗ trợ hai trạng thái cho tài khoản nhân viên.
+
+| Trạng thái | Mô tả                                                                            |
+| ---------- | -------------------------------------------------------------------------------- |
+| Active     | Nhân viên có thể sử dụng Workflow nếu còn trong thời gian sử dụng được cấu hình. |
+| Inactive   | Tài khoản bị vô hiệu hóa và không thể đăng nhập vào Workflow.                    |
+
+<Callout type="tip">
+  Ngoài trạng thái **Active/Inactive**, quyền truy cập còn phụ thuộc vào **Start
+  Using Date** và **End Using Date**. Nếu tài khoản chưa đến ngày bắt đầu hoặc
+  đã quá ngày kết thúc sử dụng, người dùng cũng sẽ không thể đăng nhập.
+</Callout>
+
+---
+
+## Tìm kiếm nhân viên
+
+Quản trị viên có thể nhanh chóng tìm kiếm nhân viên bằng ô **Search**.
+
+Hệ thống hỗ trợ tìm kiếm theo:
+
+- Mã nhân viên
+- Họ và tên
+- Địa chỉ email
+
+Danh sách sẽ được cập nhật ngay khi thay đổi từ khóa tìm kiếm.
+
+---
+
+## Lọc nhân viên
+
+Nhấn **Filter** để thu hẹp danh sách nhân viên theo các điều kiện mong muốn.
+
+![Employee Filter](/images/employee-filter.png)
+
+Các điều kiện lọc hiện có:
+
+| Điều kiện     | Mô tả                                       |
+| ------------- | ------------------------------------------- |
+| Phòng ban     | Lọc nhân viên theo phòng ban.               |
+| Trạng thái    | Active hoặc Inactive.                       |
+| Ngày gia nhập | Lọc theo khoảng thời gian gia nhập công ty. |
+
+Có thể kết hợp nhiều điều kiện lọc cùng lúc.
+
+Quản trị viên có thể:
+
+- Áp dụng bộ lọc.
+- Xóa toàn bộ điều kiện lọc.
+- Đóng cửa sổ lọc mà không áp dụng thay đổi.
+
+---
+
+## Thêm nhân viên
+
+Workflow hỗ trợ hai cách thêm nhân viên:
+
+- Thêm một nhân viên.
+- Nhập nhiều nhân viên từ tệp Excel.
+
+![Add Employee Menu](/images/add-employee-menu.png)
+
+---
+
+### Thêm một nhân viên
+
+Chọn **Add New Employee → Add one employee**.
+
+![Add Employee](/images/add-employee-dialog.png)
+
+Quản trị viên có thể khai báo các thông tin sau:
+
+| Trường                | Bắt buộc | Mô tả                                               |
+| --------------------- | :------: | --------------------------------------------------- |
+| Email                 |    ✅    | Địa chỉ email dùng để đăng nhập vào Workflow.       |
+| Họ và tên             |    ✅    | Tên hiển thị của nhân viên.                         |
+| Active                |    ✅    | Xác định tài khoản có được kích hoạt hay không.     |
+| Loại người dùng       |    ✅    | Quyền của tài khoản trong hệ thống.                 |
+| Mã nhân viên          |  Không   | Mã định danh nội bộ của nhân viên.                  |
+| External ID           |  Không   | Mã định danh dùng cho các hệ thống bên ngoài.       |
+| Số điện thoại         |  Không   | Thông tin liên hệ của nhân viên.                    |
+| Ngày gia nhập         |  Không   | Ngày nhân viên gia nhập công ty.                    |
+| Ngày bắt đầu sử dụng  |    ✅    | Ngày đầu tiên nhân viên được phép sử dụng Workflow. |
+| Ngày kết thúc sử dụng |  Không   | Ngày tài khoản hết hiệu lực.                        |
+| Múi giờ               |  Không   | Múi giờ mặc định của người dùng.                    |
+| Ngôn ngữ              |  Không   | Ngôn ngữ hiển thị của giao diện.                    |
+
+---
+
+### Loại người dùng (User Type)
+
+Workflow hiện hỗ trợ hai loại tài khoản.
+
+| Loại  | Mô tả                                                                      |
+| ----- | -------------------------------------------------------------------------- |
+| User  | Người dùng thông thường, chỉ có thể sử dụng các chức năng được phân quyền. |
+| Admin | Quản trị viên của công ty, có quyền truy cập vào các chức năng quản trị.   |
+
+<Callout type="info">
+  Chỉ tài khoản **Admin** mới có quyền truy cập các chức năng quản trị như
+  **Employee Management**, **Organization Management**, **Application
+  Definition**, **Company Settings** và các cấu hình khác của công ty.
+</Callout>
+
+---
+
+### Thời gian sử dụng tài khoản
+
+Việc một nhân viên có thể sử dụng Workflow hay không được xác định bởi **trạng thái tài khoản** và **thời gian sử dụng**.
+
+Một nhân viên chỉ có thể đăng nhập khi đồng thời thỏa mãn các điều kiện sau:
+
+- Trạng thái là **Active**.
+- Ngày hiện tại lớn hơn hoặc bằng **Start Using Date**.
+- Ngày hiện tại nhỏ hơn hoặc bằng **End Using Date** (nếu được cấu hình).
+
+---
+
+### External ID
+
+**External ID** được sử dụng để liên kết nhân viên với các hệ thống bên ngoài như:
+
+- Hệ thống HRM
+- ERP
+- Identity Provider
+- Các hệ thống tích hợp khác
+
+Workflow không áp đặt định dạng cho trường dữ liệu này.
+
+---
+
+### Mã nhân viên
+
+**Employee Code** là mã định danh nội bộ của nhân viên trong doanh nghiệp.
+
+Trường này thường được sử dụng cho:
+
+- Quản lý nhân sự.
+- Đồng bộ dữ liệu với hệ thống bên ngoài.
+- Báo cáo và thống kê nội bộ.
+
+---
+
+## Chỉnh sửa nhân viên
+
+Quản trị viên có thể cập nhật thông tin của nhân viên bất kỳ lúc nào.
+
+Chọn **Edit** trong menu thao tác của nhân viên.
+
+Sau khi lưu, các thay đổi sẽ được áp dụng ngay lập tức.
+
+Có thể cập nhật:
+
+- Thông tin cá nhân.
+- Trạng thái tài khoản.
+- Thời gian sử dụng.
+- Ngôn ngữ.
+- Múi giờ.
+- Thông tin liên hệ.
+
+---
+
+## Xóa nhân viên
+
+Chọn **Delete** trong menu thao tác của nhân viên.
+
+Workflow sẽ hiển thị hộp thoại xác nhận trước khi thực hiện xóa.
+
+![Delete Employee](/images/delete-employee.png)
+
+<Callout type="warning">
+Việc xóa sẽ loại bỏ tài khoản nhân viên khỏi công ty.
+
+Nếu nhân viên đang được sử dụng trong các cấu hình khác của Workflow (ví dụ: Organization, Approval Route hoặc Application Definition), hệ thống có thể không cho phép xóa cho đến khi các liên kết này được gỡ bỏ.
+
+</Callout>
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Ai có quyền quản lý nhân viên?">
+
+Chỉ **Company Administrator** mới có quyền tạo, chỉnh sửa, nhập, xuất hoặc xóa tài khoản nhân viên.
+
+</Accordion>
+
+<Accordion title="Hai nhân viên có thể sử dụng cùng một địa chỉ email không?">
+
+Không.
+
+Mỗi nhân viên phải có một địa chỉ email duy nhất vì đây là tài khoản đăng nhập vào Workflow.
+
+</Accordion>
+
+<Accordion title="Mã nhân viên có bắt buộc không?">
+
+Không.
+
+Mã nhân viên là thông tin tùy chọn và thường được sử dụng cho mục đích quản lý nội bộ hoặc tích hợp với các hệ thống khác.
+
+</Accordion>
+
+<Accordion title="External ID có bắt buộc không?">
+
+Không.
+
+External ID là trường tùy chọn, chủ yếu phục vụ cho việc đồng bộ dữ liệu với các hệ thống bên ngoài.
+
+</Accordion>
+
+<Accordion title="Nhân viên ở trạng thái Inactive có thể đăng nhập không?">
+
+Không.
+
+Nhân viên ở trạng thái **Inactive** sẽ không thể truy cập Workflow, kể cả khi còn trong thời gian sử dụng được cấu hình.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Nhập nhân viên
+
+Workflow hỗ trợ tạo nhiều tài khoản nhân viên cùng lúc bằng tệp Excel.
+
+Tính năng này giúp Quản trị viên tiết kiệm thời gian khi khởi tạo nhân viên mới hoặc đồng bộ dữ liệu từ hệ thống nhân sự hiện có.
+
+Chọn **Add New Employee → Import employee**.
+
+![Import Employee](/images/import-employee-dialog.png)
+
+---
+
+### Tải mẫu nhập dữ liệu
+
+Trước khi nhập dữ liệu, hãy tải **mẫu Excel** do Workflow cung cấp.
+
+Mẫu này bao gồm:
+
+- Danh sách các cột bắt buộc.
+- Các trường thông tin tùy chọn.
+- Dữ liệu mẫu.
+- Định dạng dữ liệu được hỗ trợ.
+
+<Callout type="tip">
+  Luôn sử dụng mẫu mới nhất được tải từ Workflow để đảm bảo dữ liệu tương thích
+  với hệ thống.
+</Callout>
+
+---
+
+### Chuẩn bị dữ liệu
+
+Điền thông tin nhân viên theo đúng cấu trúc của mẫu.
+
+Các trường thông tin phổ biến gồm:
+
+| Trường                | Bắt buộc |
+| --------------------- | :------: |
+| Email                 |    ✅    |
+| Họ và tên             |    ✅    |
+| Loại người dùng       |    ✅    |
+| Trạng thái            |    ✅    |
+| Ngày bắt đầu sử dụng  |    ✅    |
+| Mã nhân viên          |  Không   |
+| External ID           |  Không   |
+| Số điện thoại         |  Không   |
+| Ngày gia nhập         |  Không   |
+| Ngày kết thúc sử dụng |  Không   |
+| Múi giờ               |  Không   |
+| Ngôn ngữ              |  Không   |
+
+<Callout type="warning">
+  Không thay đổi tên cột, thứ tự cột hoặc cấu trúc của tệp mẫu. Việc chỉnh sửa
+  cấu trúc có thể khiến quá trình nhập dữ liệu thất bại.
+</Callout>
+
+---
+
+### Nhập dữ liệu
+
+Sau khi hoàn tất tệp Excel:
+
+<Steps>
+
+#### Chọn tệp
+
+Chọn tệp Excel đã chuẩn bị từ máy tính.
+
+#### Kiểm tra dữ liệu
+
+Workflow sẽ tự động kiểm tra toàn bộ dữ liệu trước khi thực hiện nhập.
+
+Hệ thống sẽ xác minh:
+
+- Các trường bắt buộc.
+- Email bị trùng.
+- Định dạng ngày tháng.
+- Giá trị ngôn ngữ.
+- Loại người dùng.
+- Định dạng tệp.
+
+#### Hoàn tất nhập dữ liệu
+
+Nếu toàn bộ dữ liệu hợp lệ, Workflow sẽ tạo tất cả tài khoản nhân viên trong một lần nhập.
+
+</Steps>
+
+---
+
+### Kiểm tra lỗi khi nhập
+
+Nếu phát hiện lỗi, Workflow sẽ dừng quá trình nhập và hiển thị danh sách lỗi để Quản trị viên chỉnh sửa.
+
+Các lỗi thường gặp bao gồm:
+
+- Thiếu trường bắt buộc.
+- Email đã tồn tại.
+- Định dạng ngày không hợp lệ.
+- Loại người dùng không hợp lệ.
+- Giá trị ngôn ngữ không được hỗ trợ.
+- Sai định dạng tệp.
+
+Sau khi chỉnh sửa dữ liệu, có thể thực hiện nhập lại.
+
+---
+
+## Xuất danh sách nhân viên
+
+Danh sách nhân viên có thể được xuất bất kỳ lúc nào.
+
+Nhấn **Export** trên trang Employee List.
+
+Workflow sẽ tạo một tệp Excel chứa thông tin nhân viên.
+
+![Export Employees](/images/export-employees.png)
+
+---
+
+### Quy tắc xuất dữ liệu
+
+Tệp được xuất sẽ bao gồm tất cả nhân viên đang hiển thị trong danh sách.
+
+Nếu đang áp dụng điều kiện tìm kiếm hoặc bộ lọc, chỉ những nhân viên thỏa mãn điều kiện đó mới được xuất.
+
+Thông tin xuất ra bao gồm:
+
+- Thông tin nhân viên.
+- Trạng thái tài khoản.
+- Loại người dùng.
+- Thông tin liên hệ.
+- Thời gian sử dụng.
+- Ngôn ngữ.
+- Múi giờ.
+
+---
+
+## Vòng đời của tài khoản nhân viên
+
+Một tài khoản nhân viên thường trải qua các giai đoạn sau:
+
+```text
+Tạo nhân viên
+      │
+      ▼
+Hoạt động (Active)
+      │
+      ├────────────► Cập nhật thông tin
+      │
+      ├────────────► Thay đổi thời gian sử dụng
+      │
+      ├────────────► Chuyển sang Inactive
+      │
+      ▼
+Ngừng hoạt động (Inactive)
+      │
+      ▼
+Xóa (Tùy chọn)
+```
+
+---
+
+## Khuyến nghị
+
+<Callout type="tip">
+
+Để quản lý nhân viên hiệu quả, nên áp dụng các khuyến nghị sau:
+
+- Sử dụng **Employee Code** thống nhất với hệ thống nhân sự của doanh nghiệp.
+- Thiết lập **Start Using Date** trước ngày nhân viên chính thức làm việc.
+- Nếu cần ngừng sử dụng tài khoản nhưng vẫn muốn giữ lịch sử phê duyệt và dữ liệu nghiệp vụ, nên cấu hình **End Using Date** hoặc chuyển trạng thái sang **Inactive** thay vì xóa tài khoản.
+- Chỉ sử dụng **External ID** khi cần tích hợp với hệ thống bên ngoài.
+- Đối với số lượng lớn nhân viên, nên sử dụng chức năng **Import Employee** thay vì tạo thủ công.
+
+</Callout>
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Có thể nhập nhân viên đã tồn tại không?">
+
+Không.
+
+Nếu Email của nhân viên đã tồn tại trong hệ thống, Workflow sẽ từ chối bản ghi đó để tránh tạo tài khoản trùng lặp.
+
+</Accordion>
+
+<Accordion title="Điều gì xảy ra nếu Start Using Date ở tương lai?">
+
+Tài khoản vẫn được tạo thành công nhưng nhân viên sẽ chưa thể đăng nhập cho đến khi đến ngày bắt đầu sử dụng.
+
+</Accordion>
+
+<Accordion title="Điều gì xảy ra khi vượt quá End Using Date?">
+
+Sau khi quá **End Using Date**, tài khoản sẽ không còn khả năng đăng nhập vào Workflow cho đến khi thời gian sử dụng được cập nhật.
+
+</Accordion>
+
+<Accordion title="Xuất dữ liệu có áp dụng bộ lọc hiện tại không?">
+
+Có.
+
+Chức năng Export luôn dựa trên điều kiện tìm kiếm và bộ lọc đang được áp dụng trên Employee List.
+
+</Accordion>
+
+<Accordion title="Sau khi Import thành công, nhân viên có thể sử dụng Workflow ngay không?">
+
+Có.
+
+Nếu tài khoản ở trạng thái **Active** và đang nằm trong khoảng thời gian sử dụng hợp lệ, nhân viên có thể đăng nhập và sử dụng Workflow ngay lập tức.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Phân quyền
+
+| Chức năng               | Company Admin | User |
+| ----------------------- | :-----------: | :--: |
+| Xem danh sách nhân viên |      ✅       |  ❌  |
+| Tìm kiếm nhân viên      |      ✅       |  ❌  |
+| Lọc nhân viên           |      ✅       |  ❌  |
+| Thêm nhân viên          |      ✅       |  ❌  |
+| Nhập nhân viên          |      ✅       |  ❌  |
+| Xuất nhân viên          |      ✅       |  ❌  |
+| Chỉnh sửa nhân viên     |      ✅       |  ❌  |
+| Xóa nhân viên           |      ✅       |  ❌  |
+
+---
+
+## Tính năng liên quan
+
+<Card
+title="Organization Management"
+href="/organization-management">
+
+Quản lý cơ cấu tổ chức và phân bổ nhân viên vào các phòng ban.
+
+</Card>
+
+<Card
+title="Approver Level"
+href="/approver-level">
+
+Thiết lập các cấp phê duyệt sử dụng trong quy trình Workflow.
+
+</Card>
+
+<Card
+title="Application Definition"
+href="/application-definition">
+
+Sử dụng nhân viên và cấp phê duyệt khi xây dựng các quy trình nghiệp vụ.
+
+</Card>

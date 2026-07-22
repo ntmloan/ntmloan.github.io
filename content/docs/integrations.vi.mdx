@@ -1,9 +1,254 @@
 ---
-title: Tích hợp & nền tảng
-description: Tích hợp thông báo, hỗ trợ đa ngôn ngữ và giám sát hiệu năng
+title: Tích hợp & Nền tảng
+description: Tích hợp thông báo, hỗ trợ đa ngôn ngữ và giám sát hiệu năng.
 icon: Plug
 ---
 
-- **Tích hợp thông báo** — kết nối Slack và Microsoft Teams qua OAuth để nhận thông báo đơn từ
-- **Đa ngôn ngữ** — hỗ trợ Tiếng Anh, Tiếng Việt, Tiếng Nhật
-- **Giám sát hiệu năng** — theo dõi lỗi và hiệu năng qua Sentry, Web Vitals
+# Tích hợp & Nền tảng
+
+## Tích hợp thông báo
+
+<Callout type="info">
+Workflow hỗ trợ nhiều kênh thông báo để người dùng luôn cập nhật các hoạt động nghiệp vụ như tiến độ xử lý đơn, yêu cầu phê duyệt, thay đổi trạng thái và các sự kiện khác trong hệ thống.
+
+Email luôn là kênh thông báo mặc định. Ngoài ra, doanh nghiệp có thể tích hợp Microsoft Teams và Slack để nhận thông báo trực tiếp trên các nền tảng này.
+
+</Callout>
+
+### Tổng quan
+
+Workflow hiện hỗ trợ các kênh thông báo sau:
+
+| Nền tảng        | Mô tả                                                                  |
+| --------------- | ---------------------------------------------------------------------- |
+| Email           | Kênh thông báo mặc định, được kích hoạt tự động cho tất cả người dùng. |
+| Slack           | Gửi thông báo từ Workflow trực tiếp đến một kênh Slack.                |
+| Microsoft Teams | Gửi thông báo từ Workflow đến một kênh Microsoft Teams.                |
+
+![Notification Settings](/images/notification-settings.png)
+
+---
+
+### Các loại thông báo
+
+Sau khi tích hợp thành công, Workflow sẽ tự động gửi thông báo cho các sự kiện nghiệp vụ, bao gồm:
+
+- Đơn được tạo
+- Đơn được phê duyệt
+- Đơn bị từ chối
+- Cập nhật tiến độ xử lý
+- Thay đổi trạng thái
+- Thông báo phân công
+- Các hoạt động khác trong Workflow
+
+Mỗi thông báo sẽ bao gồm các thông tin quan trọng của nghiệp vụ cùng với đường dẫn trực tiếp đến đơn tương ứng trong Workflow.
+
+![Slack Notification Example](/images/slack-notification-example.png)
+
+---
+
+### Thông báo Email
+
+Email là kênh thông báo mặc định của tất cả công ty.
+
+#### Hoạt động
+
+- Được kích hoạt tự động khi công ty được tạo.
+- Không thể tắt.
+- Thông báo được gửi đến địa chỉ email đã đăng ký của người dùng.
+
+<Callout type="tip">
+  Không cần thực hiện bất kỳ cấu hình nào để sử dụng thông báo qua Email.
+</Callout>
+
+---
+
+### Tích hợp Microsoft Teams
+
+Workflow hỗ trợ gửi thông báo nghiệp vụ đến Microsoft Teams thông qua **Incoming Webhook Workflow**.
+
+#### Trước khi bắt đầu
+
+Trước khi kết nối Microsoft Teams với Workflow, hãy đảm bảo:
+
+- Đã có sẵn một Microsoft Teams Channel.
+- Bạn có quyền tạo hoặc quản lý Workflow trong Channel đó.
+
+#### Kết nối Microsoft Teams
+
+<Steps>
+
+#### Mở Channel cần nhận thông báo
+
+Truy cập Microsoft Teams Channel sẽ nhận các thông báo từ Workflow.
+
+#### Mở Workflows
+
+Từ menu (**⋯**) của Channel, chọn **Workflows**.
+
+![Open Workflows](/images/teams-open-workflows.png)
+
+#### Tạo Webhook Workflow
+
+Tìm kiếm mẫu **Send webhook alerts to a channel** và chọn template này.
+
+![Select Webhook Template](/images/teams-webhook-template.png)
+
+Microsoft Teams sẽ tự động tạo một Workflow cho Channel đã chọn.
+
+#### Sao chép Webhook URL
+
+Sau khi Workflow được tạo thành công, nhấn **Copy webhook link** để sao chép Webhook URL.
+
+![Copy Webhook Link](/images/teams-copy-webhook-link.png)
+
+#### Mở Notification Settings
+
+Quay lại Workflow và truy cập **Notification Settings**.
+
+#### Kết nối Microsoft Teams
+
+Nhấn **Connect** tại mục Microsoft Teams.
+
+#### Dán Webhook URL
+
+Dán Webhook URL vừa sao chép vào trường **Teams URL**.
+
+![Microsoft Teams Connection](/images/teams-connect-dialog.png)
+
+#### Lưu cấu hình
+
+Nhấn **Save** để hoàn tất cấu hình.
+
+</Steps>
+
+Sau khi kết nối thành công, Workflow sẽ tự động gửi các thông báo nghiệp vụ đến Microsoft Teams Channel thông qua Webhook đã được cấu hình.
+
+<Callout type="tip">
+  Nếu Workflow trên Microsoft Teams bị xóa hoặc Webhook URL được tạo lại, bạn
+  cần cập nhật lại Webhook URL mới trong phần Notification Settings của
+  Workflow.
+</Callout>
+
+---
+
+### Tích hợp Slack
+
+Workflow sử dụng cơ chế xác thực OAuth chính thức của Slack để kết nối với Workspace.
+
+#### Kết nối Slack
+
+<Steps>
+
+#### Mở Notification Settings
+
+Truy cập trang **Notification Settings** trong Workflow.
+
+#### Kết nối Slack
+
+Nhấn **Connect** tại mục Slack.
+
+#### Nhập Workspace
+
+Nhập tên Workspace Slack mà bạn muốn kết nối.
+
+![Slack Workspace](/images/slack-workspace.png)
+
+#### Xác thực với Slack
+
+Đăng nhập vào Slack và cấp quyền cho ứng dụng Workflow truy cập Workspace.
+
+![Slack Authorization](/images/slack-authorize.png)
+
+#### Chọn kênh nhận thông báo
+
+Sau khi xác thực thành công, Workflow sẽ tự động lấy danh sách các Channel trong Workspace.
+
+Chọn Channel sẽ nhận các thông báo từ Workflow.
+
+![Slack Channel Configuration](/images/slack-channel-setting.png)
+
+#### Lưu cấu hình
+
+Nhấn **Save** để hoàn tất.
+
+</Steps>
+
+<Callout type="tip">
+  Mỗi nhóm thông báo chỉ được cấu hình gửi đến một Slack Channel. Quản trị viên
+  có thể thay đổi Channel nhận thông báo bất cứ lúc nào bằng cách chỉnh sửa cấu
+  hình Slack.
+</Callout>
+
+---
+
+### Kênh nhận thông báo
+
+Workflow cho phép quản trị viên lựa chọn nơi nhận các thông báo nghiệp vụ.
+
+Hiện tại, thông báo có thể được gửi qua:
+
+- Email của người dùng (mặc định)
+- Microsoft Teams Channel
+- Slack Channel
+
+Mỗi nền tảng hoạt động độc lập, vì vậy doanh nghiệp có thể sử dụng một hoặc đồng thời nhiều kênh thông báo.
+
+---
+
+### Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Có thể tắt thông báo Email không?">
+
+Không.
+
+Email là kênh thông báo mặc định và luôn được bật đối với tất cả công ty.
+
+</Accordion>
+
+<Accordion title="Có thể kết nối đồng thời Slack và Microsoft Teams không?">
+
+Có.
+
+Workflow cho phép cấu hình đồng thời cả Slack và Microsoft Teams để nhận thông báo.
+
+</Accordion>
+
+<Accordion title="Slack có yêu cầu xác thực không?">
+
+Có.
+
+Workflow sử dụng cơ chế OAuth chính thức của Slack để cấp quyền truy cập Workspace và lấy danh sách các Channel.
+
+</Accordion>
+
+<Accordion title="Microsoft Teams có yêu cầu OAuth không?">
+
+Không.
+
+Workflow chỉ yêu cầu đường dẫn của Microsoft Teams Channel. Quản trị viên có thể lấy đường dẫn này bằng cách chọn **Copy link** trong menu của Channel trên Microsoft Teams.
+
+</Accordion>
+
+</Accordions>
+
+## Hỗ trợ đa ngôn ngữ
+
+Workflow hỗ trợ ba ngôn ngữ:
+
+- English
+- Tiếng Việt
+- 日本語 (Japanese)
+
+Người dùng có thể thay đổi ngôn ngữ hiển thị bất kỳ lúc nào từ thanh điều hướng của hệ thống.
+
+## Giám sát hiệu năng
+
+Workflow sử dụng các công cụ giám sát để theo dõi lỗi và hiệu năng của hệ thống nhằm đảm bảo trải nghiệm ổn định cho người dùng.
+
+Bao gồm:
+
+- **Sentry** để ghi nhận và theo dõi lỗi.
+- **Web Vitals** để giám sát các chỉ số hiệu năng của ứng dụng.

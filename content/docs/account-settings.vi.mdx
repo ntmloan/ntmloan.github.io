@@ -1,7 +1,176 @@
 ---
 title: Cài đặt tài khoản
-description: Quản lý hồ sơ cá nhân và mật khẩu, áp dụng cho mọi vai trò
+description: Quản lý thông tin cá nhân, ảnh đại diện, ngôn ngữ, múi giờ và mật khẩu.
 icon: UserCog
 ---
 
-- **Hồ sơ cá nhân** — chỉnh sửa thông tin cá nhân và đổi mật khẩu
+# Cài đặt tài khoản
+
+<Callout type="info">
+Trang **Cài đặt tài khoản** cho phép mỗi người dùng quản lý thông tin cá nhân của mình, bao gồm thông tin hồ sơ, ảnh đại diện, ngôn ngữ hiển thị, múi giờ và mật khẩu.
+
+Mọi thay đổi trên trang này chỉ áp dụng cho tài khoản hiện tại.
+
+</Callout>
+
+## Tổng quan
+
+Trang **Cài đặt tài khoản** gồm hai phần chính:
+
+- **Thông tin cá nhân** — Quản lý hồ sơ người dùng và ảnh đại diện.
+- **Mật khẩu** — Thay đổi mật khẩu đăng nhập.
+
+Người dùng có thể truy cập trang này bằng cách nhấn vào ảnh đại diện ở góc trên bên phải và chọn **Profile**.
+
+![User Menu](/images/account-user-menu.png)
+
+---
+
+## Thông tin cá nhân
+
+Tab **Thông tin cá nhân** hiển thị toàn bộ thông tin của người dùng cùng với ảnh đại diện hiện tại.
+
+Tại đây, người dùng có thể:
+
+- Cập nhật ảnh đại diện.
+- Chỉnh sửa thông tin cá nhân.
+- Thay đổi ngôn ngữ hiển thị.
+- Thiết lập múi giờ.
+
+![Profile Information](/images/profile-information.png)
+
+---
+
+### Cập nhật ảnh đại diện
+
+Workflow cho phép người dùng tùy chỉnh ảnh đại diện của tài khoản.
+
+Định dạng được hỗ trợ:
+
+- JPG
+- JPEG
+- PNG
+
+Dung lượng tối đa:
+
+- **800 KB**
+
+Người dùng có thể:
+
+- Tải lên ảnh đại diện mới.
+- Thay thế ảnh hiện tại.
+- Xóa ảnh hiện tại để quay về ảnh đại diện mặc định của hệ thống.
+
+<Callout type="tip">
+  Ảnh đại diện mới sẽ được áp dụng ngay sau khi tải lên thành công và hiển thị
+  trên toàn bộ hệ thống.
+</Callout>
+
+---
+
+### Cập nhật thông tin cá nhân
+
+Nhấn **Edit** để cập nhật thông tin cá nhân.
+
+![Update Personal Information](/images/profile-edit-dialog.png)
+
+Người dùng có thể chỉnh sửa các thông tin sau:
+
+| Trường        | Mô tả                                    |
+| ------------- | ---------------------------------------- |
+| Email         | Địa chỉ email đã đăng ký.                |
+| Họ và tên     | Tên hiển thị của người dùng.             |
+| Số điện thoại | Thông tin liên hệ.                       |
+| Múi giờ       | Múi giờ mặc định sử dụng trong Workflow. |
+| Ngôn ngữ      | Ngôn ngữ hiển thị của hệ thống.          |
+| Địa chỉ       | Địa chỉ của người dùng.                  |
+
+Sau khi lưu, các thay đổi sẽ được áp dụng ngay trên toàn bộ hệ thống.
+
+---
+
+### Ngôn ngữ
+
+Workflow hiện hỗ trợ ba ngôn ngữ:
+
+- English
+- Tiếng Việt
+- 日本語 (Japanese)
+
+Việc thay đổi ngôn ngữ chỉ ảnh hưởng đến giao diện của tài khoản hiện tại và không ảnh hưởng đến người dùng khác.
+
+---
+
+### Múi giờ
+
+Múi giờ được cấu hình sẽ được sử dụng để hiển thị:
+
+- Ngày tạo đơn
+- Lịch sử phê duyệt
+- Thời gian hoạt động
+- Thời gian gửi thông báo
+- Các thông tin ngày giờ khác trong Workflow
+
+---
+
+## Thay đổi mật khẩu
+
+Người dùng có thể thay đổi mật khẩu trong tab **Mật khẩu**.
+
+![Change Password](/images/change-password.png)
+
+Để thay đổi mật khẩu, người dùng cần nhập:
+
+- Mật khẩu hiện tại
+- Mật khẩu mới
+- Xác nhận mật khẩu mới
+
+### Yêu cầu mật khẩu
+
+Mật khẩu mới phải đáp ứng tất cả các điều kiện sau:
+
+- Có ít nhất **8 ký tự**
+- Có ít nhất **1 chữ số**
+- Có ít nhất **1 chữ cái in hoa**
+- Có ít nhất **1 chữ cái in thường**
+- Có ít nhất **1 ký tự đặc biệt**
+
+Workflow sẽ kiểm tra toàn bộ điều kiện trước khi cho phép cập nhật mật khẩu.
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Có thể chỉnh sửa thông tin của người dùng khác không?">
+
+Không.
+
+Người dùng chỉ có thể chỉnh sửa thông tin của chính tài khoản mình.
+
+</Accordion>
+
+<Accordion title="Thay đổi ngôn ngữ có ảnh hưởng đến người dùng khác không?">
+
+Không.
+
+Ngôn ngữ hiển thị được lưu riêng cho từng tài khoản.
+
+</Accordion>
+
+<Accordion title="Ảnh đại diện mới được áp dụng khi nào?">
+
+Ảnh đại diện mới sẽ được hiển thị ngay sau khi tải lên thành công.
+
+</Accordion>
+
+<Accordion title="Có bắt buộc nhập mật khẩu hiện tại khi đổi mật khẩu không?">
+
+Có.
+
+Người dùng phải xác thực bằng mật khẩu hiện tại trước khi thiết lập mật khẩu mới.
+
+</Accordion>
+
+</Accordions>

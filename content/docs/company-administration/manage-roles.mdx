@@ -1,0 +1,160 @@
+---
+title: Approver Level
+description: Visual role hierarchy defining approval levels used throughout Workflow.
+icon: GitBranch
+---
+
+# Approver Level
+
+<Callout type="info">
+The **Approver Level** feature allows administrators to define the approval hierarchy of an organization using a visual role chart.
+
+The hierarchy created here is referenced when configuring approval routes in **Application Definition**, ensuring applications are routed to the correct approvers based on the organization's approval structure.
+
+</Callout>
+
+## Overview
+
+Approver Level represents the reporting and approval relationship between organizational roles.
+
+Each node in the hierarchy represents an approval role, while the connections define the parent-child relationship used during approval routing.
+
+![Approver Level](/images/approver-level-overview.png)
+
+---
+
+## Role Hierarchy
+
+The hierarchy is displayed as an interactive tree structure.
+
+Each role provides the following actions:
+
+- Create child role
+- Edit role name
+- Delete role
+
+Administrators can switch between the **Hierarchy View** and **List View** using the view switcher located in the upper-right corner.
+
+<Callout type="tip">
+  Hierarchy View is recommended for visualizing reporting relationships, while
+  List View provides a simplified representation for managing large
+  organizations.
+</Callout>
+
+---
+
+## Create a Role
+
+Click **Create New Role** to add a new approval role.
+
+![Create Role](/images/approver-level-create-role.png)
+
+### Root Role
+
+When creating the very first role in the hierarchy:
+
+- **Parent Role** is **not required**.
+- The new role becomes the root of the approval hierarchy.
+
+### Child Role
+
+After a root role exists, additional roles can be created beneath any existing role.
+
+Administrators need to specify:
+
+| Field       | Description                 |
+| ----------- | --------------------------- |
+| Parent Role | The parent approval role.   |
+| Role Name   | Name of the approval level. |
+
+The newly created role automatically appears beneath the selected parent.
+
+---
+
+## Edit a Role
+
+Click the **Edit** icon on any node to update the role name.
+
+Changing a role name does not affect the hierarchy or approval routes already configured.
+
+---
+
+## Delete a Role
+
+Roles can be removed from the hierarchy.
+
+<Callout type="warning">
+  A role cannot be deleted if it is currently referenced by other Workflow
+  configurations, such as approval routes or assigned users.
+</Callout>
+
+---
+
+## Approval Hierarchy
+
+The hierarchy defines how approval responsibilities escalate throughout the organization.
+
+For example:
+
+- Employee
+- Team Leader
+- Manager
+- General Manager
+- CEO
+
+Applications can move through these levels according to the approval route configured in an Application Definition.
+
+![Approval Hierarchy Example](/images/approver-level-hierarchy.png)
+
+---
+
+## Relationship with Application Definition
+
+Approver Levels are shared across the entire company.
+
+When configuring an **Application Definition**, administrators can reference these approval levels when building approval routes.
+
+<Callout type="info">
+  Any changes made to the approval hierarchy become available immediately when
+  configuring new approval routes.
+</Callout>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can multiple root roles exist?">
+
+No.
+
+Each company can have only one root approval role.
+
+</Accordion>
+
+<Accordion title="Is Parent Role required?">
+
+Only for child roles.
+
+When creating the first role in the hierarchy, the Parent Role field is optional.
+
+</Accordion>
+
+<Accordion title="Does changing the hierarchy affect Application Definition?">
+
+Yes.
+
+Approver Levels are used by Application Definitions when configuring approval routes. Updating the hierarchy changes the available approval levels for future route configuration.
+
+</Accordion>
+
+<Accordion title="Can a role be deleted if it is already in use?">
+
+No.
+
+Roles currently referenced by Workflow configurations cannot be removed until those references are removed.
+
+</Accordion>
+
+</Accordions>

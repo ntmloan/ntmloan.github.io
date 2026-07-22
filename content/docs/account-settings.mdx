@@ -1,7 +1,176 @@
 ---
 title: Account Settings
-description: Personal profile and password management, available to all roles
+description: Manage your personal profile, profile picture, language preferences, timezone, and password.
 icon: UserCog
 ---
 
-- **Profile** — edit personal information and change password
+# Account Settings
+
+<Callout type="info">
+The **Account Settings** page allows each user to manage their own account information, including personal details, profile picture, preferred language, timezone, and password.
+
+Changes made on this page only affect the current user account.
+
+</Callout>
+
+## Overview
+
+Account Settings consists of two sections:
+
+- **Profile Information** — Update personal information and profile picture.
+- **Password** — Change the account password.
+
+Users can access this page by selecting their avatar in the top-right corner and choosing **Profile**.
+
+![User Menu](/images/account-user-menu.png)
+
+---
+
+## Profile Information
+
+The **Profile Information** tab displays the user's personal information together with the current profile picture.
+
+Users can:
+
+- Update their profile picture.
+- Edit personal information.
+- Configure their preferred language.
+- Select their timezone.
+
+![Profile Information](/images/profile-information.png)
+
+---
+
+### Update Profile Picture
+
+Workflow allows users to customize their profile picture.
+
+Supported image formats:
+
+- JPG
+- JPEG
+- PNG
+
+Maximum file size:
+
+- **800 KB**
+
+Users can:
+
+- Upload a new profile picture.
+- Replace the current profile picture.
+- Remove the current profile picture and restore the default avatar.
+
+<Callout type="tip">
+  Updating the profile picture immediately changes the avatar displayed
+  throughout Workflow.
+</Callout>
+
+---
+
+### Update Personal Information
+
+Click **Edit** to update personal information.
+
+![Update Personal Information](/images/profile-edit-dialog.png)
+
+Users can modify:
+
+| Field        | Description                                |
+| ------------ | ------------------------------------------ |
+| Email        | Registered email address.                  |
+| Full Name    | User display name.                         |
+| Phone Number | Contact number.                            |
+| Timezone     | Default timezone used throughout Workflow. |
+| Language     | Preferred display language.                |
+| Address      | User address.                              |
+
+After saving, the updated information is reflected immediately throughout the system.
+
+---
+
+### Language
+
+Workflow currently supports:
+
+- English
+- Vietnamese
+- Japanese
+
+Changing the language immediately updates the application interface without affecting other users.
+
+---
+
+### Timezone
+
+The selected timezone is used when displaying:
+
+- Application dates
+- Approval history
+- Activity timestamps
+- Notifications
+- Other date and time information
+
+---
+
+## Change Password
+
+Users can change their password from the **Password** tab.
+
+![Change Password](/images/change-password.png)
+
+To change the password, users must provide:
+
+- Current password
+- New password
+- Confirm new password
+
+### Password Requirements
+
+The new password must satisfy all of the following requirements:
+
+- At least **8 characters**
+- At least **1 numeric digit**
+- At least **1 uppercase letter**
+- At least **1 lowercase letter**
+- At least **1 special character**
+
+Workflow validates each requirement before allowing the password to be updated.
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can users edit another user's profile?">
+
+No.
+
+Users can only edit their own account information.
+
+</Accordion>
+
+<Accordion title="Does changing the language affect other users?">
+
+No.
+
+The language preference is stored individually for each user.
+
+</Accordion>
+
+<Accordion title="When does the new profile picture become available?">
+
+The new profile picture is applied immediately after a successful upload.
+
+</Accordion>
+
+<Accordion title="Does changing the password require the current password?">
+
+Yes.
+
+Users must provide their current password before creating a new one.
+
+</Accordion>
+
+</Accordions>

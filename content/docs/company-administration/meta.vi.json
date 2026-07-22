@@ -1,0 +1,15 @@
+{
+  "title": "Quản trị công ty",
+  "icon": "Settings",
+  "pages": [
+    "company-information",
+    "representative",
+    "manage-roles",
+    "employees",
+    "org-chart",
+    "application-definitions",
+    "attendance",
+    "notifications",
+    "upload-history"
+  ]
+}

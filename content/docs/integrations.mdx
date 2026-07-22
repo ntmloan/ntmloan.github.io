@@ -1,9 +1,239 @@
 ---
 title: Integrations & Platform
-description: Notification integrations, multi-language support, and performance monitoring
+description: Notification integrations, multi-language support, and performance monitoring.
 icon: Plug
 ---
 
-- **Notification Integrations** — connect Slack and Microsoft Teams via OAuth to receive application notifications
-- **Multi-language** — supports English, Vietnamese, Japanese
-- **Performance Monitoring** — error and performance tracking via Sentry, Web Vitals
+# Integrations & Platform
+
+## Notification Integrations
+
+<Callout type="info">
+Workflow supports multiple notification channels to keep users informed about business activities such as application progress, approval requests, status changes, and other workflow events.
+
+Email notifications are enabled by default, while Microsoft Teams and Slack can be connected optionally.
+
+</Callout>
+
+### Overview
+
+Workflow currently supports the following notification channels:
+
+| Platform        | Description                                                        |
+| --------------- | ------------------------------------------------------------------ |
+| Email           | Default notification channel. Enabled automatically for all users. |
+| Slack           | Send Workflow notifications directly to a Slack channel.           |
+| Microsoft Teams | Deliver Workflow notifications to a Microsoft Teams channel.       |
+
+![Notification Settings](/images/notification-settings.png)
+
+---
+
+### Notification Types
+
+After an integration is configured, Workflow can automatically send notifications for business events, including:
+
+- Application submitted
+- Application approved
+- Application rejected
+- Workflow progress updates
+- Status changes
+- Assignment notifications
+- Other workflow activities
+
+Notification messages contain important business information together with a direct link back to the corresponding Workflow application.
+
+![Slack Notification Example](/images/slack-notification-example.png)
+
+---
+
+### Email Notifications
+
+Email is the default notification channel for every company.
+
+#### Behavior
+
+- Automatically enabled during company creation.
+- Cannot be disabled.
+- Notifications are delivered to the user's registered email address.
+
+<Callout type="tip">
+  No additional configuration is required for email notifications.
+</Callout>
+
+---
+
+### Microsoft Teams Integration
+
+Workflow supports sending business notifications to Microsoft Teams through an **Incoming Webhook Workflow**.
+
+#### Before You Begin
+
+Before connecting Microsoft Teams with Workflow, ensure that:
+
+- A Microsoft Teams channel already exists.
+- You have permission to create or manage workflows within the channel.
+
+#### Connect Microsoft Teams
+
+<Steps>
+
+#### Open the Target Channel
+
+Open the Microsoft Teams channel where Workflow notifications will be delivered.
+
+#### Open Workflows
+
+From the channel menu (**⋯**), select **Workflows**.
+
+![Open Workflows](/images/teams-open-workflows.png)
+
+#### Create a Webhook Workflow
+
+Search for **Send webhook alerts to a channel** and select the template.
+
+![Select Webhook Template](/images/teams-webhook-template.png)
+
+Microsoft Teams will automatically create a workflow for the selected channel.
+
+#### Copy the Webhook URL
+
+After the workflow is created, click **Copy webhook link** to copy the generated webhook URL.
+
+![Copy Webhook Link](/images/teams-copy-webhook-link.png)
+
+#### Open Notification Settings
+
+Return to Workflow and navigate to **Notification Settings**.
+
+#### Connect Microsoft Teams
+
+Click **Connect** under the Microsoft Teams section.
+
+#### Paste the Webhook URL
+
+Paste the copied webhook URL into the **Teams URL** field.
+
+![Microsoft Teams Connection](/images/teams-connect-dialog.png)
+
+#### Save
+
+Click **Save** to complete the configuration.
+
+</Steps>
+
+After the connection is established, Workflow will automatically send business notifications to the configured Microsoft Teams channel through the webhook.
+
+<Callout type="tip">
+  If the Microsoft Teams workflow is deleted or the webhook URL is regenerated,
+  update the configuration in Workflow using the new webhook URL.
+</Callout>
+
+### Slack Integration
+
+Workflow integrates with Slack using the official OAuth authorization flow.
+
+#### Connect Slack
+
+<Steps>
+
+#### Open Notification Settings
+
+Navigate to **Notification Settings**.
+
+#### Connect Slack
+
+Click **Connect** under Slack.
+
+#### Enter Workspace
+
+Input the Slack workspace that should be connected.
+
+![Slack Workspace](/images/slack-workspace.png)
+
+#### Authorize Workflow
+
+Sign in to Slack and grant Workflow permission to access your workspace.
+
+![Slack Authorization](/images/slack-authorize.png)
+
+#### Select Notification Channel
+
+After authorization succeeds, Workflow retrieves the available channels from the workspace.
+
+Choose the channel where Workflow notifications should be posted.
+
+![Slack Channel Configuration](/images/slack-channel-setting.png)
+
+#### Save
+
+Click **Save** to complete the configuration.
+
+</Steps>
+
+<Callout type="tip">
+  Only one Slack channel is configured for each notification category. The
+  channel can be updated at any time by editing the Slack integration.
+</Callout>
+
+---
+
+### Notification Destination
+
+Workflow allows administrators to specify where notifications are delivered.
+
+Currently, notifications can be sent to:
+
+- User email (default)
+- A Microsoft Teams channel
+- A Slack channel
+
+Each integration works independently, allowing companies to use one or multiple notification channels simultaneously.
+
+---
+
+### Business Rules
+
+<Accordions>
+
+<Accordion title="Can Email notifications be disabled?">
+
+No.
+
+Email is the default notification channel and is always enabled for every company.
+
+</Accordion>
+
+<Accordion title="Can a company connect both Slack and Microsoft Teams?">
+
+Yes.
+
+Workflow allows both integrations to be configured at the same time.
+
+</Accordion>
+
+<Accordion title="Does Slack require authorization?">
+
+Yes.
+
+Slack uses the official OAuth authorization process before Workflow can access workspace channels.
+
+</Accordion>
+
+<Accordion title="Does Microsoft Teams require OAuth?">
+
+No.
+
+Workflow only requires the Teams Channel URL. Administrators can obtain it by selecting **Copy link** from the channel menu inside Microsoft Teams.
+
+</Accordion>
+
+</Accordions>
+
+## Multi-language
+
+Supports English, Vietnamese, Japanese
+
+## Performance Monitoring
+
+Error and performance tracking via Sentry, Web Vitals

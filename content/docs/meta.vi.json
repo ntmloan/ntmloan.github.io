@@ -3,7 +3,6 @@
   "pages": [
     "index",
     "authentication",
-    "platform-administration",
     "company-administration",
     "user",
     "account-settings",

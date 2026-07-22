@@ -1,0 +1,160 @@
+---
+title: Cấp phê duyệt
+description: Cấu hình cây phân cấp vai trò phục vụ cho quy trình phê duyệt.
+icon: GitBranch
+---
+
+# Cấp phê duyệt
+
+<Callout type="info">
+**Cấp phê duyệt (Approver Level)** cho phép quản trị viên xây dựng cây phân cấp các vai trò phê duyệt trong tổ chức.
+
+Cấu trúc này sẽ được sử dụng khi cấu hình **Approval Route** trong **Application Definition**, giúp Workflow xác định đúng cấp phê duyệt cho từng quy trình.
+
+</Callout>
+
+## Tổng quan
+
+Approver Level thể hiện mối quan hệ phân cấp giữa các vai trò trong doanh nghiệp.
+
+Mỗi node đại diện cho một cấp phê duyệt và các đường kết nối thể hiện mối quan hệ cha - con giữa các cấp.
+
+![Approver Level](/images/approver-level-overview.png)
+
+---
+
+## Cây phân cấp vai trò
+
+Hệ thống hiển thị các cấp phê duyệt dưới dạng sơ đồ cây trực quan.
+
+Mỗi node hỗ trợ các thao tác:
+
+- Thêm vai trò con
+- Chỉnh sửa tên vai trò
+- Xóa vai trò
+
+Quản trị viên có thể chuyển đổi giữa **Hierarchy View** và **List View** bằng nút chuyển đổi ở góc trên bên phải.
+
+<Callout type="tip">
+  Hierarchy View phù hợp để quan sát mối quan hệ giữa các cấp phê duyệt, trong
+  khi List View giúp quản lý dễ dàng hơn khi số lượng vai trò lớn.
+</Callout>
+
+---
+
+## Tạo vai trò
+
+Nhấn **Create New Role** để tạo một cấp phê duyệt mới.
+
+![Create Role](/images/approver-level-create-role.png)
+
+### Tạo vai trò gốc
+
+Khi tạo node đầu tiên của hệ thống:
+
+- **Parent Role** không bắt buộc.
+- Node được tạo sẽ trở thành cấp cao nhất của cây phân cấp.
+
+### Tạo vai trò con
+
+Sau khi đã có node gốc, các vai trò mới có thể được tạo bên dưới bất kỳ vai trò hiện có nào.
+
+Người dùng cần khai báo:
+
+| Trường      | Mô tả                          |
+| ----------- | ------------------------------ |
+| Parent Role | Vai trò cha của cấp phê duyệt. |
+| Role Name   | Tên của cấp phê duyệt.         |
+
+Sau khi tạo, node mới sẽ tự động xuất hiện dưới vai trò cha đã chọn.
+
+---
+
+## Chỉnh sửa vai trò
+
+Nhấn biểu tượng **Edit** trên node để thay đổi tên vai trò.
+
+Việc đổi tên không làm thay đổi cấu trúc cây hoặc các quy trình phê duyệt đã được cấu hình.
+
+---
+
+## Xóa vai trò
+
+Vai trò có thể được xóa khỏi cây phân cấp.
+
+<Callout type="warning">
+  Không thể xóa một vai trò nếu vai trò đó đang được sử dụng trong các cấu hình
+  khác của Workflow, chẳng hạn như Approval Route hoặc đã được gán cho người
+  dùng.
+</Callout>
+
+---
+
+## Cây phân cấp phê duyệt
+
+Cấu trúc phân cấp xác định cách luồng phê duyệt được chuyển lên các cấp cao hơn trong tổ chức.
+
+Ví dụ:
+
+- Employee
+- Team Leader
+- Manager
+- General Manager
+- CEO
+
+Các đơn sẽ được chuyển qua các cấp này dựa trên Approval Route được cấu hình trong Application Definition.
+
+![Approval Hierarchy Example](/images/approver-level-hierarchy.png)
+
+---
+
+## Liên kết với Application Definition
+
+Approver Level là cấu hình dùng chung cho toàn bộ công ty.
+
+Khi xây dựng **Application Definition**, quản trị viên có thể sử dụng các cấp phê duyệt này để thiết lập **Approval Route**.
+
+<Callout type="info">
+  Mọi thay đổi trong cây phân cấp sẽ được áp dụng ngay khi cấu hình các Approval
+  Route mới.
+</Callout>
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Có thể tồn tại nhiều node gốc không?">
+
+Không.
+
+Mỗi công ty chỉ có một node gốc trong cây Approver Level.
+
+</Accordion>
+
+<Accordion title="Parent Role có bắt buộc không?">
+
+Chỉ bắt buộc đối với các node con.
+
+Khi tạo node đầu tiên, trường Parent Role không bắt buộc.
+
+</Accordion>
+
+<Accordion title="Việc thay đổi Approver Level có ảnh hưởng đến Application Definition không?">
+
+Có.
+
+Approver Level là dữ liệu được sử dụng khi xây dựng Approval Route trong Application Definition. Khi cấu trúc thay đổi, các cấp phê duyệt mới sẽ được sử dụng cho việc cấu hình các route tiếp theo.
+
+</Accordion>
+
+<Accordion title="Có thể xóa một vai trò đang được sử dụng không?">
+
+Không.
+
+Một vai trò đang được tham chiếu bởi Workflow sẽ không thể xóa cho đến khi các tham chiếu đó được loại bỏ.
+
+</Accordion>
+
+</Accordions>
