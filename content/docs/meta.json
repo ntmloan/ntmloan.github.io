@@ -1,0 +1,12 @@
+{
+  "title": "Workflow Docs",
+  "pages": [
+    "index",
+    "authentication",
+    "platform-administration",
+    "company-administration",
+    "user",
+    "account-settings",
+    "integrations"
+  ]
+}

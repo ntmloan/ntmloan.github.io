@@ -1,0 +1,12 @@
+{
+  "title": "Tài liệu Workflow",
+  "pages": [
+    "index",
+    "authentication",
+    "platform-administration",
+    "company-administration",
+    "user",
+    "account-settings",
+    "integrations"
+  ]
+}
