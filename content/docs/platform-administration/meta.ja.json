@@ -1,0 +1,5 @@
+{
+  "title": "プラットフォーム管理",
+  "icon": "Building2",
+  "pages": ["manage-companies", "manage-admins"]
+}

@@ -1,0 +1,32 @@
+---
+title: Application Definitions
+description: Configure the forms and approval routes that applications follow
+icon: Workflow
+---
+
+Application Definitions is where Company Admins design the workflow templates that **Applications**
+follow: the form fields applicants fill in, the approval route the application travels through,
+field validation rules, automated post-approval actions, and external data lookups.
+
+Each definition is configured across five tabs:
+
+- **Form Builder** — the form fields applicants fill in.
+- **Approval Route** — the approval workflow graph (who approves, in what order).
+- **Input Rules** — per-field validation rules.
+- **After Flow** — automated actions triggered after full approval.
+- **Get API** — external data sources for dropdown/lookup fields.
+
+Definitions are grouped by **Application Categories**.
+
+<Callout type="info">
+  A definition can only be Activated once it has a Form and at least one Approve/Review step
+  configured in its Approval Route.
+</Callout>
+
+## Lifecycle
+
+- Create a definition (Category, Name, operation Start/End date range).
+- Configure its Form, Approval Route, Input Rules, After Flow, and Get API tabs.
+- Activate the definition so employees can submit Applications against it.
+- Optionally link a parent/children definition, or create a derived Report definition for
+  follow-up reporting after an application is approved.

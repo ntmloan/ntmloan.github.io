@@ -1,0 +1,33 @@
+---
+title: Create Application
+description: Create and submit a new application per a configured Application Definition
+icon: FilePlus
+---
+
+Create and submit a new application following a configured **Application Definition**.
+
+## Flow
+
+- Pick a department (skipped automatically if the user belongs to only one).
+- The dynamic form for the chosen application is loaded based on its Form Builder configuration.
+- Fill in the form and submit, or save as a draft.
+
+## Bulk Apply
+
+Multiple existing records can be selected and submitted at once using the same form (bulk apply),
+useful for applying the same request across many records in one action.
+
+## Copy From Existing
+
+A new application can be pre-filled by copying an existing application's data.
+
+## Duplicate Detection
+
+If a conflicting application already exists for the same request, Workflow shows the existing
+conflicting application(s) (draft or already sent) and offers a shortcut to re-apply instead of
+creating a duplicate.
+
+<Callout type="tip">
+  Once a route preview is available, the right-hand panel shows the approval route the application
+  will follow before it is submitted.
+</Callout>

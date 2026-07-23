@@ -1,0 +1,156 @@
+---
+title: 承認レベル(Approver Level)
+description: Workflow 全体で使用される承認レベルを定義する、視覚的なロール階層。
+icon: GitBranch
+---
+
+# 承認レベル(Approver Level)
+
+<Callout type="info">
+**承認レベル(Approver Level)** 機能では、管理者が視覚的なロールチャートを使って組織の承認階層を定義できます。
+
+ここで作成した階層は、**申請定義(Application Definition)** で承認ルートを設定する際に参照され、組織の承認構造に基づいて申請が正しい承認者に振り分けられるようにします。
+
+</Callout>
+
+## 概要
+
+承認レベルは、組織内のロール間の報告・承認関係を表します。
+
+階層内の各ノードは1つの承認ロールを表し、ノード同士の接続は承認ルーティングで使用される親子関係を定義します。
+
+![Approver Level](/images/approver-level-overview.png)
+
+---
+
+## ロール階層(Role Hierarchy)
+
+階層はインタラクティブなツリー構造として表示されます。
+
+各ロールでは、以下の操作が可能です。
+
+- 子ロールの作成
+- ロール名の編集
+- ロールの削除
+
+管理者は、右上にあるビュー切り替えを使って **Hierarchy View(階層表示)** と **List View(リスト表示)** を切り替えることができます。
+
+<Callout type="tip">
+  報告関係を視覚的に把握するには Hierarchy View が適しています。一方、List View は、組織の規模が大きい場合に、よりシンプルな表示を提供します。
+</Callout>
+
+---
+
+## ロールの作成
+
+新しい承認ロールを追加するには **Create New Role** をクリックします。
+
+![Create Role](/images/approver-level-create-role.png)
+
+### ルートロール
+
+階層内で最初のロールを作成する場合:
+
+- **Parent Role(親ロール)** は**必須ではありません**。
+- 作成したロールが承認階層のルート(最上位)になります。
+
+### 子ロール
+
+ルートロールが存在する場合、既存のロールの下に新しいロールを追加できます。
+
+管理者が指定する項目:
+
+| 項目        | 説明                     |
+| ----------- | ------------------------ |
+| Parent Role | 親となる承認ロール。     |
+| Role Name   | 承認レベルの名前。       |
+
+新しく作成されたロールは、選択した親ロールの下に自動的に表示されます。
+
+---
+
+## ロールの編集
+
+ノード上の **Edit** アイコンをクリックすると、ロール名を変更できます。
+
+ロール名を変更しても、既に設定されている階層や承認ルートには影響しません。
+
+---
+
+## ロールの削除
+
+ロールは階層から削除できます。
+
+<Callout type="warning">
+  承認ルートや割り当てられたユーザーなど、他の Workflow の設定で現在参照されているロールは削除できません。
+</Callout>
+
+---
+
+## 承認階層(Approval Hierarchy)
+
+この階層は、組織内で承認責任がどのようにエスカレーションされるかを定義します。
+
+例:
+
+- Employee(従業員)
+- Team Leader(チームリーダー)
+- Manager(マネージャー)
+- General Manager(部長)
+- CEO
+
+申請は、申請定義(Application Definition)で設定された承認ルートに従って、これらのレベルを移動します。
+
+![Approval Hierarchy Example](/images/approver-level-hierarchy.png)
+
+---
+
+## 申請定義(Application Definition)との関係
+
+承認レベルは、会社全体で共有される設定です。
+
+**申請定義(Application Definition)** を設定する際、管理者はこれらの承認レベルを参照して承認ルートを構築できます。
+
+<Callout type="info">
+  承認階層への変更は、新しい承認ルートを設定する際に即座に反映されます。
+</Callout>
+
+---
+
+## 業務ルール
+
+<Accordions>
+
+<Accordion title="ルートロールを複数作成できますか?">
+
+いいえ。
+
+各会社が持てるルート承認ロールは1つだけです。
+
+</Accordion>
+
+<Accordion title="Parent Role は必須ですか?">
+
+子ロールの場合のみ必須です。
+
+階層内で最初のロールを作成する場合、Parent Role の入力は任意です。
+
+</Accordion>
+
+<Accordion title="階層を変更すると、申請定義(Application Definition)に影響しますか?">
+
+はい。
+
+承認レベルは、申請定義で承認ルートを設定する際に使用されます。階層を更新すると、以降のルート設定で利用できる承認レベルが変わります。
+
+</Accordion>
+
+<Accordion title="使用中のロールを削除できますか?">
+
+いいえ。
+
+Workflow の設定で現在参照されているロールは、その参照が削除されるまで削除できません。
+
+</Accordion>
+
+</Accordions>

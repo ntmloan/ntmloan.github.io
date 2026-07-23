@@ -1,0 +1,216 @@
+---
+title: 会社情報
+description: 会社のプロフィール、CRM 連携、編集可能な会社情報を確認・管理します。
+icon: Info
+---
+
+# 会社情報
+
+<Callout type="info">
+**会社情報**ページでは、会社の管理者が組織のプロフィールを確認したり、Porters CRM との連携を管理したり、編集可能な会社情報を更新したりできます。
+
+一部の会社設定は Workflow の Super Administrator のみが管理しており、このページから変更することはできません。
+
+</Callout>
+
+## 概要
+
+**会社情報**ページは、管理者が Workflow 上で自組織の情報を確認するための中心的な画面です。
+
+このページから、管理者は以下を行うことができます。
+
+- 会社の基本情報を確認する。
+- **Porters CRM** との接続/切断を行う。
+- 編集可能な会社情報を編集する。
+- 現在の Workflow の契約プランを確認する。
+- 請求に使用される支払い情報を確認する。
+
+![Company Information](/images/company-information.png)
+
+---
+
+## CRM 連携
+
+Workflow は **Porters CRM** との連携に対応しており、両システム間で会社データを同期できます。
+
+### CRM を接続する
+
+会社がまだ Porters CRM に接続されていない場合、**Connect CRM** ボタンが表示されます。
+
+<Steps>
+
+### **Connect CRM** をクリックする
+
+Workflow によって Porters CRM の認証ページへリダイレクトされます。
+
+### Workflow を承認する
+
+Porters CRM にサインインし、Workflow が組織のデータへアクセスすることを許可します。
+
+### Workflow に戻る
+
+認証が正常に完了すると、自動的に会社情報ページへリダイレクトされます。
+
+### CRM 接続完了
+
+**Connect CRM** ボタンが **Remove CRM Connection** に変わり、連携が正常に確立されたことを示します。
+
+</Steps>
+
+<Callout type="tip">
+  Workflow は標準的な OAuth 認証フローを使用しています。認証後に追加の設定を行う必要はありません。
+</Callout>
+
+### CRM 接続を解除する
+
+組織が Porters CRM との同期を不要と判断した場合、管理者は接続を解除できます。
+
+接続解除後:
+
+- Porters CRM との同期は即座に停止します。
+- Workflow 内の既存データはそのまま保持されます。
+- いつでも再接続が可能です。
+
+---
+
+## 会社情報の編集
+
+管理者は、会社名の横にある **Edit** アイコンをクリックすることで会社情報を更新できます。
+
+![Edit Company Information - General](/images/company-information-general.png)
+
+編集ダイアログは3つのセクションに分かれています。
+
+<Tabs items={["基本情報", "Workflow プラン", "支払い情報"]}>
+
+<Tab value="基本情報">
+
+### 基本情報
+
+このセクションには、会社の基本的なプロフィール情報が含まれます。
+
+管理者が更新できる項目:
+
+- 会社ロゴ
+- 会社名
+- 国
+- 税番号(Tax code)
+- 法定代表者
+- Email
+- 電話番号
+- 住所
+- 部署
+- 役職
+
+変更内容は、保存後すぐに反映されます。
+
+</Tab>
+
+<Tab value="Workflow プラン">
+
+![Workflow Package](/images/company-information-package.png)
+
+### Workflow プラン
+
+会社が現在契約しているプランの情報を表示します。
+
+含まれる情報:
+
+- 現在のプラン
+- プランの制限事項
+- 契約期間
+
+<Callout type="warning">
+Workflow プランは閲覧専用です。
+
+プランの変更やアップグレードが必要な場合は、Workflow のサポートチームまでお問い合わせください。
+
+</Callout>
+
+</Tab>
+
+<Tab value="支払い情報">
+
+![Payment Information](/images/company-information-payment.png)
+
+### 支払い情報
+
+このセクションには、請求書発行に使用される支払い情報が保存されます。
+
+管理者が更新できる項目:
+
+- 会社名
+- 税番号(Tax code)
+- 法定代表者
+- 電話番号
+- Email
+- 住所
+- 部署
+- 役職
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Workflow が管理する情報
+
+一部の会社情報は Workflow 側で管理されており、会社の管理者は編集できません。
+
+例:
+
+- Client ID
+- 会社のプロビジョニング設定
+- 契約プランの設定
+- 内部システム設定
+
+<Callout type="info">
+  これらの値の変更が必要な場合は、Workflow のサポートチームまでお問い合わせください。
+</Callout>
+
+---
+
+## 業務ルール
+
+<Accordions>
+
+<Accordion title="会社情報を編集できるのは誰ですか?">
+
+適切な権限を持つ会社の管理者のみが、編集可能な会社情報を更新できます。
+
+</Accordion>
+
+<Accordion title="会社の作成と管理は誰が行いますか?">
+
+会社は Workflow の Super Administrator によって作成・管理されます。システムレベルの会社情報は、会社の管理者からは編集できません。
+
+</Accordion>
+
+<Accordion title="Workflow プランの情報を変更できますか?">
+
+いいえ。プラン情報は参照用としてのみ提供されます。契約内容の変更は、必ず Workflow のサポートを通じて依頼する必要があります。
+
+</Accordion>
+
+<Accordion title="CRM 接続を解除するとデータは削除されますか?">
+
+いいえ。CRM 接続を解除しても、Workflow と Porters CRM の連携が停止するだけです。Workflow 内の既存データはそのまま変更されません。
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## 権限
+
+| 操作                             | Company Admin | Workflow Super Admin |
+| -------------------------------- | :------------: | :-------------------: |
+| 会社情報の閲覧                   |       ✅        |          ✅           |
+| Porters CRM の接続               |       ✅        |          ✅           |
+| CRM 接続の解除                   |       ✅        |          ✅           |
+| 基本情報の編集                   |       ✅        |          ✅           |
+| Workflow プランの閲覧            |       ✅        |          ✅           |
+| Workflow プランの変更            |       ❌        |          ✅           |
+| 会社のプロビジョニング管理       |       ❌        |          ✅           |

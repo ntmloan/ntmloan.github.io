@@ -1,0 +1,30 @@
+---
+title: Định nghĩa quy trình duyệt
+description: Thiết lập biểu mẫu và quy trình duyệt mà đơn từ sẽ đi qua
+icon: Workflow
+---
+
+Application Definitions (Định nghĩa quy trình duyệt) là nơi Company Admin thiết kế mẫu quy trình mà **Đơn từ (Applications)** sẽ đi theo: các trường trong biểu mẫu mà người nộp đơn điền, quy trình duyệt mà đơn đi qua, quy tắc kiểm tra dữ liệu cho từng trường, hành động tự động sau khi được duyệt, và các nguồn dữ liệu bên ngoài.
+
+Mỗi định nghĩa được cấu hình qua 5 tab:
+
+- **Xây dựng biểu mẫu (Form Builder)** — các trường mà người nộp đơn điền.
+- **Quy trình duyệt (Approval Route)** — sơ đồ quy trình duyệt (ai duyệt, theo thứ tự nào).
+- **Quy tắc nhập liệu (Input Rules)** — quy tắc kiểm tra dữ liệu cho từng trường.
+- **Xử lý sau duyệt (After Flow)** — hành động tự động được kích hoạt sau khi đơn được duyệt hoàn toàn.
+- **Kết nối API (Get API)** — nguồn dữ liệu bên ngoài cho các trường dạng dropdown/tra cứu.
+
+Các định nghĩa được nhóm theo **Danh mục đơn (Application Categories)**.
+
+<Callout type="info">
+  Một định nghĩa chỉ có thể được Kích hoạt (Activate) khi đã có Biểu mẫu và ít nhất một bước
+  Duyệt/Xem xét trong Quy trình duyệt.
+</Callout>
+
+## Vòng đời
+
+- Tạo một định nghĩa (Danh mục, Tên, khoảng thời gian áp dụng Bắt đầu/Kết thúc).
+- Cấu hình các tab Biểu mẫu, Quy trình duyệt, Quy tắc nhập liệu, Xử lý sau duyệt và Kết nối API.
+- Kích hoạt định nghĩa để nhân viên có thể nộp đơn theo định nghĩa đó.
+- Tùy chọn liên kết định nghĩa cha/con, hoặc tạo một "định nghĩa báo cáo" phái sinh để nộp báo cáo
+  sau khi đơn được duyệt.

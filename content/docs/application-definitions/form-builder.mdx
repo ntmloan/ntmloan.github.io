@@ -1,0 +1,27 @@
+---
+title: Form Builder
+description: Configure the form fields applicants fill in for an Application Definition
+icon: FileText
+---
+
+The **Form** tab of an Application Definition is a drag-orderable list of form fields that
+applicants fill in when submitting an application.
+
+## Field Types
+
+Single-line Text, Multi-line Text, Number, Email, URL, Attachment/File, Telephone, Dropdown,
+Checkbox, Radio Button, Date/Time, Date, Age, Currency, Image, and Others.
+
+## Per-Field Configuration
+
+- Read-only
+- Multi-select (for Dropdown/Checkbox)
+- Minimum/maximum value or length
+- Default value
+- Formula (for Number fields, with prefix/suffix)
+- **Filled By** — Applicant or Approver
+- **Viewable Level** — which approval level can see the field
+- Attachment rules — allowed file types, maximum file count/size
+
+Fields can also be pulled from an external API resource (see **Get API**) instead of being entered
+manually — useful for dropdowns backed by external master data.

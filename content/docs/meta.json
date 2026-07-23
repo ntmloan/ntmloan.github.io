@@ -3,9 +3,12 @@
   "pages": [
     "index",
     "authentication",
+    "platform-administration",
     "company-administration",
+    "application-definitions",
+    "applications",
     "user",
     "account-settings",
-    "integrations"
+    "platform-notes"
   ]
 }

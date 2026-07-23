@@ -1,0 +1,32 @@
+---
+title: Quy tắc nhập liệu
+description: Thiết lập quy tắc kiểm tra dữ liệu cho từng trường trong biểu mẫu của Định nghĩa quy trình duyệt
+icon: ShieldCheck
+---
+
+Tab **Quy tắc nhập liệu (Input Rules)** định nghĩa các quy tắc kiểm tra áp dụng cho từng trường
+biểu mẫu khi người nộp đơn điền form.
+
+## Loại quy tắc theo từng loại trường
+
+- **Số** — bằng, khác, lớn hơn, lớn hơn hoặc bằng, nhỏ hơn, nhỏ hơn hoặc bằng.
+- **Văn bản** — phải bắt đầu/kết thúc bằng giá trị cố định, full-width/half-width, chữ hoa/chữ
+  thường, chỉ chữ và số/chỉ chữ cái. Tùy chọn tự động sửa: tự động viết hoa, tự động điền hậu tố.
+- **Ngày** — trước, sau, từ ngày, đến ngày, giới hạn theo thứ trong tuần.
+- **Lựa chọn (Dropdown/Checkbox/Radio)** — giá trị phải nằm trong tập cho phép, tất cả phải nằm
+  trong tập cho phép, vô hiệu hóa lựa chọn cụ thể, giới hạn số lượng chọn, yêu cầu chọn tối thiểu
+  N mục.
+
+## Quy tắc phụ thuộc
+
+Một quy tắc có thể phụ thuộc vào giá trị của trường khác (quy tắc chỉ áp dụng/kích hoạt khi trường
+liên quan thỏa điều kiện).
+
+## Cách xử lý khi lỗi
+
+Khi vi phạm quy tắc, Workflow có thể hiển thị: **Lỗi (Error)**, **Tô sáng (Highlight)**, hoặc
+**Lỗi và tô sáng** — mỗi kiểu có thể tùy chỉnh thông báo, hướng dẫn và màu tô sáng riêng.
+
+<Callout type="tip">
+  Sử dụng chức năng xem trước tích hợp để kiểm tra quy tắc với dữ liệu mẫu trước khi lưu.
+</Callout>

@@ -1,0 +1,227 @@
+---
+title: 通知
+description: Slack と Microsoft Teams の通知連携を接続/解除
+icon: Bell
+---
+
+# 通知連携(Notification Integrations)
+
+<Callout type="info">
+Workflow は、申請の進捗、承認依頼、ステータス変更など、業務に関するさまざまな出来事をユーザーに知らせるため、複数の通知チャネルに対応しています。
+
+Email 通知はデフォルトで有効になっており、Microsoft Teams と Slack は任意で接続できます。
+
+</Callout>
+
+## 概要
+
+Workflow は現在、以下の通知チャネルに対応しています。
+
+| プラットフォーム | 説明                                                       |
+| ---------------- | ---------------------------------------------------------- |
+| Email            | デフォルトの通知チャネル。全ユーザーに対して自動的に有効。 |
+| Slack            | Workflow の通知を Slack チャンネルへ直接送信。              |
+| Microsoft Teams  | Workflow の通知を Microsoft Teams のチャンネルへ配信。      |
+
+![Notification Settings](/images/notification-settings.png)
+
+---
+
+## 通知の種類
+
+連携を設定すると、Workflow は以下のような業務イベントについて自動的に通知を送信します。
+
+- 申請の提出
+- 申請の承認
+- 申請の却下
+- 進捗状況の更新
+- ステータスの変更
+- 担当者の割り当て通知
+- その他の Workflow の活動
+
+通知メッセージには重要な業務情報とともに、該当する Workflow の申請へ直接遷移できるリンクが含まれます。
+
+![Slack Notification Example](/images/slack-notification-example.png)
+
+---
+
+## Email 通知
+
+Email は、すべての会社で使用されるデフォルトの通知チャネルです。
+
+### 動作
+
+- 会社の作成時に自動的に有効化されます。
+- 無効化することはできません。
+- 通知はユーザーの登録済みメールアドレスへ送信されます。
+
+<Callout type="tip">
+  Email 通知を利用するために追加の設定を行う必要はありません。
+</Callout>
+
+---
+
+## Microsoft Teams 連携
+
+Workflow は、**Incoming Webhook Workflow** を通じて Microsoft Teams へ業務通知を送信できます。
+
+### 事前準備
+
+Microsoft Teams と Workflow を接続する前に、以下を確認してください。
+
+- 通知を受け取る Microsoft Teams チャンネルが既に作成されていること。
+- そのチャンネルで Workflow を作成・管理する権限を持っていること。
+
+### Microsoft Teams の接続
+
+<Steps>
+
+### 対象チャンネルを開く
+
+Workflow の通知を受け取る Microsoft Teams チャンネルを開きます。
+
+### Workflows を開く
+
+チャンネルのメニュー(**⋯**)から **Workflows** を選択します。
+
+![Open Workflows](/images/teams-open-workflows.png)
+
+### Webhook Workflow を作成する
+
+**Send webhook alerts to a channel** を検索し、そのテンプレートを選択します。
+
+![Select Webhook Template](/images/teams-webhook-template.png)
+
+選択したチャンネル用の Workflow が Microsoft Teams によって自動的に作成されます。
+
+### Webhook URL をコピーする
+
+Workflow の作成後、**Copy webhook link** をクリックして生成された Webhook URL をコピーします。
+
+![Copy Webhook Link](/images/teams-copy-webhook-link.png)
+
+### Notification Settings を開く
+
+Workflow に戻り、**Notification Settings** に移動します。
+
+### Microsoft Teams を接続する
+
+Microsoft Teams のセクションで **Connect** をクリックします。
+
+### Webhook URL を貼り付ける
+
+コピーした Webhook URL を **Teams URL** フィールドに貼り付けます。
+
+![Microsoft Teams Connection](/images/teams-connect-dialog.png)
+
+### 保存する
+
+**Save** をクリックして設定を完了します。
+
+</Steps>
+
+接続が完了すると、Workflow は設定された Webhook を通じて、指定した Microsoft Teams チャンネルへ業務通知を自動的に送信します。
+
+<Callout type="tip">
+  Microsoft Teams 側の Workflow が削除された場合や Webhook URL が再生成された場合は、新しい Webhook URL を使って Workflow 側の設定を更新してください。
+</Callout>
+
+## Slack 連携
+
+Workflow は、Slack の公式 OAuth 認証フローを使用して連携します。
+
+### Slack の接続
+
+<Steps>
+
+### Notification Settings を開く
+
+**Notification Settings** に移動します。
+
+### Slack を接続する
+
+Slack のセクションで **Connect** をクリックします。
+
+### ワークスペースを入力する
+
+接続する Slack ワークスペースを入力します。
+
+![Slack Workspace](/images/slack-workspace.png)
+
+### Workflow を認証する
+
+Slack にサインインし、Workflow がワークスペースへアクセスすることを許可します。
+
+![Slack Authorization](/images/slack-authorize.png)
+
+### 通知チャンネルを選択する
+
+認証が成功すると、Workflow はワークスペース内で利用可能なチャンネル一覧を取得します。
+
+Workflow の通知を投稿するチャンネルを選択します。
+
+![Slack Channel Configuration](/images/slack-channel-setting.png)
+
+### 保存する
+
+**Save** をクリックして設定を完了します。
+
+</Steps>
+
+<Callout type="tip">
+  通知カテゴリごとに設定できる Slack チャンネルは1つのみです。Slack 連携の設定を編集することで、チャンネルはいつでも変更できます。
+</Callout>
+
+---
+
+## 通知の送信先
+
+Workflow では、管理者が通知の送信先を指定できます。
+
+現在、通知は以下の宛先に送信できます。
+
+- ユーザーの Email(デフォルト)
+- Microsoft Teams チャンネル
+- Slack チャンネル
+
+各連携は独立して動作するため、会社は1つまたは複数の通知チャネルを同時に利用できます。
+
+---
+
+## 業務ルール
+
+<Accordions>
+
+<Accordion title="Email 通知を無効にできますか?">
+
+いいえ。
+
+Email はデフォルトの通知チャネルであり、すべての会社で常に有効になっています。
+
+</Accordion>
+
+<Accordion title="Slack と Microsoft Teams を同時に接続できますか?">
+
+はい。
+
+Workflow では、両方の連携を同時に設定できます。
+
+</Accordion>
+
+<Accordion title="Slack の接続には認証が必要ですか?">
+
+はい。
+
+Workflow がワークスペースのチャンネルへアクセスする前に、Slack の公式 OAuth 認証プロセスが必要です。
+
+</Accordion>
+
+<Accordion title="Microsoft Teams の接続に OAuth は必要ですか?">
+
+いいえ。
+
+Workflow に必要なのは Teams チャンネルの URL のみです。管理者は、Microsoft Teams 上のチャンネルメニューから **Copy link** を選択して URL を取得できます。
+
+</Accordion>
+
+</Accordions>

@@ -1,0 +1,12 @@
+{
+  "title": "Applications",
+  "icon": "FileText",
+  "pages": [
+    "my-applications",
+    "create-application",
+    "application-detail",
+    "approve",
+    "management",
+    "report-application"
+  ]
+}

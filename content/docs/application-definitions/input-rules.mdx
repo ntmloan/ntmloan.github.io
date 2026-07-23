@@ -1,0 +1,32 @@
+---
+title: Input Rules
+description: Configure per-field validation rules for an Application Definition's form
+icon: ShieldCheck
+---
+
+The **Input Rules** tab defines validation rules applied to individual form fields when an
+applicant fills out the form.
+
+## Rule Types by Field
+
+- **Number** — equal, not equal, greater than, greater than or equal, less than, less than or
+  equal.
+- **Text** — must start/end with a fixed value, full-width/half-width, uppercase/lowercase,
+  alphanumeric/alphabet only. Auto-correction options: auto-uppercase, auto-fill suffix.
+- **Date** — before, after, from, to, restricted weekday.
+- **Option (Dropdown/Checkbox/Radio)** — value must be in a set, all must be in a set, disable
+  specific options, limit selection count, require at least N selections.
+
+## Dependency Rules
+
+A rule can depend on the value of another field (the rule only applies/triggers when the related
+field matches a condition).
+
+## Error Behavior
+
+When a rule fails, Workflow can show: **Error**, **Highlight**, or **Error and Highlight** — each
+with a customizable message, instruction text, and highlight color.
+
+<Callout type="tip">
+  Use the built-in preview to test a rule against sample input before saving.
+</Callout>

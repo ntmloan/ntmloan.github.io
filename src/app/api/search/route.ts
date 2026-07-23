@@ -8,8 +8,9 @@ export const revalidate = false;
 export const { staticGET: GET } = createFromSource(source, {
   // https://docs.orama.com/docs/orama-js/supported-languages
   language: 'english',
-  // Orama has no Vietnamese stemmer; fall back to the language-agnostic tokenizer for `vi`.
+  // Orama has no Vietnamese/Japanese stemmer; fall back to the language-agnostic tokenizer.
   localeMap: {
     vi: {},
+    ja: {},
   },
 });

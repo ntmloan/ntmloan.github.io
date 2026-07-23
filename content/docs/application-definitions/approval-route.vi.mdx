@@ -1,0 +1,34 @@
+---
+title: Quy trình duyệt
+description: Xây dựng sơ đồ quy trình duyệt trực quan cho Định nghĩa quy trình duyệt
+icon: GitBranch
+---
+
+Tab **Quy trình duyệt (Approval Route)** là công cụ xây dựng quy trình trực quan dạng node (kéo
+thả trên sơ đồ), định nghĩa cách một đơn di chuyển qua các bước duyệt sau khi được nộp.
+
+## Loại node
+
+- **Nộp đơn (Apply)** — node bắt đầu, đại diện cho việc nộp đơn.
+- **Duyệt (Approve)** — bước duyệt.
+- **Xem xét (Review)** — bước xem xét.
+- **Điều kiện (Conditions)** — node rẽ nhánh, định tuyến đơn khác nhau tùy theo giá trị trường
+  biểu mẫu.
+- **Kết thúc (End)** — kết thúc một nhánh.
+
+## Đối tượng định tuyến
+
+Mỗi node Duyệt/Xem xét định tuyến đến một trong các đối tượng sau:
+
+- **Tất cả (All)** — tất cả người dùng
+- **Cơ bản (Basic)** — đối tượng cơ bản/mặc định
+- **Vai trò (Roles)** — một vai trò duyệt cụ thể (từ Quản lý vai trò)
+- **Phòng ban (Department)** — một phòng ban cụ thể
+- **Nhân viên (Employee)** — một nhân viên cụ thể
+- **Điều kiện (Conditions)** — rẽ nhánh tiếp theo dựa trên so sánh giá trị trường (bằng, khác, lớn
+  hơn, nhỏ hơn, ≥, ≤, kết hợp bằng AND/OR)
+
+<Callout type="tip">
+  Quy trình duyệt sử dụng lại các vai trò đã cấu hình trong Quản lý vai trò và các phòng ban đã cấu
+  hình trong Sơ đồ tổ chức, nên mọi thay đổi ở đó sẽ có hiệu lực ngay khi xây dựng quy trình.
+</Callout>

@@ -1,0 +1,13 @@
+{
+  "title": "Application Definitions",
+  "icon": "Workflow",
+  "pages": [
+    "index",
+    "application-categories",
+    "form-builder",
+    "approval-route",
+    "input-rules",
+    "after-flow",
+    "get-api"
+  ]
+}

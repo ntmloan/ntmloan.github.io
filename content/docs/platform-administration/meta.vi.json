@@ -1,0 +1,5 @@
+{
+  "title": "Quản trị nền tảng",
+  "icon": "Building2",
+  "pages": ["manage-companies", "manage-admins"]
+}

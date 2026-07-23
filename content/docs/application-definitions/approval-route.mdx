@@ -1,0 +1,34 @@
+---
+title: Approval Route
+description: Build the visual approval workflow graph for an Application Definition
+icon: GitBranch
+---
+
+The **Approval Route** tab is a visual, node-based workflow builder (drag-and-drop graph) that
+defines how an application moves through approval after it is submitted.
+
+## Node Types
+
+- **Apply** — the starting node, representing submission.
+- **Approve** — an approval step.
+- **Review** — a review step.
+- **Conditions** — a branching node that routes the application differently depending on form
+  field values.
+- **End** — terminates a branch.
+
+## Routing Targets
+
+Each Approve/Review node routes to one of:
+
+- **All** — all users
+- **Basic** — a basic/default target
+- **Roles** — a specific approval role (from Approver Level)
+- **Department** — a specific department
+- **Employee** — a specific employee
+- **Conditions** — branch further based on field-value comparisons (equal, not equal, greater
+  than, less than, ≥, ≤, combined with AND/OR)
+
+<Callout type="tip">
+  Approval Route reuses the roles configured in Approver Level and the departments configured in
+  Org Chart, so changes made there are immediately available when building a route.
+</Callout>
