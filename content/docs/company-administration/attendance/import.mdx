@@ -1,0 +1,259 @@
+---
+title: Import Attendance
+description: Bulk-import attendance data from Excel files and track results in Upload History.
+icon: FileUp
+---
+
+# Import Attendance Data
+
+Attendance data can be imported in bulk using Microsoft Excel files.
+
+Bulk import reduces manual data entry and enables organizations to synchronize attendance records from external systems such as biometric devices, access control systems, or third-party attendance solutions.
+
+![Import Attendance Data](/images/import-attendance-data.png)
+
+---
+
+## Overview
+
+Attendance data is imported into the selected Work Shift.
+
+The import process consists of four stages:
+
+```text
+Prepare File
+      │
+      ▼
+Upload File
+      │
+      ▼
+Validate Data
+      │
+      ▼
+Import Attendance Records
+```
+
+After the upload is complete, Workflow records the processing result in **Upload History**.
+
+---
+
+## Supported File Formats
+
+Workflow supports the following file formats.
+
+| Format                  | Supported |
+| ----------------------- | :-------: |
+| Microsoft Excel (.xlsx) |    ✅     |
+| Microsoft Excel (.xls)  |    ✅     |
+
+Only supported file formats can be uploaded.
+
+---
+
+## Import Attendance
+
+Click **Import Attendance Data** from the Attendance Tracking page.
+
+![Import Attendance Button](/images/attendance-tracking-header.png)
+
+The Import Attendance dialog opens.
+
+![Import Attendance Dialog](/images/import-attendance-data.png)
+
+Drag and drop a file into the upload area, or click the upload area to browse your local files.
+
+---
+
+## Import Process
+
+<Steps>
+
+### Select File
+
+Choose a supported Excel file.
+
+### Upload
+
+Workflow uploads the selected file.
+
+### Validation
+
+The system validates:
+
+- File format
+- Required columns
+- Employee information
+- Attendance data
+
+### Processing
+
+Valid attendance records are imported into the selected Work Shift.
+
+### Complete
+
+When processing finishes, Workflow displays the result in Upload History.
+
+</Steps>
+
+---
+
+## Validation
+
+Before importing attendance records, Workflow validates the uploaded file.
+
+Typical validation includes:
+
+- Supported file format.
+- Required columns.
+- Employee existence.
+- Attendance date.
+- Time format.
+- Duplicate records.
+
+If validation fails, the import process is stopped and the upload is marked as **Failed**.
+
+---
+
+## Import Results
+
+Each upload receives one processing status.
+
+| Status        | Description                                |
+| ------------- | ------------------------------------------ |
+| **Pending**   | Waiting to be processed.                   |
+| **Uploading** | Validation or import is currently running. |
+| **Done**      | Attendance data imported successfully.     |
+| **Failed**    | Import could not be completed.             |
+
+Administrators can monitor progress from **Upload History**.
+
+---
+
+## Upload History
+
+Every attendance import is automatically recorded.
+
+Upload History provides:
+
+- Upload status.
+- Process name.
+- File name.
+- Upload date.
+- Error Log (when available).
+
+<Callout type="info">
+  Upload History is shared by all bulk import features in Workflow, including
+  Employee Import and Attendance Import.
+</Callout>
+
+---
+
+## Error Handling
+
+If an import fails, Workflow generates an **Error Log** describing the validation errors.
+
+Administrators should:
+
+1. Open the Error Log.
+2. Review invalid records.
+3. Correct the source Excel file.
+4. Upload the corrected file again.
+
+<Callout type="warning">
+  Workflow imports only after the uploaded file passes validation successfully.
+</Callout>
+
+---
+
+## Typical Import Scenario
+
+A common attendance import workflow is shown below.
+
+```text
+Attendance Device
+        │
+Export Excel File
+        │
+        ▼
+Import Attendance Data
+        │
+        ▼
+Workflow Validation
+        │
+        ├── Validation Failed
+        │         │
+        │         ▼
+        │     Error Log
+        │
+        └── Validation Passed
+                  │
+                  ▼
+        Attendance Imported
+                  │
+                  ▼
+           Upload History
+```
+
+---
+
+## Best Practices
+
+<Callout type="tip">
+
+To improve import accuracy:
+
+- Verify that the file uses a supported Excel format.
+- Ensure employee information already exists in Workflow.
+- Review imported attendance records after processing.
+- Resolve validation errors before attempting another upload.
+- Use Upload History to monitor long-running import operations.
+
+</Callout>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can multiple attendance files be imported?">
+
+Yes.
+
+Each upload is processed independently and recorded as a separate import operation.
+
+</Accordion>
+
+<Accordion title="What happens if the uploaded file contains invalid data?">
+
+Workflow stops the import process and marks the upload as **Failed**.
+
+Administrators can review the Error Log before importing again.
+
+</Accordion>
+
+<Accordion title="Does importing attendance overwrite existing records?">
+
+Imported attendance records are validated before processing.
+
+How duplicate attendance records are handled depends on the configured import rules for your organization.
+
+</Accordion>
+
+<Accordion title="Where can I monitor import progress?">
+
+All attendance imports are available in **Upload History**, where administrators can review processing status and download Error Logs.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Permissions
+
+| Action                 | Company Admin | Standard User |
+| ---------------------- | :-----------: | :-----------: |
+| Import Attendance Data |      ✅       |      ❌       |
+| View Upload History    |      ✅       |      ❌       |
+| View Error Log         |      ✅       |      ❌       |

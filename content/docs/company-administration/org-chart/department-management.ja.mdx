@@ -1,0 +1,330 @@
+---
+title: 部署管理
+description: 組織図内で部署の作成・管理、従業員の割り当て、Approval Authority の設定を行います。
+icon: Building2
+---
+
+# 部署管理
+
+部署は、組織図を構成する基本単位です。
+
+各部署は、以下を定義します。
+
+- 組織階層
+- 部署メンバー
+- 部署代表者
+- 報告関係
+
+部署は、組織構造の整合性を維持したまま、作成、更新、再編成、削除ができます。
+
+---
+
+## 部署の構成
+
+各部署には、3種類の情報が含まれます。
+
+| 分類                      | 説明                             |
+| --------------------------- | ---------------------------------- |
+| Department Information     | 部署名と部署コード。               |
+| Employees                  | 部署に割り当てられたメンバー。     |
+| Organization Relationship  | 親部署と子部署。                   |
+
+各部署は、必ず1つの組織図に属します。
+
+---
+
+## 部署の作成
+
+部署は、既存のどの部署からでも作成できます。
+
+部署メニューを開き、**Create Department** を選択します。
+
+![Create Department](/images/create-department.png)
+
+管理者は以下を設定できます。
+
+| 項目               | 必須       | 説明                                     |
+| -------------------- | :--------: | ------------------------------------------ |
+| Parent Department    |    ✅     | 新しい部署を含める部署。                  |
+| Department Code      | 任意       | 部署の内部識別コード。                    |
+| Department Name      |    ✅     | 部署の表示名。                            |
+
+保存すると、新しい部署は親部署の下に即座に追加されます。
+
+---
+
+## 親部署(Parent Department)
+
+ルート部署を除くすべての部署は、1つの親部署に属します。
+
+例:
+
+```text
+Company
+   │
+   ├── Sales
+   │
+   └── Engineering
+           │
+           ├── Frontend
+           └── Backend
+```
+
+親部署を変更すると、階層が自動的に変更されます。
+
+---
+
+## 部署メニュー
+
+利用可能な操作は、選択した部署がルート部署かどうかによって異なります。
+
+### ルート部署(Root Department)
+
+![Root Department Menu](/images/root-department-menu.png)
+
+利用可能な操作:
+
+- Add Employee
+- Create Department
+
+---
+
+### 子部署(Child Department)
+
+![Department Menu](/images/department-menu.png)
+
+利用可能な操作:
+
+- Add Employee
+- Create Department
+- Update Department
+- Delete Department Branch
+- Delete Department
+
+---
+
+## 部署の更新
+
+管理者は、いつでも部署情報を更新できます。
+
+編集可能な情報:
+
+- 親部署
+- 部署コード
+- 部署名
+
+親部署を変更すると、組織階層が即座に更新されます。
+
+---
+
+## 部署の削除
+
+Workflow は、2つの削除方法をサポートしています。
+
+### Delete Department
+
+選択した部署のみを削除します。
+
+先に、従業員と子部署を再割り当てまたは削除しておく必要があります。
+
+---
+
+### Delete Department Branch
+
+選択した部署を、そのすべての子孫部署とともに削除します。
+
+```text
+Engineering
+    │
+    ├── Frontend
+    ├── Backend
+    └── QA
+```
+
+ブランチ単位で削除すると、そのサブツリー全体が削除されます。
+
+<Callout type="warning">
+  Delete Department Branch を実行すると、選択したブランチ内のすべての子部署が
+  完全に削除されます。
+</Callout>
+
+---
+
+# 組織図内の従業員管理
+
+組織図から離れることなく、従業員を直接管理できます。
+
+これにより、管理者は1つのワークスペース内で組織変更を完結させることができます。
+
+---
+
+## 既存の従業員を追加
+
+部署メニューから **Add Employee** を選択します。
+
+![Add Employee](/images/add-employee-department.png)
+
+設定項目:
+
+| 項目       | 説明             |
+| ---------- | ------------------ |
+| Department | 割り当て先の部署。 |
+| Employee   | 既存の従業員。     |
+| Role       | 部署内のロール。   |
+
+保存すると、その従業員は部署のメンバーになります。
+
+---
+
+## 新しい従業員を登録
+
+従業員がまだ存在しない場合は、**Create new employee** を選択します。
+
+Workflow が従業員登録用のダイアログを開きます。
+
+![Register Employee](/images/register-new-employee.png)
+
+管理者は以下を設定できます。
+
+| 項目                | 必須     |
+| --------------------- | :--------: |
+| Full Name             |    ✅    |
+| Email                 |    ✅    |
+| Department            | 任意     |
+| Code                  | 任意     |
+| Role                  | 任意     |
+| Approval Authority    | 任意     |
+
+登録が完了すると、従業員は自動的に選択した部署に割り当てられます。
+
+---
+
+## 部署内のロール(Department Roles)
+
+各従業員は、部署内でロールを持つことができます。
+
+例:
+
+- Engineer
+- Team Leader
+- Manager
+- General Manager
+
+Department Role は、従業員の組織上の役割を表します。
+
+この属性は、以下から独立しています。
+
+- 申請の承認レベル
+- Workflow の権限
+- システム管理者権限
+
+---
+
+# Approval Authority
+
+Approval Authority は、部署を公式に代表する従業員を識別するための属性です。
+
+Approval Authority を持つ従業員には、2つの特別な挙動があります。
+
+- 組織図上に直接表示される。
+- 部署レベルの申請を管理できる。
+
+![Employee Details](/images/employee-details.png)
+
+---
+
+## 表示の挙動
+
+Workflow は、各部署ノードに表示する従業員数を意図的に制限しています。
+
+**Approval Authority** が設定された従業員のみが表示されます。
+
+例:
+
+```text
+Sales Department
+
+Alice
+Department Manager
+
+Bob
+General Manager
+
++18 employee(s)
+
+See all
+```
+
+残りの従業員は、部署の従業員一覧から確認できます。
+
+この設計により、規模の大きい組織図でも見やすさが保たれます。
+
+---
+
+## 従業員の詳細
+
+部署への割り当ては、いつでも更新できます。
+
+編集可能な情報:
+
+- Department
+- Department Role
+- Approval Authority
+
+従業員の氏名やメールアドレスは、組織図から編集することはできません。
+
+これらの情報は、**Employee Management** から管理します。
+
+---
+
+## 業務ルール
+
+<Accordions>
+
+<Accordion title="従業員がいない部署は存在できますか?">
+
+はい。
+
+従業員が割り当てられる前に、部署を作成しておくことができます。
+
+</Accordion>
+
+<Accordion title="組織図から直接、従業員を追加できますか?">
+
+はい。
+
+管理者は、組織図から離れることなく、既存の従業員を割り当てるか、新しい従業員を登録できます。
+
+</Accordion>
+
+<Accordion title="1つの部署に複数の Approval Authority を持つ従業員を設定できますか?">
+
+はい。
+
+1つの部署に、Approval Authority を持つ従業員を複数設定できます。
+
+これらの従業員は、すべて組織図上に直接表示されます。
+
+</Accordion>
+
+<Accordion title="Department Role と Approval Authority の違いは何ですか?">
+
+Department Role は、部署内での従業員の役職を表します。
+
+Approval Authority は、部署代表者を識別し、部署レベルの申請を管理する権限を付与します。
+
+この2つの属性は、互いに独立しています。
+
+</Accordion>
+
+<Accordion title="ここで従業員の氏名やメールアドレスを編集できますか?">
+
+いいえ。
+
+組織図から更新できるのは、部署に関連する情報のみです。
+
+個人情報は、Employee Management モジュールから管理する必要があります。
+
+</Accordion>
+
+</Accordions>

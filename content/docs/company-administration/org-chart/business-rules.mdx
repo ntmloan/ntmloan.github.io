@@ -1,0 +1,358 @@
+---
+title: Business Rules & FAQ
+description: Business rules, version lifecycle, permissions, and frequently asked questions for Organization Charts.
+---
+
+# Organization Chart Business Rules
+
+This section summarizes the key business rules governing Organization Charts, departments, and employee assignments.
+
+Understanding these rules helps ensure that organizational changes are applied consistently throughout Workflow.
+
+---
+
+## Organization Chart Rules
+
+<Accordions>
+
+<Accordion title="Only one Organization Chart can be active">
+
+At any given time, only one Organization Chart can be in the **In use** state.
+
+When a new chart becomes active, Workflow automatically changes the previous active chart to **End**.
+
+</Accordion>
+
+<Accordion title="Organization Charts are versioned">
+
+Workflow never overwrites an existing Organization Chart.
+
+Every structural change should be made in a new version, preserving historical organizational information.
+
+</Accordion>
+
+<Accordion title="Editing does not affect running workflows">
+
+Charts in the **Editing** or **Not in use** state do not affect current Workflow operations.
+
+Only the **In use** Organization Chart is referenced by the system.
+
+</Accordion>
+
+<Accordion title="Applied Date controls activation">
+
+The Applied Date determines when an Organization Chart becomes effective.
+
+Administrators can prepare future organizational changes before they take effect.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Version Lifecycle
+
+Every Organization Chart follows the same lifecycle.
+
+```text
+Create
+   │
+   ▼
+Editing
+   │
+   ▼
+Configure Departments
+Configure Employees
+Configure Hierarchy
+   │
+   ▼
+Not in use
+   │
+   ▼
+Set Applied Date
+   │
+   ▼
+Activate
+   │
+   ▼
+In use
+   │
+   ▼
+Superseded by newer version
+   │
+   ▼
+End
+```
+
+<Callout type="tip">
+  Creating a new version is the recommended approach whenever organizational
+  changes are required.
+</Callout>
+
+---
+
+## Department Rules
+
+<Accordions>
+
+<Accordion title="Root Department">
+
+Every Organization Chart contains a single root department representing the company.
+
+The root department cannot be deleted.
+
+</Accordion>
+
+<Accordion title="Department hierarchy">
+
+Departments are organized using parent-child relationships.
+
+A department may contain any number of child departments.
+
+</Accordion>
+
+<Accordion title="Department movement">
+
+Moving a department automatically moves all of its child departments.
+
+Employee assignments remain attached to the department.
+
+</Accordion>
+
+<Accordion title="Department deletion">
+
+Workflow supports two deletion methods:
+
+- Delete Department
+- Delete Department Branch
+
+Delete Department Branch removes the selected department together with every descendant department.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Employee Assignment Rules
+
+<Accordions>
+
+<Accordion title="Department assignment">
+
+Employees can be assigned directly from the Organization Chart.
+
+Existing employees may be assigned, or new employees may be created during the assignment process.
+
+</Accordion>
+
+<Accordion title="Multiple department assignments">
+
+An employee may belong to multiple departments.
+
+Each department assignment is managed independently.
+
+</Accordion>
+
+<Accordion title="Department Role">
+
+Department Roles describe an employee's organizational position.
+
+They are independent from approval routing and system permissions.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Approval Authority Rules
+
+Approval Authority identifies employees who officially represent a department.
+
+It is **not** equivalent to a Department Role or an Approver Level.
+
+The following concepts serve different purposes:
+
+| Concept            | Purpose                                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Department Role    | Employee position within the department.                                                                              |
+| Approval Authority | Department representative displayed on the Organization Chart and authorized to manage department-level applications. |
+| Approver Level     | Approval responsibility within Workflow processes.                                                                    |
+
+---
+
+### Display Rules
+
+Only employees with **Approval Authority** are displayed directly on department nodes.
+
+Example:
+
+```text
+Sales Department
+
+Alice
+Department Manager
+
+Bob
+Assistant Manager
+
++15 employee(s)
+
+See all
+```
+
+The remaining department members are available through the employee list.
+
+This behavior keeps large Organization Charts readable while highlighting department representatives.
+
+---
+
+## Relationship Between Modules
+
+The Organization Chart provides the organizational foundation used by other Workflow modules.
+
+```text
+Organization Chart
+        │
+        ▼
+Departments
+        │
+        ▼
+Employees
+        │
+        ▼
+Approval Authority
+        │
+        ▼
+Workflow Applications
+Approval Routing
+Attendance
+Organization-based Features
+```
+
+Changes made to the active Organization Chart are reflected throughout the system.
+
+---
+
+## Best Practices
+
+<Callout type="tip">
+
+To maintain an accurate organizational structure:
+
+- Duplicate the current Organization Chart before making structural changes.
+- Configure an Applied Date for future reorganizations.
+- Use Department Roles to describe organizational positions.
+- Assign Approval Authority only to department representatives.
+- Prefer updating departments instead of deleting them whenever historical information should be preserved.
+
+</Callout>
+
+---
+
+## Permissions
+
+| Action                       | Company Admin | Standard User |
+| ---------------------------- | :-----------: | :-----------: |
+| View Organization Charts     |      ✅       |      ❌       |
+| Create Organization Chart    |      ✅       |      ❌       |
+| Duplicate Organization Chart |      ✅       |      ❌       |
+| Rename Organization Chart    |      ✅       |      ❌       |
+| Activate Organization Chart  |      ✅       |      ❌       |
+| Delete Organization Chart    |      ✅       |      ❌       |
+| Create Department            |      ✅       |      ❌       |
+| Update Department            |      ✅       |      ❌       |
+| Delete Department            |      ✅       |      ❌       |
+| Move Department              |      ✅       |      ❌       |
+| Assign Employees             |      ✅       |      ❌       |
+| Configure Approval Authority |      ✅       |      ❌       |
+
+---
+
+# Frequently Asked Questions
+
+<Accordions>
+
+<Accordion title="Can I edit the active Organization Chart directly?">
+
+Although it is technically possible depending on the chart status, the recommended approach is to duplicate the current chart and prepare changes in a new version.
+
+This preserves historical organizational information and minimizes operational risk.
+
+</Accordion>
+
+<Accordion title="What happens when a new Organization Chart becomes active?">
+
+Workflow automatically switches the new chart to **In use** and changes the previously active chart to **End**.
+
+All organization-based features immediately reference the newly activated chart.
+
+</Accordion>
+
+<Accordion title="Can I prepare organizational changes before they become effective?">
+
+Yes.
+
+Create a new Organization Chart, configure departments and employees, then set an Applied Date.
+
+The new structure will become effective when activated according to the configured schedule.
+
+</Accordion>
+
+<Accordion title="Why are some employees not displayed on department nodes?">
+
+Only employees with **Approval Authority** are displayed directly on department nodes.
+
+Other department members remain available through the department's employee list.
+
+</Accordion>
+
+<Accordion title="What is the difference between Department Role, Approval Authority, and Approver Level?">
+
+These concepts have different purposes.
+
+- Department Role describes an employee's position within the department.
+- Approval Authority identifies department representatives and grants department-level management capabilities.
+- Approver Level defines approval responsibilities within Workflow processes.
+
+</Accordion>
+
+<Accordion title="Can historical Organization Charts be viewed after a new version is activated?">
+
+Yes.
+
+Previous Organization Charts remain available in the **End** state for historical reference and auditing purposes.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Related Features
+
+<Card
+title="Employee Management"
+href="/en/docs/company-administration/employees/">
+
+Manage employee accounts and user information.
+
+</Card>
+
+<Card
+title="Approver Level"
+href="/en/docs/company-administration/manage-roles/">
+
+Configure approval hierarchy used in Workflow processes.
+
+</Card>
+
+<Card
+title="Application Definition"
+href="/en/docs/application-definitions/">
+
+Build application workflows based on the organization's structure.
+
+</Card>

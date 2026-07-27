@@ -1,0 +1,5 @@
+{
+  "title": "勤怠",
+  "icon": "Clock",
+  "pages": ["index", "tracking", "my-attendance", "import", "status", "calculation", "permissions-faq"]
+}

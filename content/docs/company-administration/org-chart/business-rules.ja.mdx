@@ -1,0 +1,358 @@
+---
+title: 業務ルールとFAQ
+description: 組織図に関する業務ルール、バージョンのライフサイクル、権限、よくある質問。
+---
+
+# 組織図の業務ルール
+
+このセクションでは、組織図、部署、従業員の割り当てを管理する主要な業務ルールをまとめています。
+
+これらのルールを理解することで、組織変更を Workflow 全体で一貫して適用できます。
+
+---
+
+## 組織図のルール
+
+<Accordions>
+
+<Accordion title="有効にできる組織図は1つだけ">
+
+ある時点において、**In use** 状態になれる組織図は1つだけです。
+
+新しい組織図が有効化されると、Workflow は以前有効だった組織図を自動的に **End** に変更します。
+
+</Accordion>
+
+<Accordion title="組織図はバージョン管理される">
+
+Workflow は、既存の組織図を上書きすることはありません。
+
+構造上の変更は、過去の組織情報を保持するため、新しいバージョンとして行う必要があります。
+
+</Accordion>
+
+<Accordion title="編集中の組織図は稼働中の業務に影響しない">
+
+**Editing** または **Not in use** 状態の組織図は、Workflow の現在の運用に影響しません。
+
+システムが参照するのは、**In use** 状態の組織図のみです。
+
+</Accordion>
+
+<Accordion title="Applied Date が有効化のタイミングを制御する">
+
+**Applied Date** は、組織図が有効になるタイミングを決定します。
+
+管理者は、将来の組織変更を有効になる前に準備できます。
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## バージョンのライフサイクル
+
+すべての組織図は、同じライフサイクルに従います。
+
+```text
+作成
+   │
+   ▼
+Editing
+   │
+   ▼
+部署を設定
+従業員を設定
+階層を設定
+   │
+   ▼
+Not in use
+   │
+   ▼
+Applied Date を設定
+   │
+   ▼
+有効化
+   │
+   ▼
+In use
+   │
+   ▼
+新しいバージョンに置き換えられる
+   │
+   ▼
+End
+```
+
+<Callout type="tip">
+  組織変更が必要になった場合は、常に新しいバージョンを作成することが推奨される
+  方法です。
+</Callout>
+
+---
+
+## 部署のルール
+
+<Accordions>
+
+<Accordion title="ルート部署(Root Department)">
+
+各組織図には、会社を表すルート部署が1つだけ含まれます。
+
+ルート部署を削除することはできません。
+
+</Accordion>
+
+<Accordion title="部署の階層">
+
+部署は、親子関係を使って組織されます。
+
+1つの部署には、任意の数の子部署を含めることができます。
+
+</Accordion>
+
+<Accordion title="部署の移動">
+
+部署を移動すると、そのすべての子部署が自動的に移動します。
+
+従業員の割り当ては、そのまま部署に紐付いた状態を維持します。
+
+</Accordion>
+
+<Accordion title="部署の削除">
+
+Workflow は、2つの削除方法をサポートしています。
+
+- Delete Department
+- Delete Department Branch
+
+Delete Department Branch は、選択した部署をそのすべての子孫部署とともに削除します。
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## 従業員の割り当てルール
+
+<Accordions>
+
+<Accordion title="部署への割り当て">
+
+従業員は、組織図から直接割り当てることができます。
+
+既存の従業員を割り当てることも、割り当て時に新しい従業員を作成することもできます。
+
+</Accordion>
+
+<Accordion title="複数部署への割り当て">
+
+1人の従業員が、複数の部署に所属することができます。
+
+それぞれの部署への割り当ては、個別に管理されます。
+
+</Accordion>
+
+<Accordion title="Department Role">
+
+Department Role は、従業員の組織上の位置づけを表します。
+
+この属性は、承認ルーティングやシステム権限からは独立しています。
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Approval Authority のルール
+
+Approval Authority は、部署を公式に代表する従業員を識別するための属性です。
+
+Department Role や Approver Level と**同じものではありません**。
+
+以下の概念は、それぞれ異なる目的を持ちます。
+
+| 概念               | 目的                                                                 |
+| ------------------ | -------------------------------------------------------------------- |
+| Department Role    | 部署内での従業員の役職。                                             |
+| Approval Authority | 組織図上に表示され、部署レベルの申請を管理する権限を持つ部署代表者。 |
+| Approver Level     | Workflow のプロセス内における承認責任。                              |
+
+---
+
+### 表示ルール
+
+**Approval Authority** を持つ従業員のみが、部署ノードに直接表示されます。
+
+例:
+
+```text
+Sales Department
+
+Alice
+Department Manager
+
+Bob
+Assistant Manager
+
++15 employee(s)
+
+See all
+```
+
+残りの部署メンバーは、従業員一覧から確認できます。
+
+この挙動により、規模の大きい組織図でも見やすさを保ちながら、部署代表者を分かりやすく表示できます。
+
+---
+
+## 他モジュールとの関係
+
+組織図は、Workflow の他のモジュールが利用する組織の基盤を提供します。
+
+```text
+Organization Chart
+        │
+        ▼
+Departments
+        │
+        ▼
+Employees
+        │
+        ▼
+Approval Authority
+        │
+        ▼
+Workflow Applications
+Approval Routing
+Attendance
+Organization-based Features
+```
+
+有効な組織図に対する変更は、システム全体に反映されます。
+
+---
+
+## ベストプラクティス
+
+<Callout type="tip">
+
+正確な組織構造を維持するために:
+
+- 構造を変更する前に、現在の組織図を複製(Duplicate)する。
+- 将来の組織再編のために Applied Date を設定する。
+- 組織上の役職を表すには Department Role を使用する。
+- Approval Authority は、部署代表者にのみ付与する。
+- 過去の情報を保持したい場合は、削除ではなく部署の更新を優先する。
+
+</Callout>
+
+---
+
+## 権限
+
+| 操作                      | Company Admin | Standard User |
+| ------------------------- | :-----------: | :-----------: |
+| 組織図の閲覧              |      ✅       |      ❌       |
+| 組織図の作成              |      ✅       |      ❌       |
+| 組織図の複製              |      ✅       |      ❌       |
+| 組織図の名前変更          |      ✅       |      ❌       |
+| 組織図の有効化            |      ✅       |      ❌       |
+| 組織図の削除              |      ✅       |      ❌       |
+| 部署の作成                |      ✅       |      ❌       |
+| 部署の更新                |      ✅       |      ❌       |
+| 部署の削除                |      ✅       |      ❌       |
+| 部署の移動                |      ✅       |      ❌       |
+| 従業員の割り当て          |      ✅       |      ❌       |
+| Approval Authority の設定 |      ✅       |      ❌       |
+
+---
+
+# よくある質問
+
+<Accordions>
+
+<Accordion title="有効な組織図を直接編集できますか?">
+
+組織図のステータスによっては技術的に可能ですが、推奨される方法は、現在の組織図を複製し、新しいバージョンとして変更を準備することです。
+
+これにより、過去の組織情報を保持し、業務上のリスクを最小限に抑えられます。
+
+</Accordion>
+
+<Accordion title="新しい組織図が有効化されると何が起こりますか?">
+
+Workflow は、新しい組織図を自動的に **In use** に切り替え、それまで有効だった組織図を **End** に変更します。
+
+組織に依存するすべての機能は、直ちに新しく有効化された組織図を参照するようになります。
+
+</Accordion>
+
+<Accordion title="組織変更が有効になる前に、事前に準備できますか?">
+
+はい。
+
+新しい組織図を作成し、部署と従業員を設定した上で、Applied Date を設定してください。
+
+設定したスケジュールに従って有効化されると、新しい組織構造が反映されます。
+
+</Accordion>
+
+<Accordion title="一部の従業員が部署ノードに表示されないのはなぜですか?">
+
+**Approval Authority** を持つ従業員のみが、部署ノードに直接表示されます。
+
+その他の部署メンバーは、部署の従業員一覧から確認できます。
+
+</Accordion>
+
+<Accordion title="Department Role、Approval Authority、Approver Level の違いは何ですか?">
+
+これらの概念は、それぞれ異なる目的を持ちます。
+
+- Department Role は、部署内での従業員の役職を表します。
+- Approval Authority は、部署代表者を識別し、部署レベルの管理権限を付与します。
+- Approver Level は、Workflow のプロセス内における承認責任を定義します。
+
+</Accordion>
+
+<Accordion title="新しいバージョンが有効化された後も、過去の組織図を確認できますか?">
+
+はい。
+
+過去の組織図は、**End** 状態のまま保持され、履歴の参照や監査のために利用できます。
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## 関連機能
+
+<Card
+title="Employee Management"
+href="/ja/docs/company-administration/employees/">
+
+従業員アカウントとユーザー情報を管理します。
+
+</Card>
+
+<Card
+title="Approver Level"
+href="/ja/docs/company-administration/manage-roles/">
+
+Workflow のプロセスで使用される承認階層を設定します。
+
+</Card>
+
+<Card
+title="Application Definition"
+href="/ja/docs/application-definitions/">
+
+組織構造に基づいて申請ワークフローを構築します。
+
+</Card>

@@ -1,8 +1,204 @@
 ---
 title: Lịch sử upload
-description: Nhật ký các lần tải file hàng loạt (vd. import nhân viên)
+description: Xem và theo dõi lịch sử các thao tác tải file hàng loạt.
 icon: History
 ---
 
-Nhật ký/lịch sử các lần tải file hàng loạt (ví dụ: import nhân viên), hỗ trợ tìm kiếm và lọc theo
-các lần upload trước đó.
+# Lịch sử upload
+
+Trang **Upload History** cung cấp nhật ký tập trung cho tất cả các thao tác tải file hàng loạt được thực hiện trong Workflow.
+
+Trang này giúp Quản trị viên theo dõi tiến trình upload, xem lại các lần import đã hoàn tất, phát hiện các lần upload thất bại và xử lý sự cố import.
+
+Các thao tác upload thường gặp bao gồm:
+
+- Employee Import
+- Timesheet Import
+- Leave Balance Import
+- Các quy trình import hàng loạt khác
+
+![Upload History](/images/upload-history-list.png)
+
+---
+
+## Tổng quan
+
+Mỗi thao tác upload được tự động ghi lại ngay sau khi file được gửi lên.
+
+Trang Upload History cho phép Quản trị viên:
+
+- Xem tiến trình upload.
+- Tìm kiếm bản ghi upload.
+- Lọc lịch sử upload.
+- Theo dõi trạng thái xử lý.
+- Xem lại thời gian upload.
+- Tải xuống error log cho các lần import thất bại.
+
+---
+
+## Danh sách Upload History
+
+Mỗi bản ghi upload chứa các thông tin sau.
+
+| Cột          | Mô tả                                    |
+| ------------- | ------------------------------------------ |
+| Status        | Trạng thái xử lý hiện tại của lần upload. |
+| Process Name  | Mã định danh tiến trình được tạo tự động. |
+| File Name     | Tên file đã upload.                       |
+| Upload Date   | Ngày giờ file được gửi lên.               |
+
+![Upload History List](/images/upload-history-list.png)
+
+---
+
+## Trạng thái Upload
+
+Mỗi thao tác upload sẽ trải qua một trong các trạng thái sau.
+
+| Trạng thái    | Mô tả                                                                    |
+| -------------- | --------------------------------------------------------------------------- |
+| **Pending**    | Yêu cầu upload đã được tiếp nhận và đang chờ xử lý.                        |
+| **Uploading**  | File đang được kiểm tra tính hợp lệ và import vào hệ thống.                |
+| **Done**       | Quá trình upload đã hoàn tất thành công.                                   |
+| **Failed**     | Quá trình upload không thể hoàn tất do lỗi kiểm tra dữ liệu hoặc xử lý.    |
+
+<Callout type="info">
+  Trạng thái upload được tự động cập nhật theo tiến trình xử lý của quá trình
+  import.
+</Callout>
+
+---
+
+## Tìm kiếm bản ghi Upload
+
+Sử dụng ô tìm kiếm để nhanh chóng tìm lại các thao tác upload trước đó.
+
+Có thể tìm kiếm theo:
+
+- Process Name
+- File Name
+
+Lịch sử upload sẽ được lọc ngay khi bạn nhập từ khóa.
+
+---
+
+## Lọc Upload History
+
+Chọn **Filter** để thu hẹp phạm vi lịch sử upload.
+
+![Upload History Filter](/images/upload-history-filter.png)
+
+Các bộ lọc khả dụng bao gồm:
+
+| Bộ lọc       | Mô tả                                                     |
+| ------------- | ------------------------------------------------------------ |
+| Upload Date   | Hiển thị các lần upload được gửi vào một ngày cụ thể.        |
+| Status        | Hiển thị các lần upload theo một hoặc nhiều trạng thái xử lý. |
+
+Có thể chọn đồng thời nhiều giá trị trạng thái.
+
+Ví dụ:
+
+- Pending
+- Uploading
+- Failed
+
+---
+
+## Error Log
+
+Khi một lần upload thất bại, Workflow sẽ tạo ra một error log.
+
+Chọn **Error log** để xem lại các lỗi kiểm tra dữ liệu hoặc lỗi xử lý.
+
+Error log giúp Quản trị viên:
+
+- Xác định các bản ghi không hợp lệ.
+- Sửa lại dữ liệu import.
+- Upload lại file đã được chỉnh sửa.
+
+<Callout type="warning">
+  Error log chỉ khả dụng đối với các thao tác upload có trạng thái **Failed**.
+</Callout>
+
+---
+
+## Quy trình Upload điển hình
+
+Quy trình dưới đây minh họa một thao tác upload hàng loạt tiêu chuẩn.
+
+<Steps>
+
+### Upload File
+
+Chọn và tải lên file import.
+
+### Validation
+
+Workflow kiểm tra định dạng và nội dung của file đã upload.
+
+### Processing
+
+Hệ thống import các bản ghi hợp lệ vào Workflow.
+
+### Complete
+
+Quá trình upload kết thúc với một trong hai kết quả:
+
+- **Done**
+- **Failed**
+
+Nếu upload thất bại, Quản trị viên có thể xem lại error log, chỉnh sửa file gốc và upload lại.
+
+</Steps>
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Mọi lần upload đều được ghi lại phải không?">
+
+Đúng vậy.
+
+Mọi thao tác upload hàng loạt đều được tự động ghi lại trong Upload History, bất kể thành công hay thất bại.
+
+</Accordion>
+
+<Accordion title="Tôi có thể theo dõi upload trong khi đang xử lý không?">
+
+Có.
+
+Cột Status sẽ được tự động cập nhật khi lần upload đi qua từng giai đoạn xử lý.
+
+</Accordion>
+
+<Accordion title="Có thể xử lý nhiều lần upload cùng lúc không?">
+
+Có.
+
+Mỗi lần upload được theo dõi độc lập và hiển thị dưới dạng một bản ghi riêng trong Upload History.
+
+</Accordion>
+
+<Accordion title="Tôi có thể xem lý do vì sao một lần upload thất bại không?">
+
+Có.
+
+Các lần upload thất bại sẽ có kèm **Error log** cung cấp chi tiết lỗi kiểm tra dữ liệu hoặc lỗi xử lý.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Phân quyền
+
+| Chức năng              | Company Admin | Standard User |
+| ------------------------ | :-----------: | :-----------: |
+| Xem Upload History        |      ✅       |      ❌       |
+| Tìm kiếm Upload History    |      ✅       |      ❌       |
+| Lọc Upload History         |      ✅       |      ❌       |
+| Xem Error Log              |      ✅       |      ❌       |

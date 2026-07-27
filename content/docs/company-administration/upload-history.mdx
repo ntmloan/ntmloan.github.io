@@ -1,8 +1,204 @@
 ---
 title: Upload History
-description: Log of bulk file uploads (e.g. employee imports)
+description: View and monitor the history of bulk file upload operations.
 icon: History
 ---
 
-A log/history of bulk file upload operations (for example, employee imports), with search and
-filter over past upload records.
+# Upload History
+
+The **Upload History** page provides a centralized log of all bulk file upload operations performed in Workflow.
+
+It enables administrators to monitor upload progress, review completed imports, identify failed uploads, and troubleshoot import issues.
+
+Typical upload operations include:
+
+- Employee Import
+- Timesheet Import
+- Leave Balance Import
+- Other bulk import processes
+
+![Upload History](/images/upload-history-list.png)
+
+---
+
+## Overview
+
+Every upload operation is recorded automatically after a file is submitted.
+
+The Upload History page allows administrators to:
+
+- View upload progress.
+- Search upload records.
+- Filter upload history.
+- Monitor processing status.
+- Review upload timestamps.
+- Download error logs for failed imports.
+
+---
+
+## Upload History List
+
+Each upload record contains the following information.
+
+| Column       | Description                                 |
+| ------------ | ------------------------------------------- |
+| Status       | Current processing status of the upload.    |
+| Process Name | Automatically generated process identifier. |
+| File Name    | Name of the uploaded file.                  |
+| Upload Date  | Date and time the upload was submitted.     |
+
+![Upload History List](/images/upload-history-list.png)
+
+---
+
+## Upload Status
+
+Each upload operation passes through one of the following statuses.
+
+| Status        | Description                                                               |
+| ------------- | ------------------------------------------------------------------------- |
+| **Pending**   | The upload request has been received and is waiting to be processed.      |
+| **Uploading** | The file is currently being validated and imported into the system.       |
+| **Done**      | The upload completed successfully.                                        |
+| **Failed**    | The upload could not be completed due to validation or processing errors. |
+
+<Callout type="info">
+  Upload status is updated automatically as the import process progresses.
+</Callout>
+
+---
+
+## Search Upload Records
+
+Use the search box to quickly locate previous upload operations.
+
+You can search using:
+
+- Process Name
+- File Name
+
+The upload history is filtered instantly as you type.
+
+---
+
+## Filter Upload History
+
+Select **Filter** to narrow the upload history.
+
+![Upload History Filter](/images/upload-history-filter.png)
+
+Available filters include:
+
+| Filter      | Description                                           |
+| ----------- | ----------------------------------------------------- |
+| Upload Date | Display uploads submitted on a specific date.         |
+| Status      | Display uploads with one or more processing statuses. |
+
+Multiple status values can be selected simultaneously.
+
+Example:
+
+- Pending
+- Uploading
+- Failed
+
+---
+
+## Error Log
+
+When an upload fails, Workflow generates an error log.
+
+Select **Error log** to review the validation or processing errors.
+
+The error log helps administrators:
+
+- Identify invalid records.
+- Correct import data.
+- Re-upload the corrected file.
+
+<Callout type="warning">
+  Error logs are available only for upload operations with the **Failed**
+  status.
+</Callout>
+
+---
+
+## Typical Upload Flow
+
+The following workflow illustrates a standard bulk upload process.
+
+<Steps>
+
+### Upload File
+
+Select and upload the import file.
+
+### Validation
+
+Workflow validates the uploaded file format and content.
+
+### Processing
+
+The system imports valid records into Workflow.
+
+### Complete
+
+The upload finishes with either:
+
+- **Done**
+- **Failed**
+
+If the upload fails, administrators can review the error log, correct the source file, and upload it again.
+
+</Steps>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Is every upload recorded?">
+
+Yes.
+
+Every bulk upload operation is automatically recorded in Upload History, regardless of whether it succeeds or fails.
+
+</Accordion>
+
+<Accordion title="Can I monitor uploads while they are processing?">
+
+Yes.
+
+The Status column is updated automatically as the upload progresses through each processing stage.
+
+</Accordion>
+
+<Accordion title="Can multiple uploads be processed at the same time?">
+
+Yes.
+
+Each upload is tracked independently and appears as a separate record in Upload History.
+
+</Accordion>
+
+<Accordion title="Can I view the reason why an upload failed?">
+
+Yes.
+
+Failed uploads include an **Error log** that provides detailed validation or processing errors.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Permissions
+
+| Action                | Company Admin | Standard User |
+| --------------------- | :-----------: | :-----------: |
+| View Upload History   |      ✅       |      ❌       |
+| Search Upload History |      ✅       |      ❌       |
+| Filter Upload History |      ✅       |      ❌       |
+| View Error Log        |      ✅       |      ❌       |

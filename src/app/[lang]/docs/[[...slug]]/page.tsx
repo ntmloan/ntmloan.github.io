@@ -1,9 +1,10 @@
-import { getPageImage, getPageMarkdownUrl, source } from "@/lib/source";
+import { getPageImage, getPageMarkdownUrl, isUnlisted, source } from "@/lib/source";
 import {
   DocsBody,
   DocsDescription,
   DocsPage,
   DocsTitle,
+  PageLastUpdate,
   // MarkdownCopyButton,
   // ViewOptionsPopover,
 } from "fumadocs-ui/layouts/docs/page";
@@ -11,6 +12,8 @@ import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/components/mdx";
 import type { Metadata } from "next";
 import { createRelativeLink } from "fumadocs-ui/mdx";
+import { getLastEditDate } from "@/lib/git";
+import path from "node:path";
 // import { gitConfig } from "@/lib/shared";
 
 export default async function Page(
@@ -22,6 +25,9 @@ export default async function Page(
 
   const MDX = page.data.body;
   const markdownUrl = getPageMarkdownUrl(page).url;
+  const lastUpdate = getLastEditDate(
+    path.join(process.cwd(), "content/docs", page.path),
+  );
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
@@ -29,6 +35,7 @@ export default async function Page(
       <DocsDescription className="mb-0">
         {page.data.description}
       </DocsDescription>
+      {lastUpdate && <PageLastUpdate date={lastUpdate} className="mb-6" />}
       {/* <div className="flex flex-row gap-2 items-center border-b pb-6">
         <MarkdownCopyButton markdownUrl={markdownUrl} />
         <ViewOptionsPopover
@@ -65,5 +72,6 @@ export async function generateMetadata(
     openGraph: {
       images: getPageImage(page).url,
     },
+    ...(isUnlisted(page.path) ? { robots: { index: false, follow: false } } : {}),
   };
 }

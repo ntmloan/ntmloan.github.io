@@ -1,0 +1,5 @@
+{
+  "title": "組織図",
+  "icon": "Network",
+  "pages": ["index", "chart-detail", "department-management", "business-rules"]
+}

@@ -1,0 +1,358 @@
+---
+title: Quy tắc nghiệp vụ & FAQ
+description: Quy tắc nghiệp vụ, vòng đời phiên bản, phân quyền và các câu hỏi thường gặp về Sơ đồ tổ chức.
+---
+
+# Quy tắc nghiệp vụ của Sơ đồ tổ chức
+
+Phần này tóm tắt các quy tắc nghiệp vụ chính chi phối Sơ đồ tổ chức, phòng ban và việc phân công nhân viên.
+
+Hiểu rõ các quy tắc này giúp đảm bảo các thay đổi về tổ chức được áp dụng nhất quán trong toàn bộ Workflow.
+
+---
+
+## Quy tắc Sơ đồ tổ chức
+
+<Accordions>
+
+<Accordion title="Chỉ một Sơ đồ tổ chức có thể đang hoạt động">
+
+Tại một thời điểm, chỉ một Sơ đồ tổ chức có thể ở trạng thái **In use**.
+
+Khi một sơ đồ mới được kích hoạt, Workflow sẽ tự động chuyển sơ đồ đang hoạt động trước đó sang trạng thái **End**.
+
+</Accordion>
+
+<Accordion title="Sơ đồ tổ chức được quản lý theo phiên bản">
+
+Workflow không bao giờ ghi đè lên một Sơ đồ tổ chức đã tồn tại.
+
+Mọi thay đổi về cấu trúc nên được thực hiện trên một phiên bản mới, nhằm lưu giữ thông tin tổ chức trong lịch sử.
+
+</Accordion>
+
+<Accordion title="Chỉnh sửa không ảnh hưởng đến các quy trình đang vận hành">
+
+Các sơ đồ ở trạng thái **Editing** hoặc **Not in use** không ảnh hưởng đến hoạt động hiện tại của Workflow.
+
+Chỉ Sơ đồ tổ chức ở trạng thái **In use** mới được hệ thống tham chiếu.
+
+</Accordion>
+
+<Accordion title="Applied Date quyết định thời điểm kích hoạt">
+
+**Applied Date** xác định thời điểm một Sơ đồ tổ chức chính thức có hiệu lực.
+
+Quản trị viên có thể chuẩn bị trước các thay đổi tổ chức trước khi chúng có hiệu lực.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Vòng đời phiên bản
+
+Mọi Sơ đồ tổ chức đều tuân theo cùng một vòng đời.
+
+```text
+Tạo mới
+   │
+   ▼
+Editing
+   │
+   ▼
+Cấu hình phòng ban
+Cấu hình nhân viên
+Cấu hình cấu trúc phân cấp
+   │
+   ▼
+Not in use
+   │
+   ▼
+Thiết lập Applied Date
+   │
+   ▼
+Kích hoạt
+   │
+   ▼
+In use
+   │
+   ▼
+Bị thay thế bởi phiên bản mới hơn
+   │
+   ▼
+End
+```
+
+<Callout type="tip">
+  Tạo một phiên bản mới là cách được khuyến nghị mỗi khi cần thực hiện thay đổi
+  về tổ chức.
+</Callout>
+
+---
+
+## Quy tắc phòng ban
+
+<Accordions>
+
+<Accordion title="Phòng ban gốc (Root Department)">
+
+Mỗi Sơ đồ tổ chức chứa duy nhất một phòng ban gốc đại diện cho công ty.
+
+Phòng ban gốc không thể bị xóa.
+
+</Accordion>
+
+<Accordion title="Cấu trúc phân cấp phòng ban">
+
+Các phòng ban được tổ chức theo quan hệ cha - con.
+
+Một phòng ban có thể chứa bất kỳ số lượng phòng ban con nào.
+
+</Accordion>
+
+<Accordion title="Di chuyển phòng ban">
+
+Di chuyển một phòng ban sẽ tự động di chuyển toàn bộ phòng ban con của nó.
+
+Các phân công nhân viên vẫn được giữ nguyên gắn với phòng ban.
+
+</Accordion>
+
+<Accordion title="Xóa phòng ban">
+
+Workflow hỗ trợ hai phương thức xóa:
+
+- Delete Department
+- Delete Department Branch
+
+Delete Department Branch xóa phòng ban được chọn cùng với toàn bộ các phòng ban con cháu của nó.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Quy tắc phân công nhân viên
+
+<Accordions>
+
+<Accordion title="Phân công phòng ban">
+
+Nhân viên có thể được phân công trực tiếp từ Sơ đồ tổ chức.
+
+Có thể phân công nhân viên đã tồn tại, hoặc tạo mới nhân viên ngay trong quá trình phân công.
+
+</Accordion>
+
+<Accordion title="Phân công nhiều phòng ban">
+
+Một nhân viên có thể thuộc nhiều phòng ban.
+
+Mỗi lần phân công phòng ban được quản lý độc lập.
+
+</Accordion>
+
+<Accordion title="Vai trò trong phòng ban (Department Role)">
+
+Department Role mô tả vị trí của nhân viên trong tổ chức.
+
+Thuộc tính này độc lập với luồng phê duyệt và quyền hệ thống.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Quy tắc Approval Authority
+
+Approval Authority xác định những nhân viên chính thức đại diện cho một phòng ban.
+
+Thuộc tính này **không** tương đương với Department Role hay Approver Level.
+
+Các khái niệm sau phục vụ những mục đích khác nhau:
+
+| Khái niệm          | Mục đích                                                                                             |
+| ------------------ | ---------------------------------------------------------------------------------------------------- |
+| Department Role    | Vị trí của nhân viên trong phòng ban.                                                                |
+| Approval Authority | Người đại diện phòng ban, được hiển thị trên Sơ đồ tổ chức và có quyền quản lý đơn từ cấp phòng ban. |
+| Approver Level     | Trách nhiệm phê duyệt trong các quy trình của Workflow.                                              |
+
+---
+
+### Quy tắc hiển thị
+
+Chỉ những nhân viên có **Approval Authority** mới được hiển thị trực tiếp trên nút phòng ban.
+
+Ví dụ:
+
+```text
+Sales Department
+
+Alice
+Department Manager
+
+Bob
+Assistant Manager
+
++15 employee(s)
+
+See all
+```
+
+Các thành viên còn lại của phòng ban có thể xem trong danh sách nhân viên.
+
+Cách hiển thị này giúp các Sơ đồ tổ chức lớn vẫn dễ đọc, đồng thời làm nổi bật người đại diện của từng phòng ban.
+
+---
+
+## Mối quan hệ giữa các module
+
+Sơ đồ tổ chức là nền tảng tổ chức được các module khác của Workflow sử dụng.
+
+```text
+Organization Chart
+        │
+        ▼
+Departments
+        │
+        ▼
+Employees
+        │
+        ▼
+Approval Authority
+        │
+        ▼
+Workflow Applications
+Approval Routing
+Attendance
+Organization-based Features
+```
+
+Các thay đổi trên Sơ đồ tổ chức đang hoạt động sẽ được phản ánh trong toàn bộ hệ thống.
+
+---
+
+## Thực hành tốt nhất
+
+<Callout type="tip">
+
+Để duy trì một cơ cấu tổ chức chính xác:
+
+- Nhân bản (Duplicate) Sơ đồ tổ chức hiện tại trước khi thực hiện thay đổi cấu trúc.
+- Thiết lập Applied Date cho các lần tái cấu trúc trong tương lai.
+- Sử dụng Department Role để mô tả vị trí trong tổ chức.
+- Chỉ gán Approval Authority cho những nhân viên đại diện phòng ban.
+- Ưu tiên cập nhật phòng ban thay vì xóa, khi cần lưu giữ thông tin lịch sử.
+
+</Callout>
+
+---
+
+## Phân quyền
+
+| Chức năng                    | Company Admin | Standard User |
+| ---------------------------- | :-----------: | :-----------: |
+| Xem Sơ đồ tổ chức            |      ✅       |      ❌       |
+| Tạo Sơ đồ tổ chức            |      ✅       |      ❌       |
+| Nhân bản Sơ đồ tổ chức       |      ✅       |      ❌       |
+| Đổi tên Sơ đồ tổ chức        |      ✅       |      ❌       |
+| Kích hoạt Sơ đồ tổ chức      |      ✅       |      ❌       |
+| Xóa Sơ đồ tổ chức            |      ✅       |      ❌       |
+| Tạo phòng ban                |      ✅       |      ❌       |
+| Cập nhật phòng ban           |      ✅       |      ❌       |
+| Xóa phòng ban                |      ✅       |      ❌       |
+| Di chuyển phòng ban          |      ✅       |      ❌       |
+| Phân công nhân viên          |      ✅       |      ❌       |
+| Thiết lập Approval Authority |      ✅       |      ❌       |
+
+---
+
+# Câu hỏi thường gặp
+
+<Accordions>
+
+<Accordion title="Tôi có thể chỉnh sửa trực tiếp Sơ đồ tổ chức đang hoạt động không?">
+
+Về mặt kỹ thuật, điều này có thể thực hiện được tùy theo trạng thái của sơ đồ, nhưng cách được khuyến nghị là nhân bản sơ đồ hiện tại và chuẩn bị thay đổi trên một phiên bản mới.
+
+Cách làm này giúp lưu giữ thông tin tổ chức trong lịch sử và giảm thiểu rủi ro vận hành.
+
+</Accordion>
+
+<Accordion title="Điều gì xảy ra khi một Sơ đồ tổ chức mới được kích hoạt?">
+
+Workflow sẽ tự động chuyển sơ đồ mới sang trạng thái **In use** và chuyển sơ đồ đang hoạt động trước đó sang trạng thái **End**.
+
+Mọi tính năng dựa trên cơ cấu tổ chức sẽ ngay lập tức tham chiếu đến sơ đồ vừa được kích hoạt.
+
+</Accordion>
+
+<Accordion title="Tôi có thể chuẩn bị trước các thay đổi tổ chức trước khi chúng có hiệu lực không?">
+
+Có.
+
+Tạo một Sơ đồ tổ chức mới, cấu hình phòng ban và nhân viên, sau đó thiết lập Applied Date.
+
+Cơ cấu tổ chức mới sẽ có hiệu lực khi được kích hoạt theo lịch trình đã cấu hình.
+
+</Accordion>
+
+<Accordion title="Vì sao một số nhân viên không hiển thị trên nút phòng ban?">
+
+Chỉ những nhân viên có **Approval Authority** mới được hiển thị trực tiếp trên nút phòng ban.
+
+Các thành viên khác của phòng ban vẫn có thể xem được trong danh sách nhân viên của phòng ban.
+
+</Accordion>
+
+<Accordion title="Sự khác biệt giữa Department Role, Approval Authority và Approver Level là gì?">
+
+Các khái niệm này phục vụ những mục đích khác nhau.
+
+- Department Role mô tả vị trí của nhân viên trong phòng ban.
+- Approval Authority xác định người đại diện phòng ban và cấp quyền quản lý ở cấp phòng ban.
+- Approver Level xác định trách nhiệm phê duyệt trong các quy trình của Workflow.
+
+</Accordion>
+
+<Accordion title="Có thể xem lại các Sơ đồ tổ chức trong lịch sử sau khi phiên bản mới được kích hoạt không?">
+
+Có.
+
+Các Sơ đồ tổ chức trước đó vẫn được lưu ở trạng thái **End** để phục vụ tra cứu lịch sử và đối chiếu.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Tính năng liên quan
+
+<Card
+title="Employee Management"
+href="/vi/docs/company-administration/employees/">
+
+Quản lý tài khoản nhân viên và thông tin người dùng.
+
+</Card>
+
+<Card
+title="Approver Level"
+href="/vi/docs/company-administration/manage-roles/">
+
+Thiết lập cấp phê duyệt được sử dụng trong các quy trình của Workflow.
+
+</Card>
+
+<Card
+title="Application Definition"
+href="/vi/docs/application-definitions/">
+
+Xây dựng quy trình ứng dụng dựa trên cơ cấu tổ chức của doanh nghiệp.
+
+</Card>

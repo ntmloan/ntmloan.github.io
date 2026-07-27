@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { Folder, Item } from 'fumadocs-core/page-tree';
 import { Card, Cards } from 'fumadocs-ui/components/card';
-import { source } from '@/lib/source';
+import { publicSource, source } from '@/lib/source';
 import { i18n } from '@/lib/i18n';
 
 export function generateStaticParams() {
@@ -13,7 +13,7 @@ export default async function HomePage({ params }: PageProps<'/[lang]'>) {
   const docsHref = `/${lang}/docs`;
 
   const overview = source.getPage([], lang);
-  const tree = source.getPageTree(lang);
+  const tree = publicSource.getPageTree(lang);
 
   // any page or category (folder) added under content/docs automatically
   // shows up here — the overview/index page itself is excluded since its

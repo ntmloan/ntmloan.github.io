@@ -1,0 +1,269 @@
+---
+title: Chart Details
+description: Explore the Chart Details workspace, department hierarchy, department nodes, and employee assignment.
+icon: Waypoints
+---
+
+# Organization Chart Details
+
+After selecting an Organization Chart from the list, administrators are taken to the **Chart Details** page.
+
+This workspace is where the organizational structure is designed and maintained.
+
+From this page, administrators can:
+
+- Build the department hierarchy.
+- Assign employees to departments.
+- Configure department representatives.
+- Search employees within departments.
+- View the complete organization structure.
+- Switch between hierarchy and list views.
+
+![Organization Chart Details](/images/org-chart-detail.png)
+
+---
+
+## Page Layout
+
+The Chart Details page consists of three main areas.
+
+| Area                   | Description                                                |
+| ---------------------- | ---------------------------------------------------------- |
+| Header                 | Displays the chart name, applied date, and current status. |
+| Organization Workspace | Displays the department hierarchy.                         |
+| Toolbar                | Provides display mode switching and refresh actions.       |
+
+---
+
+## Organization Workspace
+
+The center workspace displays the organization hierarchy as a tree.
+
+Each department is represented as a node connected to its parent department.
+
+```text
+Company
+    │
+    ├── Sales
+    │      ├── Domestic
+    │      └── International
+    │
+    ├── Human Resources
+    │
+    └── Engineering
+           ├── Frontend
+           └── Backend
+```
+
+The hierarchy represents the reporting relationship between departments.
+
+---
+
+## Department Hierarchy
+
+Departments are organized using a parent-child relationship.
+
+Each department can contain:
+
+- Child departments
+- Employees
+- Department representatives
+
+The hierarchy can have multiple levels depending on the company's organizational structure.
+
+<Callout type="info">
+  The root department represents the company itself and acts as the top-level
+  department in the organization.
+</Callout>
+
+---
+
+## Moving Departments
+
+Departments can be reorganized using drag-and-drop.
+
+Administrators can:
+
+- Drag a department.
+- Drop it onto another department.
+- Automatically update the hierarchy.
+
+![Department Hierarchy](/images/org-chart-detail.png)
+
+<Callout type="tip">
+  Moving a department also moves all of its child departments and assigned
+  employees.
+</Callout>
+
+---
+
+## Department Node
+
+Each department is displayed as a card containing key information.
+
+A department node includes:
+
+- Department name
+- Employee search
+- Department representatives
+- Department menu
+- Employee summary
+
+![Department Node](/images/department-node.png)
+
+---
+
+### Employee Search
+
+Each department provides a search box for quickly locating employees within that department.
+
+Searching only affects the selected department and does not search the entire organization.
+
+---
+
+### Department Representatives
+
+Only employees with **Approval Authority** are displayed directly on the department node.
+
+These employees represent the department and are immediately visible within the organization chart.
+
+Other department members remain hidden inside the department's employee list.
+
+<Callout type="warning">
+  Approval Authority does not determine approval levels. It identifies employees
+  who represent the department and are displayed directly on the Organization
+  Chart.
+</Callout>
+
+---
+
+### Additional Employees
+
+When a department contains more employees than can be displayed, Workflow summarizes the remaining employees.
+
+Example:
+
+```text
++7 employee(s)
+
+See all
+```
+
+Selecting **See all** opens the complete employee list for that department.
+
+---
+
+## Employee List
+
+Click **Employee List** to view every employee assigned to the current Organization Chart.
+
+![Employee List](/images/org-chart-employee-list.png)
+
+The Employee List allows administrators to:
+
+- Search employees.
+- View department assignments.
+- View employee roles.
+- Assign employees to departments.
+
+---
+
+## Assign Employees
+
+Employees can be assigned to departments directly from the Employee List.
+
+Click the **+** button beside an employee.
+
+Workflow opens the assignment dialog.
+
+![Assign Employee](/images/setup-department-role.png)
+
+Administrators can configure:
+
+| Field      | Description                          |
+| ---------- | ------------------------------------ |
+| Employee   | Employee being assigned.             |
+| Department | Target department.                   |
+| Role       | Employee role within the department. |
+
+After saving, the employee becomes part of the selected department.
+
+---
+
+## Multiple Department Assignments
+
+An employee may belong to more than one department.
+
+Each assignment is managed independently.
+
+This allows organizations to support:
+
+- Matrix organizations.
+- Cross-functional teams.
+- Temporary project assignments.
+
+---
+
+## Display Modes
+
+The Organization Chart supports two viewing modes.
+
+<Tabs items={["Hierarchy", "List"]}>
+
+<Tab>
+
+Displays the complete organization as a hierarchical tree.
+
+Recommended when managing department relationships.
+
+</Tab>
+
+<Tab>
+
+Displays department information in a structured list.
+
+Useful for reviewing large organizational structures.
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can a department contain child departments?">
+
+Yes.
+
+Departments can contain any number of child departments.
+
+</Accordion>
+
+<Accordion title="Can employees belong to multiple departments?">
+
+Yes.
+
+Each department assignment is managed independently.
+
+</Accordion>
+
+<Accordion title="Who appears on the department node?">
+
+Only employees with **Approval Authority** are displayed directly on the Organization Chart.
+
+Other employees remain available in the department's employee list.
+
+</Accordion>
+
+<Accordion title="Does moving a department affect its children?">
+
+Yes.
+
+Moving a department automatically moves all descendant departments and assigned employees.
+
+</Accordion>
+
+</Accordions>

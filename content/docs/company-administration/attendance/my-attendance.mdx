@@ -1,0 +1,154 @@
+---
+title: My Attendance (Employee View)
+description: How a Standard User views their own attendance and requests corrections for missing records.
+icon: UserCheck
+---
+
+# My Attendance
+
+**My Attendance** is the Standard User's personal view of Attendance Tracking. It reuses the same timeline used by administrators, but scoped to a single employee — the person currently signed in.
+
+<Callout type="info">
+  My Attendance is only available to employees. Company Admins manage
+  attendance from [Attendance Tracking](/en/docs/company-administration/attendance/tracking)
+  instead.
+</Callout>
+
+---
+
+## Overview
+
+From the sidebar, employees open **Attendance Tracking**, which automatically opens their attendance timeline for their preferred Work Shift — the active Work Shift marked as default, or the first available one if no default is set.
+
+From this page, employees can:
+
+- View their own attendance records for the selected month.
+- Switch between the company's active Work Shifts.
+- Open the detail of any day to review its history.
+- Submit an application to explain or supplement a missing or incomplete record.
+
+---
+
+## How This Differs From Attendance Tracking
+
+My Attendance is the same underlying timeline as the admin [Attendance Tracking](/en/docs/company-administration/attendance/tracking) page, with several capabilities removed since it is a personal, read-only view.
+
+| Capability                        | Attendance Tracking (Admin) | My Attendance (Employee) |
+| ------------------------------------ | :--------------------------: | :-------------------------: |
+| Employees shown                      | Every employee on the Work Shift | Only the signed-in employee |
+| Department / Status filter           |              ✅              |              ❌              |
+| Attendance Summary Report            |              ✅              |              ❌              |
+| Import Attendance Data               |              ✅              |              ❌              |
+| Create / edit custom statuses        |              ✅              |              ❌              |
+| Switch Work Shift                    |              ❌              |              ✅              |
+| Day-cell action                      |         Send Reminder        |       Create Application     |
+
+---
+
+## Switching Work Shift
+
+A Work Shift switcher replaces the Import button in the page header.
+
+Employees can select any of the company's active Work Shifts to view — this is not limited to a Work Shift they are assigned to.
+
+<Callout type="tip">
+  Use the switcher to check a schedule before requesting a transfer, or to
+  review a Work Shift used by a team you are covering for.
+</Callout>
+
+---
+
+## Attendance Details
+
+Selecting a day cell opens the same **Attendance Detail** dialog used in Attendance Tracking.
+
+The dialog shows:
+
+| Information         | Description                                                       |
+| ---------------------- | ---------------------------------------------------------------------- |
+| Employee Information   | The signed-in employee's profile summary.                             |
+| History Table           | Every attendance record for the selected day: time, status, recorded by. |
+| Additional (Approval)   | Shows Pending, Approved, or Rejected when a record is linked to an application. |
+
+This view is read-only — employees cannot edit an attendance record directly.
+
+---
+
+## Application Supplement
+
+If a day is missing a record, or a record does not correctly reflect what happened (for example, an approved leave or overtime that has not been picked up yet), employees can submit an application for that specific date directly from the Attendance Detail dialog.
+
+Select a day, then choose **Create Application**.
+
+Configure:
+
+| Field              | Required | Description                                                                    |
+| --------------------- | :------: | ----------------------------------------------------------------------------------- |
+| Attendance Status      |    ✅    | The custom status to request — only statuses linked to an Application Definition are offered. |
+
+Submitting opens **Create Application**, pre-selected for the Application Definition linked to the chosen status, so the employee only needs to fill in and submit the rest of the form.
+
+<Callout type="warning">
+  Only custom statuses linked to an Application Definition can be requested
+  this way. A status with no linked application — or a built-in status like
+  **On Time** or **Missing** — will not appear in the list.
+</Callout>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can employees edit their own attendance directly?">
+
+No.
+
+Employees can only view their attendance. To correct or explain a record, they submit the corresponding application through **Application Supplement**.
+
+</Accordion>
+
+<Accordion title="Can employees see other employees' attendance?">
+
+No.
+
+My Attendance always scopes the timeline to the signed-in employee, regardless of which Work Shift is selected.
+
+</Accordion>
+
+<Accordion title="Can employees create or edit custom attendance statuses?">
+
+No.
+
+Configuring attendance statuses is a Company Admin capability. Employees can only select from statuses that already exist and are linked to an application.
+
+</Accordion>
+
+<Accordion title="Which statuses can an employee request through Application Supplement?">
+
+Only custom statuses linked to an Application Definition.
+
+Built-in statuses (No Check-in, No Record, Not Started, On Time, Late / Early, Missing) and custom statuses without a linked application are not offered, since there is no application for Workflow to route the employee to.
+
+</Accordion>
+
+<Accordion title="Can employees switch to a Work Shift they are not assigned to?">
+
+Yes.
+
+The Work Shift switcher lists the company's active Work Shifts; it is not restricted to the employee's own assignment.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Permissions
+
+| Action                              | Company Admin | Standard User |
+| -------------------------------------- | :-----------: | :-----------: |
+| View My Attendance                     |      ❌       |      ✅       |
+| Switch Work Shift (My Attendance)      |      ❌       |      ✅       |
+| View Attendance Details (own records)  |      ❌       |      ✅       |
+| Submit Application Supplement          |      ❌       |      ✅       |

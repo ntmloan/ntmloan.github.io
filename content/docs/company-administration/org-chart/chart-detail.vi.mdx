@@ -1,0 +1,269 @@
+---
+title: Chi tiết Sơ đồ tổ chức
+description: Khám phá khu vực làm việc Chi tiết Sơ đồ, cấu trúc phân cấp phòng ban, và phân công nhân viên.
+icon: Waypoints
+---
+
+# Chi tiết Sơ đồ tổ chức
+
+Sau khi chọn một Sơ đồ tổ chức từ danh sách, Quản trị viên sẽ được chuyển đến trang **Chi tiết Sơ đồ**.
+
+Đây là khu vực làm việc để thiết kế và duy trì cơ cấu tổ chức.
+
+Từ trang này, Quản trị viên có thể:
+
+- Xây dựng cấu trúc phân cấp phòng ban.
+- Phân công nhân viên vào phòng ban.
+- Thiết lập người đại diện của từng phòng ban.
+- Tìm kiếm nhân viên trong phòng ban.
+- Xem toàn bộ cơ cấu tổ chức.
+- Chuyển đổi giữa chế độ xem phân cấp và danh sách.
+
+![Organization Chart Details](/images/org-chart-detail.png)
+
+---
+
+## Bố cục trang
+
+Trang Chi tiết Sơ đồ gồm ba khu vực chính.
+
+| Khu vực                | Mô tả                                                       |
+| ----------------------- | ------------------------------------------------------------ |
+| Header                  | Hiển thị tên sơ đồ, Ngày áp dụng và trạng thái hiện tại.     |
+| Khu vực làm việc tổ chức | Hiển thị cấu trúc phân cấp phòng ban.                        |
+| Thanh công cụ           | Cung cấp chức năng chuyển đổi chế độ xem và làm mới dữ liệu. |
+
+---
+
+## Khu vực làm việc tổ chức
+
+Khu vực làm việc trung tâm hiển thị cơ cấu tổ chức dưới dạng cây phân cấp.
+
+Mỗi phòng ban được biểu diễn dưới dạng một nút, kết nối với phòng ban cha của nó.
+
+```text
+Company
+    │
+    ├── Sales
+    │      ├── Domestic
+    │      └── International
+    │
+    ├── Human Resources
+    │
+    └── Engineering
+           ├── Frontend
+           └── Backend
+```
+
+Cấu trúc phân cấp thể hiện mối quan hệ báo cáo giữa các phòng ban.
+
+---
+
+## Cấu trúc phân cấp phòng ban
+
+Các phòng ban được tổ chức theo quan hệ cha - con.
+
+Mỗi phòng ban có thể chứa:
+
+- Phòng ban con
+- Nhân viên
+- Người đại diện phòng ban
+
+Cấu trúc phân cấp có thể có nhiều cấp tùy theo cơ cấu tổ chức của doanh nghiệp.
+
+<Callout type="info">
+  Phòng ban gốc (root) đại diện cho chính công ty và đóng vai trò là phòng ban
+  cấp cao nhất trong tổ chức.
+</Callout>
+
+---
+
+## Di chuyển phòng ban
+
+Phòng ban có thể được sắp xếp lại bằng thao tác kéo-thả.
+
+Quản trị viên có thể:
+
+- Kéo một phòng ban.
+- Thả vào một phòng ban khác.
+- Cấu trúc phân cấp sẽ tự động cập nhật.
+
+![Department Hierarchy](/images/org-chart-detail.png)
+
+<Callout type="tip">
+  Di chuyển một phòng ban cũng sẽ di chuyển toàn bộ phòng ban con và nhân viên
+  đã được phân công của phòng ban đó.
+</Callout>
+
+---
+
+## Nút phòng ban (Department Node)
+
+Mỗi phòng ban được hiển thị dưới dạng một thẻ (card) chứa các thông tin chính.
+
+Một nút phòng ban bao gồm:
+
+- Tên phòng ban
+- Ô tìm kiếm nhân viên
+- Người đại diện phòng ban
+- Menu phòng ban
+- Tóm tắt nhân viên
+
+![Department Node](/images/department-node.png)
+
+---
+
+### Tìm kiếm nhân viên
+
+Mỗi phòng ban cung cấp một ô tìm kiếm để nhanh chóng tìm nhân viên trong phòng ban đó.
+
+Việc tìm kiếm chỉ áp dụng cho phòng ban đang chọn, không tìm kiếm trên toàn bộ tổ chức.
+
+---
+
+### Người đại diện phòng ban
+
+Chỉ những nhân viên có **Approval Authority** mới được hiển thị trực tiếp trên nút phòng ban.
+
+Những nhân viên này đại diện cho phòng ban và luôn hiển thị ngay trên sơ đồ tổ chức.
+
+Các thành viên khác của phòng ban vẫn được lưu trong danh sách nhân viên của phòng ban đó nhưng không hiển thị trực tiếp.
+
+<Callout type="warning">
+  Approval Authority không xác định cấp phê duyệt. Thuộc tính này chỉ dùng để
+  xác định những nhân viên đại diện cho phòng ban và được hiển thị trực tiếp
+  trên Sơ đồ tổ chức.
+</Callout>
+
+---
+
+### Nhân viên bổ sung
+
+Khi một phòng ban có nhiều nhân viên hơn số lượng có thể hiển thị, Workflow sẽ tóm tắt số nhân viên còn lại.
+
+Ví dụ:
+
+```text
++7 employee(s)
+
+See all
+```
+
+Chọn **See all** để mở danh sách đầy đủ nhân viên của phòng ban đó.
+
+---
+
+## Danh sách nhân viên
+
+Nhấn **Employee List** để xem toàn bộ nhân viên được phân công trong Sơ đồ tổ chức hiện tại.
+
+![Employee List](/images/org-chart-employee-list.png)
+
+Danh sách nhân viên cho phép Quản trị viên:
+
+- Tìm kiếm nhân viên.
+- Xem phân công phòng ban.
+- Xem vai trò của nhân viên.
+- Phân công nhân viên vào phòng ban.
+
+---
+
+## Phân công nhân viên
+
+Nhân viên có thể được phân công vào phòng ban trực tiếp từ Danh sách nhân viên.
+
+Nhấn nút **+** bên cạnh một nhân viên.
+
+Workflow sẽ mở hộp thoại phân công.
+
+![Assign Employee](/images/setup-department-role.png)
+
+Quản trị viên có thể thiết lập:
+
+| Trường     | Mô tả                                |
+| ---------- | ------------------------------------- |
+| Employee   | Nhân viên được phân công.             |
+| Department | Phòng ban đích.                       |
+| Role       | Vai trò của nhân viên trong phòng ban. |
+
+Sau khi lưu, nhân viên sẽ trở thành thành viên của phòng ban đã chọn.
+
+---
+
+## Phân công nhiều phòng ban
+
+Một nhân viên có thể thuộc nhiều hơn một phòng ban.
+
+Mỗi lần phân công được quản lý độc lập.
+
+Điều này cho phép doanh nghiệp hỗ trợ:
+
+- Mô hình tổ chức ma trận.
+- Nhóm làm việc liên phòng ban.
+- Phân công dự án tạm thời.
+
+---
+
+## Chế độ hiển thị
+
+Sơ đồ tổ chức hỗ trợ hai chế độ xem.
+
+<Tabs items={["Hierarchy", "List"]}>
+
+<Tab>
+
+Hiển thị toàn bộ tổ chức dưới dạng cây phân cấp.
+
+Phù hợp khi cần quản lý mối quan hệ giữa các phòng ban.
+
+</Tab>
+
+<Tab>
+
+Hiển thị thông tin phòng ban dưới dạng danh sách có cấu trúc.
+
+Hữu ích khi cần xem lại cơ cấu tổ chức có quy mô lớn.
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Một phòng ban có thể chứa phòng ban con không?">
+
+Có.
+
+Một phòng ban có thể chứa bất kỳ số lượng phòng ban con nào.
+
+</Accordion>
+
+<Accordion title="Nhân viên có thể thuộc nhiều phòng ban không?">
+
+Có.
+
+Mỗi lần phân công phòng ban được quản lý độc lập.
+
+</Accordion>
+
+<Accordion title="Ai sẽ hiển thị trên nút phòng ban?">
+
+Chỉ những nhân viên có **Approval Authority** mới được hiển thị trực tiếp trên Sơ đồ tổ chức.
+
+Các nhân viên khác vẫn có thể xem được trong danh sách nhân viên của phòng ban.
+
+</Accordion>
+
+<Accordion title="Di chuyển một phòng ban có ảnh hưởng đến phòng ban con không?">
+
+Có.
+
+Di chuyển một phòng ban sẽ tự động di chuyển toàn bộ phòng ban con và nhân viên đã được phân công.
+
+</Accordion>
+
+</Accordions>

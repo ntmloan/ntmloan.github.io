@@ -1,0 +1,83 @@
+---
+title: Permissions, FAQ & Best Practices
+description: Attendance permissions, frequently asked questions, best practices, and related features.
+---
+
+# Best Practices
+
+<Callout type="tip">
+
+For the best attendance tracking experience:
+
+- Configure Work Shifts before importing attendance.
+- Create Attendance Statuses before importing data.
+- Review attendance after each import.
+- Use reminders to reduce missing attendance.
+- Archive unused Work Shifts instead of deleting them.
+
+</Callout>
+
+---
+
+# Permissions
+
+| Action                      | Company Admin | Standard User |
+| --------------------------- | :-----------: | :-----------: |
+| View Attendance             |      ✅       |      ❌       |
+| Configure Work Shift        |      ✅       |      ❌       |
+| Configure Attendance Status |      ✅       |      ❌       |
+| Import Attendance           |      ✅       |      ❌       |
+| Send Reminder               |      ✅       |      ❌       |
+
+---
+
+# Frequently Asked Questions
+
+## Can one employee have multiple attendance records in one day?
+
+Yes.
+
+Workflow supports multiple attendance records for the same day.
+
+---
+
+## Can attendance exist outside working hours?
+
+Yes.
+
+When the Attendance Status allows **Outside Work Shift**, attendance outside the normal schedule can be recorded.
+
+---
+
+## Can Work Shifts be modified?
+
+Only partially.
+
+Name, description, status, and the default assignment can be updated at any time. Working Days, Start Time, End Time, and Break Time are locked once the Work Shift is created, so changing the schedule itself requires creating a new Work Shift.
+
+Historical attendance remains unchanged regardless of later edits.
+
+---
+
+## Can I delete a Work Shift?
+
+Yes.
+
+However, it is recommended to deactivate unused Work Shifts instead of deleting them to preserve historical attendance information.
+
+---
+
+## Can attendance be imported multiple times?
+
+Yes.
+
+Every import operation is recorded separately in Upload History.
+
+---
+
+## Related Features
+
+- Upload History
+- Employee Management
+- Organization Chart
+- Leave Management

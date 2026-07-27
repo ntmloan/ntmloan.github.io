@@ -1,0 +1,299 @@
+---
+title: Organization Chart
+description: Create, manage, and version your company's organizational structure.
+---
+
+# Organization Chart
+
+<Callout type="info">
+The **Organization Chart** defines your company's organizational hierarchy, including departments, reporting relationships, and department representatives.
+
+Workflow uses the active Organization Chart to determine organizational relationships across the system, including approval routing, application visibility, department management, and other organization-based features.
+
+</Callout>
+
+## Overview
+
+Organization Charts allow administrators to build and maintain the organizational structure of a company while preserving historical versions.
+
+Unlike traditional organization charts that overwrite existing data, Workflow stores each organizational structure as a **version**. This enables organizations to prepare future structural changes without affecting the currently active organization.
+
+From the Organization Chart module, administrators can:
+
+- Create a new organization chart.
+- Maintain multiple organization chart versions.
+- Schedule when a chart becomes effective.
+- View historical organizational structures.
+- Manage departments and their hierarchy.
+- Assign employees to departments.
+- Configure department representatives.
+- Reuse an existing chart by duplicating it.
+
+![Organization Chart List](/images/org-chart-list.png)
+
+---
+
+## Organization Chart Lifecycle
+
+Each Organization Chart represents a snapshot of the company's organizational structure at a specific point in time.
+
+A typical lifecycle is shown below.
+
+```text
+Create
+   │
+   ▼
+Editing
+   │
+   ▼
+Not in use
+   │
+   ▼
+In use
+   │
+   ▼
+End
+```
+
+This version-based approach allows administrators to safely prepare future organizational changes while the current chart continues to be used by Workflow.
+
+---
+
+## Organization Chart List
+
+The Organization Chart List displays every organizational structure created for the company.
+
+Each chart contains basic information including:
+
+| Column            | Description                                     |
+| ----------------- | ----------------------------------------------- |
+| Status            | Current lifecycle status of the chart.          |
+| Name              | Organization Chart name.                        |
+| Applied Date      | Date and time when the chart becomes effective. |
+| Updated Date Time | Last modification time.                         |
+| Action            | Available operations for the chart.             |
+
+![Organization Chart List](/images/org-chart-list.png)
+
+---
+
+## Organization Chart Status
+
+An Organization Chart can be in one of four states.
+
+| Status         | Description                                                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **Editing**    | The chart is currently being prepared. Administrators can freely modify departments, employees, and hierarchy before it is finalized. |
+| **Not in use** | The chart is complete but has not been activated. It is ready to become the next active organizational structure.                     |
+| **In use**     | The chart is currently used throughout Workflow. All organization-based features reference this chart.                                |
+| **End**        | The chart is no longer active and is preserved for historical reference.                                                              |
+
+<Callout type="warning">
+  At any given time, **only one Organization Chart** can be in the{" "}
+  <strong>In use</strong> state.
+</Callout>
+
+---
+
+## Status Transition
+
+The lifecycle of an Organization Chart follows the process below.
+
+```text
+Editing
+     │
+     ▼
+Not in use
+     │
+     ▼
+In use
+     │
+     ▼
+End
+```
+
+Workflow automatically manages status transitions when a new chart is activated.
+
+For example:
+
+- A newly created chart starts in **Editing**.
+- Once completed, it can be scheduled or activated.
+- When activated, it becomes **In use**.
+- The previously active chart automatically changes to **End**.
+
+---
+
+## Version Management
+
+Organization Charts are versioned instead of overwritten.
+
+Whenever the organizational structure changes—such as department reorganizations, mergers, or reporting line updates—it is recommended to create a new chart rather than modifying the current active one.
+
+This approach provides several benefits:
+
+- Preserve historical organizational structures.
+- Prepare organizational changes before they become effective.
+- Reduce operational risk.
+- Support future organizational planning.
+
+A common workflow is:
+
+```text
+Current Chart (In use)
+        │
+        ▼
+Duplicate
+        │
+        ▼
+New Chart (Editing)
+        │
+        ▼
+Update Departments
+Update Employees
+Update Hierarchy
+        │
+        ▼
+Set Applied Date
+        │
+        ▼
+Activate
+        │
+        ▼
+Previous Chart → End
+```
+
+<Callout type="tip">
+  Duplicating an existing chart is the recommended way to prepare organizational
+  changes because it preserves the existing hierarchy while allowing
+  administrators to modify only the necessary departments.
+</Callout>
+
+---
+
+## Applied Date
+
+Each Organization Chart contains an **Applied Date**, which specifies when the chart becomes effective.
+
+Unlike the creation date, the Applied Date controls when Workflow begins using that organization structure.
+
+This allows administrators to prepare organizational changes in advance.
+
+Example:
+
+```text
+Today
+ │
+ ├── Create Organization Chart
+ │
+ ├── Configure Departments
+ │
+ ├── Configure Employees
+ │
+ └── Applied Date = Next Monday
+
+Current Organization Chart
+        │
+        ▼
+Remains active
+
+Next Monday
+        │
+        ▼
+New Organization Chart becomes In use
+```
+
+This mechanism allows organizational restructuring to occur automatically on the scheduled date without interrupting daily operations.
+
+---
+
+## Available Actions
+
+The available actions depend on the current status of the Organization Chart.
+
+<Tabs items={["Editing", "Not in use", "In use", "End"]}>
+
+<Tab>
+
+- View Details
+- Rename
+- Use this chart
+- Duplicate
+
+</Tab>
+
+<Tab>
+
+- View Details
+- Rename
+- Update Applied Date
+- Use this chart
+- Duplicate
+- Delete
+
+</Tab>
+
+<Tab>
+
+- View Details
+- Duplicate
+
+</Tab>
+
+<Tab>
+
+- View Details
+- Duplicate
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can multiple Organization Charts be active at the same time?">
+
+No.
+
+Workflow allows only one Organization Chart to be in the **In use** state. Activating another chart automatically ends the previously active chart.
+
+</Accordion>
+
+<Accordion title="Does editing a new chart affect the current organization?">
+
+No.
+
+Changes made to charts in the **Editing** or **Not in use** state do not affect the current organizational structure until the chart becomes active.
+
+</Accordion>
+
+<Accordion title="What happens to previous Organization Charts?">
+
+Previous charts are never overwritten. Once replaced, they are moved to the **End** state and remain available for historical reference.
+
+</Accordion>
+
+<Accordion title="Should I create a new chart or edit the active one?">
+
+It is recommended to duplicate the active chart and create a new version instead of modifying the active organization directly.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Permissions
+
+| Action                    | Company Admin | Standard User |
+| ------------------------- | :-----------: | :-----------: |
+| View Organization Charts  |      ✅       |      ❌       |
+| Create Organization Chart |      ✅       |      ❌       |
+| Rename Chart              |      ✅       |      ❌       |
+| Duplicate Chart           |      ✅       |      ❌       |
+| Update Applied Date       |      ✅       |      ❌       |
+| Activate Chart            |      ✅       |      ❌       |
+| Delete Chart              |      ✅       |      ❌       |

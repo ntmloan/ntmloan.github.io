@@ -1,0 +1,102 @@
+---
+title: Attendance Calculation & Business Rules
+description: How Workflow evaluates attendance records against a Work Shift to produce statuses and summaries.
+---
+
+# Attendance Calculation
+
+Workflow determines attendance by comparing attendance records with the assigned Work Shift.
+
+The evaluation process is illustrated below.
+
+```text
+Work Shift
+      │
+      ▼
+Attendance Records
+      │
+      ▼
+Attendance Rules
+      │
+      ▼
+Attendance Status
+      │
+      ▼
+Attendance Summary
+```
+
+---
+
+## Attendance Evaluation
+
+Each attendance record is evaluated independently.
+
+The evaluation considers:
+
+- Working days
+- Working hours
+- Break periods
+- Attendance Status rules
+- Leave applications
+- Overtime records
+
+---
+
+## Attendance Timeline
+
+A working day may contain multiple attendance records.
+
+Example:
+
+08:30–12:00 → On Time
+
+13:00–17:30 → On Time
+
+18:00–21:00 → OT
+
+Workflow evaluates every record separately before generating the daily attendance summary.
+
+---
+
+## Attendance Summary
+
+The summary stat cards shown above the Attendance Grid aggregate the currently filtered records:
+
+| Item             | Description                                                                |
+| ---------------- | -------------------------------------------------------------------------- |
+| Total            | Total attendance records, excluding **No Check-in**.                       |
+| On Time          | Records with the **On Time** status.                                       |
+| Late / Early     | Records with the **Late / Early** status.                                  |
+| Missing          | Records with the **Missing** status.                                       |
+| Leave            | Records under a paid/unpaid leave or business/out-of-office custom status. |
+| Pending Approval | Records still awaiting approval on their linked application.               |
+
+<Callout type="info">
+  These stat cards only reflect the currently filtered view (department, status,
+  and search). For a full monthly breakdown per employee — including a column
+  for every custom status — open **Summary** from the toolbar. See [Attendance
+  Summary
+  Report](/en/docs/company-administration/attendance/tracking#attendance-summary-report).
+</Callout>
+
+---
+
+## Reminder Rules
+
+Administrators can send reminders when:
+
+- No attendance exists
+- Attendance is incomplete
+- Missing check-in
+- Missing check-out
+
+---
+
+## Business Rules
+
+- Attendance is always evaluated against the assigned Work Shift.
+- One day may contain multiple attendance records.
+- One attendance record has one Attendance Status.
+- Multiple attendance statuses may appear in one day.
+- Attendance Summary is calculated from attendance records rather than manually entered values.
+- A record generated from a custom status linked to an application may carry a Pending, Approved, or Rejected approval status.

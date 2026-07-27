@@ -1,0 +1,5 @@
+{
+  "title": "Sơ đồ tổ chức",
+  "icon": "Network",
+  "pages": ["index", "chart-detail", "department-management", "business-rules"]
+}

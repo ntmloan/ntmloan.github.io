@@ -1,0 +1,310 @@
+---
+title: Sơ đồ tổ chức
+description: Tạo, quản lý và phiên bản hóa cơ cấu tổ chức của công ty.
+---
+
+# Sơ đồ tổ chức
+
+<Callout type="info">
+**Sơ đồ tổ chức (Organization Chart)** là nền tảng xác định cơ cấu tổ chức của công ty, bao gồm phòng ban, mối quan hệ phân cấp và người đại diện của từng phòng ban.
+
+Workflow sử dụng **Sơ đồ tổ chức đang hoạt động** để xác định quan hệ tổ chức trong toàn bộ hệ thống, bao gồm luồng phê duyệt, phạm vi hiển thị dữ liệu, quản lý phòng ban và các chức năng phụ thuộc vào cơ cấu tổ chức.
+
+</Callout>
+
+## Tổng quan
+
+Sơ đồ tổ chức cho phép Quản trị viên xây dựng và quản lý cơ cấu tổ chức của doanh nghiệp, đồng thời lưu lại lịch sử thay đổi qua từng phiên bản.
+
+Khác với các hệ thống chỉ cập nhật trực tiếp một sơ đồ duy nhất, Workflow lưu mỗi lần thay đổi thành một **phiên bản (Version)** riêng biệt. Điều này cho phép doanh nghiệp chuẩn bị trước những thay đổi về cơ cấu tổ chức mà không ảnh hưởng đến hoạt động hiện tại.
+
+Từ module **Organization Chart**, Quản trị viên có thể:
+
+- Tạo sơ đồ tổ chức mới.
+- Quản lý nhiều phiên bản sơ đồ tổ chức.
+- Thiết lập thời điểm sơ đồ bắt đầu có hiệu lực.
+- Xem lại lịch sử các cơ cấu tổ chức trước đây.
+- Quản lý phòng ban và cấu trúc phân cấp.
+- Phân công nhân viên vào phòng ban.
+- Thiết lập người đại diện của từng phòng ban.
+- Tái sử dụng sơ đồ hiện có bằng cách sao chép.
+
+![Organization Chart List](/images/org-chart-list.png)
+
+---
+
+## Vòng đời của Sơ đồ tổ chức
+
+Mỗi Sơ đồ tổ chức đại diện cho một phiên bản cơ cấu tổ chức của công ty tại một thời điểm nhất định.
+
+Một sơ đồ tổ chức thường trải qua vòng đời như sau:
+
+```text
+Tạo mới
+   │
+   ▼
+Editing
+   │
+   ▼
+Not in use
+   │
+   ▼
+In use
+   │
+   ▼
+End
+```
+
+Mô hình quản lý theo phiên bản giúp doanh nghiệp chuẩn bị các thay đổi về tổ chức mà không làm ảnh hưởng đến hệ thống đang vận hành.
+
+---
+
+## Danh sách Sơ đồ tổ chức
+
+Trang **Organization Chart List** hiển thị tất cả các phiên bản sơ đồ tổ chức của công ty.
+
+Mỗi sơ đồ bao gồm các thông tin:
+
+| Cột                | Mô tả                                     |
+| ------------------ | ----------------------------------------- |
+| Trạng thái         | Trạng thái hiện tại của sơ đồ tổ chức.    |
+| Tên                | Tên của sơ đồ tổ chức.                    |
+| Ngày áp dụng       | Thời điểm sơ đồ bắt đầu có hiệu lực.      |
+| Thời gian cập nhật | Lần chỉnh sửa gần nhất.                   |
+| Thao tác           | Các chức năng có thể thực hiện với sơ đồ. |
+
+![Organization Chart List](/images/org-chart-list.png)
+
+---
+
+## Trạng thái của Sơ đồ tổ chức
+
+Một Sơ đồ tổ chức có thể ở một trong bốn trạng thái sau.
+
+| Trạng thái     | Mô tả                                                                                                            |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **Editing**    | Sơ đồ đang được xây dựng hoặc chỉnh sửa. Quản trị viên có thể thay đổi phòng ban, nhân viên và cấu trúc tổ chức. |
+| **Not in use** | Sơ đồ đã hoàn thành nhưng chưa được sử dụng. Có thể kích hoạt để trở thành sơ đồ tổ chức tiếp theo.              |
+| **In use**     | Sơ đồ đang được Workflow sử dụng. Tất cả các chức năng liên quan đến cơ cấu tổ chức sẽ tham chiếu đến sơ đồ này. |
+| **End**        | Sơ đồ đã hết hiệu lực và chỉ được lưu lại để tra cứu lịch sử.                                                    |
+
+<Callout type="warning">
+  Tại **một thời điểm chỉ có duy nhất một Sơ đồ tổ chức** được phép ở trạng thái{" "}
+  <strong>In use</strong>.
+</Callout>
+
+---
+
+## Chuyển đổi trạng thái
+
+Một Sơ đồ tổ chức sẽ trải qua các trạng thái theo trình tự sau:
+
+```text
+Editing
+     │
+     ▼
+Not in use
+     │
+     ▼
+In use
+     │
+     ▼
+End
+```
+
+Workflow sẽ tự động quản lý việc chuyển đổi trạng thái khi một sơ đồ mới được kích hoạt.
+
+Ví dụ:
+
+- Khi tạo mới, sơ đồ ở trạng thái **Editing**.
+- Sau khi hoàn tất chỉnh sửa, sơ đồ chuyển sang **Not in use**.
+- Khi được kích hoạt, sơ đồ trở thành **In use**.
+- Đồng thời, sơ đồ trước đó sẽ tự động chuyển sang **End**.
+
+---
+
+## Quản lý phiên bản
+
+Workflow quản lý Sơ đồ tổ chức theo **phiên bản (Version)** thay vì ghi đè lên dữ liệu hiện có.
+
+Khi cơ cấu tổ chức thay đổi, chẳng hạn như:
+
+- Thành lập phòng ban mới.
+- Sáp nhập phòng ban.
+- Thay đổi cơ cấu quản lý.
+- Điều chuyển nhân sự giữa các phòng ban.
+
+Quản trị viên nên tạo một phiên bản mới thay vì chỉnh sửa trực tiếp sơ đồ đang được sử dụng.
+
+Việc quản lý theo phiên bản mang lại nhiều lợi ích:
+
+- Lưu giữ lịch sử cơ cấu tổ chức.
+- Chuẩn bị trước các thay đổi của doanh nghiệp.
+- Giảm rủi ro ảnh hưởng đến các quy trình đang vận hành.
+- Dễ dàng theo dõi và đối chiếu các lần thay đổi.
+
+Một quy trình thường gặp:
+
+```text
+Sơ đồ hiện tại (In use)
+          │
+          ▼
+Nhân bản (Duplicate)
+          │
+          ▼
+Sơ đồ mới (Editing)
+          │
+          ▼
+Cập nhật phòng ban
+Cập nhật nhân viên
+Cập nhật cấu trúc
+          │
+          ▼
+Thiết lập Ngày áp dụng
+          │
+          ▼
+Kích hoạt
+          │
+          ▼
+Sơ đồ cũ → End
+```
+
+<Callout type="tip">
+  Khuyến nghị sử dụng chức năng <strong>Duplicate</strong> để tạo một phiên bản
+  mới thay vì xây dựng lại từ đầu. Điều này giúp giữ nguyên cấu trúc hiện tại và
+  chỉ cần chỉnh sửa những phần thay đổi.
+</Callout>
+
+---
+
+## Ngày áp dụng (Applied Date)
+
+Mỗi Sơ đồ tổ chức đều có thuộc tính **Applied Date**.
+
+Đây là thời điểm Workflow bắt đầu sử dụng sơ đồ tổ chức đó.
+
+Khác với ngày tạo, **Applied Date** quyết định khi nào cơ cấu tổ chức mới chính thức có hiệu lực.
+
+Điều này cho phép doanh nghiệp chuẩn bị các thay đổi trước nhiều ngày hoặc nhiều tuần.
+
+Ví dụ:
+
+```text
+Hôm nay
+ │
+ ├── Tạo Sơ đồ tổ chức mới
+ │
+ ├── Cập nhật phòng ban
+ │
+ ├── Cập nhật nhân viên
+ │
+ └── Applied Date = Thứ Hai tuần sau
+
+Sơ đồ hiện tại
+        │
+        ▼
+Vẫn tiếp tục được sử dụng
+
+Đến Thứ Hai
+        │
+        ▼
+Sơ đồ mới tự động trở thành In use
+```
+
+Nhờ đó, doanh nghiệp có thể triển khai các thay đổi về cơ cấu tổ chức đúng thời điểm mà không làm gián đoạn hoạt động hàng ngày.
+
+---
+
+## Các thao tác theo trạng thái
+
+Các thao tác khả dụng sẽ phụ thuộc vào trạng thái hiện tại của Sơ đồ tổ chức.
+
+<Tabs items={["Editing", "Not in use", "In use", "End"]}>
+
+<Tab>
+
+- Xem chi tiết
+- Đổi tên
+- Sử dụng sơ đồ này
+- Nhân bản
+
+</Tab>
+
+<Tab>
+
+- Xem chi tiết
+- Đổi tên
+- Cập nhật Ngày áp dụng
+- Sử dụng sơ đồ này
+- Nhân bản
+- Xóa
+
+</Tab>
+
+<Tab>
+
+- Xem chi tiết
+- Nhân bản
+
+</Tab>
+
+<Tab>
+
+- Xem chi tiết
+- Nhân bản
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Có thể có nhiều Sơ đồ tổ chức đang hoạt động cùng lúc không?">
+
+Không.
+
+Workflow chỉ cho phép **một** Sơ đồ tổ chức ở trạng thái **In use**. Khi kích hoạt một sơ đồ mới, sơ đồ đang hoạt động sẽ tự động chuyển sang trạng thái **End**.
+
+</Accordion>
+
+<Accordion title="Việc chỉnh sửa một sơ đồ mới có ảnh hưởng đến hệ thống hiện tại không?">
+
+Không.
+
+Các thay đổi trên các sơ đồ ở trạng thái **Editing** hoặc **Not in use** sẽ không ảnh hưởng đến hệ thống cho đến khi sơ đồ đó được kích hoạt.
+
+</Accordion>
+
+<Accordion title="Các Sơ đồ tổ chức cũ có bị ghi đè không?">
+
+Không.
+
+Workflow luôn lưu lại các phiên bản cũ. Khi không còn được sử dụng, chúng sẽ chuyển sang trạng thái **End** để phục vụ việc tra cứu và đối chiếu lịch sử.
+
+</Accordion>
+
+<Accordion title="Nên chỉnh sửa trực tiếp sơ đồ đang sử dụng hay tạo phiên bản mới?">
+
+Khuyến nghị nên sử dụng chức năng **Duplicate** để tạo một phiên bản mới, sau đó thực hiện các thay đổi trên phiên bản đó thay vì chỉnh sửa trực tiếp sơ đồ đang hoạt động.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Phân quyền
+
+| Chức năng                   | Company Admin | User |
+| --------------------------- | :-----------: | :--: |
+| Xem danh sách Sơ đồ tổ chức |      ✅       |  ❌  |
+| Tạo Sơ đồ tổ chức           |      ✅       |  ❌  |
+| Đổi tên Sơ đồ               |      ✅       |  ❌  |
+| Nhân bản Sơ đồ              |      ✅       |  ❌  |
+| Cập nhật Ngày áp dụng       |      ✅       |  ❌  |
+| Kích hoạt Sơ đồ             |      ✅       |  ❌  |
+| Xóa Sơ đồ                   |      ✅       |  ❌  |

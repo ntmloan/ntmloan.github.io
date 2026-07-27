@@ -1,0 +1,330 @@
+---
+title: Department Management
+description: Create and manage departments, assign employees, and configure approval authority within the Organization Chart.
+icon: Building2
+---
+
+# Department Management
+
+Departments are the fundamental building blocks of an Organization Chart.
+
+Each department defines:
+
+- Organizational hierarchy
+- Department members
+- Department representatives
+- Reporting relationships
+
+Departments can be created, updated, reorganized, or removed while maintaining the integrity of the organization structure.
+
+---
+
+## Department Structure
+
+Each department contains three types of information.
+
+| Category                  | Description                              |
+| ------------------------- | ---------------------------------------- |
+| Department Information    | Department name and code.                |
+| Employees                 | Members assigned to the department.      |
+| Organization Relationship | Parent department and child departments. |
+
+Every department belongs to exactly one Organization Chart.
+
+---
+
+## Create a Department
+
+Departments can be created from any existing department.
+
+Open the department menu and select **Create Department**.
+
+![Create Department](/images/create-department.png)
+
+Administrators can configure:
+
+| Field             | Required | Description                                      |
+| ----------------- | :------: | ------------------------------------------------ |
+| Parent Department |    ✅    | Department that will contain the new department. |
+| Department Code   | Optional | Internal department identifier.                  |
+| Department Name   |    ✅    | Display name of the department.                  |
+
+After saving, the department is immediately added beneath its parent.
+
+---
+
+## Parent Department
+
+Every department, except the root department, belongs to a parent department.
+
+Example:
+
+```text
+Company
+   │
+   ├── Sales
+   │
+   └── Engineering
+           │
+           ├── Frontend
+           └── Backend
+```
+
+Changing the parent department automatically changes the hierarchy.
+
+---
+
+## Department Menu
+
+Available actions depend on whether the selected department is the root department.
+
+### Root Department
+
+![Root Department Menu](/images/root-department-menu.png)
+
+Available actions:
+
+- Add Employee
+- Create Department
+
+---
+
+### Child Department
+
+![Department Menu](/images/department-menu.png)
+
+Available actions:
+
+- Add Employee
+- Create Department
+- Update Department
+- Delete Department Branch
+- Delete Department
+
+---
+
+## Update Department
+
+Administrators can update department information at any time.
+
+Editable information includes:
+
+- Parent department
+- Department code
+- Department name
+
+Changing the parent department immediately updates the organization hierarchy.
+
+---
+
+## Delete Department
+
+Workflow supports two deletion methods.
+
+### Delete Department
+
+Removes only the selected department.
+
+Employees and child departments must first be reassigned or removed.
+
+---
+
+### Delete Department Branch
+
+Removes the selected department together with every descendant department.
+
+```text
+Engineering
+    │
+    ├── Frontend
+    ├── Backend
+    └── QA
+```
+
+Deleting the branch removes the entire subtree.
+
+<Callout type="warning">
+  Delete Department Branch permanently removes every child department within the
+  selected branch.
+</Callout>
+
+---
+
+# Employee Management within Organization Chart
+
+Employees can be managed directly without leaving the Organization Chart.
+
+This allows administrators to complete organizational changes in one workspace.
+
+---
+
+## Add Existing Employee
+
+Select **Add Employee** from the department menu.
+
+![Add Employee](/images/add-employee-department.png)
+
+Configure:
+
+| Field      | Description       |
+| ---------- | ----------------- |
+| Department | Target department |
+| Employee   | Existing employee |
+| Role       | Department role   |
+
+After saving, the employee becomes a member of the department.
+
+---
+
+## Register a New Employee
+
+If the employee does not already exist, select **Create new employee**.
+
+Workflow opens the employee registration dialog.
+
+![Register Employee](/images/register-new-employee.png)
+
+Administrators can configure:
+
+| Field              | Required |
+| ------------------ | :------: |
+| Full Name          |    ✅    |
+| Email              |    ✅    |
+| Department         | Optional |
+| Code               | Optional |
+| Role               | Optional |
+| Approval Authority | Optional |
+
+After registration, the employee is automatically assigned to the selected department.
+
+---
+
+## Department Roles
+
+Each employee can have a role within a department.
+
+Examples include:
+
+- Engineer
+- Team Leader
+- Manager
+- General Manager
+
+Department Roles describe an employee's organizational responsibility.
+
+They are independent from:
+
+- Application approval levels
+- Workflow permissions
+- System administrator permissions
+
+---
+
+# Approval Authority
+
+Approval Authority identifies employees who officially represent a department.
+
+Employees with Approval Authority receive two special behaviors:
+
+- They are displayed directly on the Organization Chart.
+- They can manage department-level applications.
+
+![Employee Details](/images/employee-details.png)
+
+---
+
+## Display Behavior
+
+Workflow intentionally limits the number of employees displayed on each department node.
+
+Only employees marked with **Approval Authority** are displayed.
+
+Example:
+
+```text
+Sales Department
+
+Alice
+Department Manager
+
+Bob
+General Manager
+
++18 employee(s)
+
+See all
+```
+
+Remaining employees are available through the department's employee list.
+
+This design keeps large Organization Charts readable.
+
+---
+
+## Employee Details
+
+Department assignments can be updated at any time.
+
+Editable information includes:
+
+- Department
+- Department Role
+- Approval Authority
+
+Employee name and email cannot be modified from the Organization Chart.
+
+Those properties are managed from **Employee Management**.
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can a department exist without employees?">
+
+Yes.
+
+Departments may exist before employees are assigned.
+
+</Accordion>
+
+<Accordion title="Can employees be added directly from the Organization Chart?">
+
+Yes.
+
+Administrators may either assign an existing employee or register a new employee without leaving the Organization Chart.
+
+</Accordion>
+
+<Accordion title="Can more than one employee have Approval Authority?">
+
+Yes.
+
+A department may contain multiple employees with Approval Authority.
+
+All of them are displayed directly on the Organization Chart.
+
+</Accordion>
+
+<Accordion title="What is the difference between Department Role and Approval Authority?">
+
+Department Role describes the employee's position within the department.
+
+Approval Authority identifies department representatives and grants permission to manage department-level applications.
+
+The two properties are independent.
+
+</Accordion>
+
+<Accordion title="Can Employee Name or Email be edited here?">
+
+No.
+
+Only department-related information can be updated from the Organization Chart.
+
+Personal information must be managed from the Employee Management module.
+
+</Accordion>
+
+</Accordions>

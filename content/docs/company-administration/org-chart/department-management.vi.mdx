@@ -1,0 +1,330 @@
+---
+title: Quản lý phòng ban
+description: Tạo và quản lý phòng ban, phân công nhân viên, và thiết lập Approval Authority trong Sơ đồ tổ chức.
+icon: Building2
+---
+
+# Quản lý phòng ban
+
+Phòng ban là thành phần cơ bản cấu thành nên Sơ đồ tổ chức.
+
+Mỗi phòng ban xác định:
+
+- Cấu trúc phân cấp tổ chức
+- Thành viên của phòng ban
+- Người đại diện phòng ban
+- Mối quan hệ báo cáo
+
+Phòng ban có thể được tạo mới, cập nhật, sắp xếp lại hoặc xóa trong khi vẫn đảm bảo tính toàn vẹn của cơ cấu tổ chức.
+
+---
+
+## Cấu trúc phòng ban
+
+Mỗi phòng ban chứa ba loại thông tin.
+
+| Nhóm thông tin      | Mô tả                                       |
+| -------------------- | --------------------------------------------- |
+| Thông tin phòng ban  | Tên và mã phòng ban.                          |
+| Nhân viên            | Thành viên được phân công vào phòng ban.      |
+| Quan hệ tổ chức      | Phòng ban cha và các phòng ban con.           |
+
+Mỗi phòng ban chỉ thuộc về đúng một Sơ đồ tổ chức.
+
+---
+
+## Tạo phòng ban
+
+Phòng ban có thể được tạo từ bất kỳ phòng ban nào đã tồn tại.
+
+Mở menu phòng ban và chọn **Create Department**.
+
+![Create Department](/images/create-department.png)
+
+Quản trị viên có thể thiết lập:
+
+| Trường             | Bắt buộc | Mô tả                                     |
+| ------------------- | :------: | ------------------------------------------- |
+| Parent Department   |    ✅    | Phòng ban sẽ chứa phòng ban mới.            |
+| Department Code     | Tùy chọn | Mã định danh nội bộ của phòng ban.          |
+| Department Name     |    ✅    | Tên hiển thị của phòng ban.                 |
+
+Sau khi lưu, phòng ban mới được thêm ngay bên dưới phòng ban cha.
+
+---
+
+## Phòng ban cha (Parent Department)
+
+Mọi phòng ban, ngoại trừ phòng ban gốc, đều thuộc về một phòng ban cha.
+
+Ví dụ:
+
+```text
+Company
+   │
+   ├── Sales
+   │
+   └── Engineering
+           │
+           ├── Frontend
+           └── Backend
+```
+
+Thay đổi phòng ban cha sẽ tự động thay đổi cấu trúc phân cấp.
+
+---
+
+## Menu phòng ban
+
+Các thao tác khả dụng phụ thuộc vào việc phòng ban được chọn có phải là phòng ban gốc hay không.
+
+### Phòng ban gốc (Root Department)
+
+![Root Department Menu](/images/root-department-menu.png)
+
+Các thao tác khả dụng:
+
+- Add Employee
+- Create Department
+
+---
+
+### Phòng ban con (Child Department)
+
+![Department Menu](/images/department-menu.png)
+
+Các thao tác khả dụng:
+
+- Add Employee
+- Create Department
+- Update Department
+- Delete Department Branch
+- Delete Department
+
+---
+
+## Cập nhật phòng ban
+
+Quản trị viên có thể cập nhật thông tin phòng ban bất cứ lúc nào.
+
+Thông tin có thể chỉnh sửa gồm:
+
+- Phòng ban cha
+- Mã phòng ban
+- Tên phòng ban
+
+Thay đổi phòng ban cha sẽ cập nhật ngay lập tức cấu trúc phân cấp tổ chức.
+
+---
+
+## Xóa phòng ban
+
+Workflow hỗ trợ hai phương thức xóa.
+
+### Delete Department
+
+Chỉ xóa phòng ban được chọn.
+
+Nhân viên và phòng ban con phải được phân công lại hoặc xóa trước.
+
+---
+
+### Delete Department Branch
+
+Xóa phòng ban được chọn cùng với toàn bộ các phòng ban con cháu của nó.
+
+```text
+Engineering
+    │
+    ├── Frontend
+    ├── Backend
+    └── QA
+```
+
+Xóa theo nhánh sẽ xóa toàn bộ cây con.
+
+<Callout type="warning">
+  Delete Department Branch sẽ xóa vĩnh viễn toàn bộ phòng ban con trong nhánh
+  được chọn.
+</Callout>
+
+---
+
+# Quản lý nhân viên trong Sơ đồ tổ chức
+
+Nhân viên có thể được quản lý trực tiếp mà không cần rời khỏi Sơ đồ tổ chức.
+
+Điều này giúp Quản trị viên hoàn tất các thay đổi tổ chức chỉ trong một khu vực làm việc.
+
+---
+
+## Thêm nhân viên đã có
+
+Chọn **Add Employee** từ menu phòng ban.
+
+![Add Employee](/images/add-employee-department.png)
+
+Thiết lập:
+
+| Trường     | Mô tả              |
+| ---------- | -------------------- |
+| Department | Phòng ban đích.       |
+| Employee   | Nhân viên đã tồn tại. |
+| Role       | Vai trò trong phòng ban. |
+
+Sau khi lưu, nhân viên trở thành thành viên của phòng ban.
+
+---
+
+## Đăng ký nhân viên mới
+
+Nếu nhân viên chưa tồn tại, chọn **Create new employee**.
+
+Workflow sẽ mở hộp thoại đăng ký nhân viên.
+
+![Register Employee](/images/register-new-employee.png)
+
+Quản trị viên có thể thiết lập:
+
+| Trường              | Bắt buộc  |
+| -------------------- | :--------: |
+| Full Name            |     ✅     |
+| Email                |     ✅     |
+| Department           | Tùy chọn   |
+| Code                 | Tùy chọn   |
+| Role                 | Tùy chọn   |
+| Approval Authority   | Tùy chọn   |
+
+Sau khi đăng ký, nhân viên sẽ tự động được phân công vào phòng ban đã chọn.
+
+---
+
+## Vai trò trong phòng ban (Department Roles)
+
+Mỗi nhân viên có thể có một vai trò trong phòng ban.
+
+Ví dụ:
+
+- Engineer
+- Team Leader
+- Manager
+- General Manager
+
+Department Role mô tả trách nhiệm của nhân viên trong tổ chức.
+
+Thuộc tính này độc lập với:
+
+- Cấp phê duyệt của ứng dụng
+- Quyền hạn trong Workflow
+- Quyền quản trị hệ thống
+
+---
+
+# Approval Authority
+
+Approval Authority xác định những nhân viên chính thức đại diện cho một phòng ban.
+
+Nhân viên có Approval Authority sẽ có hai đặc quyền:
+
+- Được hiển thị trực tiếp trên Sơ đồ tổ chức.
+- Có thể quản lý các đơn từ (application) ở cấp phòng ban.
+
+![Employee Details](/images/employee-details.png)
+
+---
+
+## Cách hiển thị
+
+Workflow chủ động giới hạn số lượng nhân viên hiển thị trên mỗi nút phòng ban.
+
+Chỉ những nhân viên được đánh dấu **Approval Authority** mới được hiển thị.
+
+Ví dụ:
+
+```text
+Sales Department
+
+Alice
+Department Manager
+
+Bob
+General Manager
+
++18 employee(s)
+
+See all
+```
+
+Các nhân viên còn lại có thể xem trong danh sách nhân viên của phòng ban.
+
+Thiết kế này giúp Sơ đồ tổ chức lớn vẫn dễ đọc.
+
+---
+
+## Chi tiết nhân viên
+
+Thông tin phân công có thể được cập nhật bất cứ lúc nào.
+
+Thông tin có thể chỉnh sửa gồm:
+
+- Department
+- Department Role
+- Approval Authority
+
+Tên và email của nhân viên không thể chỉnh sửa từ Sơ đồ tổ chức.
+
+Các thông tin này được quản lý từ **Employee Management**.
+
+---
+
+## Quy tắc nghiệp vụ
+
+<Accordions>
+
+<Accordion title="Một phòng ban có thể tồn tại mà không có nhân viên không?">
+
+Có.
+
+Phòng ban có thể tồn tại trước khi được phân công nhân viên.
+
+</Accordion>
+
+<Accordion title="Có thể thêm nhân viên trực tiếp từ Sơ đồ tổ chức không?">
+
+Có.
+
+Quản trị viên có thể phân công một nhân viên đã tồn tại hoặc đăng ký một nhân viên mới mà không cần rời khỏi Sơ đồ tổ chức.
+
+</Accordion>
+
+<Accordion title="Một phòng ban có thể có nhiều hơn một nhân viên có Approval Authority không?">
+
+Có.
+
+Một phòng ban có thể có nhiều nhân viên cùng có Approval Authority.
+
+Tất cả những nhân viên này đều được hiển thị trực tiếp trên Sơ đồ tổ chức.
+
+</Accordion>
+
+<Accordion title="Sự khác biệt giữa Department Role và Approval Authority là gì?">
+
+Department Role mô tả vị trí của nhân viên trong phòng ban.
+
+Approval Authority xác định người đại diện phòng ban và cấp quyền quản lý các đơn từ ở cấp phòng ban.
+
+Hai thuộc tính này độc lập với nhau.
+
+</Accordion>
+
+<Accordion title="Có thể chỉnh sửa Tên hoặc Email của nhân viên tại đây không?">
+
+Không.
+
+Chỉ những thông tin liên quan đến phòng ban mới có thể cập nhật từ Sơ đồ tổ chức.
+
+Thông tin cá nhân phải được quản lý từ module Employee Management.
+
+</Accordion>
+
+</Accordions>
