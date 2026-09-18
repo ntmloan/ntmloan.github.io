@@ -1,0 +1,54 @@
+---
+title: Attendance Record Details
+description: Review original and application-generated attendance records for a selected date.
+icon: ListTree
+---
+
+# Attendance Record Details
+
+Attendance Record Details preserves every record associated with a date instead of replacing the original attendance data.
+
+## How Attendance Records Are Stored
+
+Original attendance records are read-only source records captured by an attendance device or another attendance source, such as a mobile attendance app in the future.
+
+Submitting an attendance application does not overwrite or delete the original source record. Workflow adds an application-generated entry to the same date, so the source and application information remain available in the history.
+
+The application-generated record may change the status displayed in the monthly table. When multiple records apply to the same date, Workflow selects the displayed status using the [attendance status priority rules](/en/docs/company-administration/attendance/status#status-priority). Priority affects the displayed result only; it does not modify the underlying records.
+
+---
+
+## Open Attendance Record Details
+
+Select a date in the monthly table to open **Detail Attendance Information** for that day.
+
+![Select a date to open its attendance details](/images/attendance/move-to-detail-records.png)
+
+The dialog shows every original and application-generated record associated with the selected date.
+
+![Original and correction records in Attendance Details](/images/attendance/record-detail.png)
+
+| Column | Description |
+| --- | --- |
+| **No** | The sequence number of the record for the selected date. |
+| **Time** | The check-in and check-out time stored in that record. |
+| **Status** | The attendance status assigned to the record. For an application-generated record, select the link icon beside the status to open the referenced application. |
+| **Record by** | The person or source that created the attendance record. |
+| **Approval status** | The current approval state of the linked application, such as **Pending**, **Approved**, or **Rejected**. A dash indicates that the record is not waiting on an application approval. |
+| **Additional (approval)** | Additional approval information associated with the record, when available. A dash indicates that no additional information applies. |
+
+In the example, the first row is the original **08:17–12:18 Early** record. The second row is the **08:17–17:30 Regularized** correction record linked to an application. Both records remain available so the attendance history is preserved.
+
+## Related Applications
+
+The link icon beside an application-based status opens the referenced application. Use it to review the submitted information, approval route, and current approval state.
+
+The **Create Application** action starts a new application for the selected attendance context. The available application types and fields depend on the Application Definitions configured by the company.
+
+## Permissions
+
+| Action | Company Admin | Standard User |
+| --- | :---: | :---: |
+| View own attendance record details | ✅ | ✅ |
+| Open an application linked to own attendance | ✅ | ✅ |
+| View another employee's attendance records | ❌ | ❌ |

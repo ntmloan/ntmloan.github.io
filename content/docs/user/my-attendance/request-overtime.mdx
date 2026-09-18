@@ -1,0 +1,37 @@
+---
+title: Request Overtime
+description: Create an Overtime application from an attendance date and understand how approval affects My Attendance.
+icon: TimerReset
+---
+
+# Request Overtime
+
+The Overtime flow follows the same attendance-linked application process as Leave.
+
+Follow the complete [Request Leave flow](/en/docs/user/my-attendance/request-leave), with one difference: in the **Application supplement** dialog, select the status linked to the company's Overtime Application Definition instead of Leave.
+
+The flow is:
+
+1. Select the relevant date in My Attendance.
+2. Select **Create Application** from Attendance Record Details.
+3. Select the configured **Overtime** status.
+4. Complete and submit the linked application through [Create Application](/en/docs/applications/create-application).
+5. Review the new pending record and lightning icon in My Attendance.
+6. After approval, Workflow recalculates the displayed badge using the [attendance status priority rules](/en/docs/company-administration/attendance/status#status-priority).
+
+<Callout type="info">
+  **Overtime** is an example status name. Its visible label, form fields, required
+  information, and approval route depend on the configuration of your company.
+</Callout>
+
+As with Leave and [Correct Attendance](/en/docs/user/my-attendance/correct-attendance), the application adds a new attendance record and preserves the original source record.
+
+To follow the application after submission, open its link from Attendance Record Details or use [My Applications](/en/docs/applications/my-applications).
+
+## Permissions
+
+| Action | Company Admin | Standard User |
+| --- | :---: | :---: |
+| Submit own Overtime application | ✅ | ✅ |
+| View the pending record on own attendance | ✅ | ✅ |
+| Open the application linked to own attendance | ✅ | ✅ |

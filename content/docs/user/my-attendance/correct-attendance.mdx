@@ -1,0 +1,123 @@
+---
+title: Correct Attendance
+description: Correct one or multiple attendance dates and submit the resulting applications in bulk.
+icon: Clock3
+---
+
+# Correct Attendance
+
+Use this flow when your recorded check-in or check-out time is missing or incorrect. Original source records remain unchanged; Workflow creates a separate correction application for each date.
+
+The following example shows five dates in May that are marked **Early**. The employee did not actually leave early; they forgot to check out correctly on those dates.
+
+![Five dates incorrectly recorded as Early](/images/attendance/example-wrong-time.png)
+
+<Steps>
+
+### Enter the corrected time and reason
+
+For each date, use the two fields under **Change Time To** to enter the corrected check-in and check-out times. Enter the explanation for the correction under **Reason**.
+
+![Enter corrected check-out times and reasons](/images/attendance/example-correct-time.png)
+
+You only need to enter the time that must change:
+
+- If the date already has the correct check-in time and only the check-out time is wrong, enter only the corrected check-out time.
+- If the date already has the correct check-out time and only the check-in time is wrong, enter only the corrected check-in time.
+- If both check-in and check-out are missing or incorrect, enter both corrected times.
+- **Reason** is required for every correction application.
+
+In this example, the original check-in times are correct, so the employee enters only the corrected check-out time and a reason for each of the five dates.
+
+### Validate the prepared corrections
+
+When you are ready, select **Change**. Workflow detects every row containing correction data and validates the required fields and time values automatically.
+
+If any data is missing or invalid, the affected row displays a validation error so you can correct it. After the prepared rows pass validation, Workflow creates one draft attendance correction application for each date and opens the review dialog.
+
+### Review each application
+
+The **Review Application Details** dialog lists all prepared applications on the left. Select an application directly to move between dates and review its application information and approval route.
+
+![Review the prepared attendance correction applications](/images/attendance/review-applications-dialog.png)
+
+For each application, choose:
+
+- **Confirm** — the information is correct and the application is ready to submit.
+- **Skip** — exclude the application from this submission because its information is not correct or you do not want to submit it yet.
+
+Confirming an application at this stage does not submit it. You can return to any application to change it from **Confirm** to **Skip**, or from **Skip** to **Confirm**.
+
+### Submit the confirmed applications
+
+After every application has been marked **Confirm** or **Skip**, the **Apply All** button appears. Its file count shows how many confirmed applications will be submitted; skipped applications are not included.
+
+![Four confirmed applications and one skipped application](/images/attendance/reviewed-applications-dialog.png)
+
+In this example, four applications are confirmed and one is skipped, so the button displays **Apply All (4 files)**. Select it to submit the four confirmed applications.
+
+![Bulk application submission result](/images/attendance/bulk-apply-result-dialog.png)
+
+The result dialog confirms the number of successfully submitted applications. Select **Confirm** to return to My Attendance.
+
+### Continue with skipped corrections
+
+After submission, each submitted date displays a lightning icon. The icon means an attendance application for that date is being processed. Hover over it for a summary, or open the [attendance record details](/en/docs/user/my-attendance/record-details) to view the related record and application.
+
+The skipped row retains the corrected time and reason you entered, and Workflow focuses its correction field. You can edit the information and repeat the same review flow when you are ready to submit it.
+
+![Submitted applications and the skipped correction retained for editing](/images/attendance/after-apply-application.png)
+
+</Steps>
+
+---
+
+## Status After Approval
+
+Submitting a correction application does not immediately replace the current status in the monthly table. While the application is awaiting approval, the original status remains displayed and the lightning icon indicates that an application is in progress.
+
+After the application is approved, Workflow adds the approved correction record and recalculates the displayed status according to the [attendance status priority rules](/en/docs/company-administration/attendance/status#status-priority).
+
+In this example, the correction application for May 8 is approved:
+
+![Approved attendance correction application for May 8](/images/attendance/example-approve-application.png)
+
+The **Regularized (Correct Time)** status has a higher priority than **Early**, so the monthly table displays the corrected time and the **Regularized** status for May 8.
+
+![My Attendance after the May 8 correction is approved](/images/attendance/corrected-my-attendance.png)
+
+<Callout type="info">
+  Bulk correction prepares several applications in one flow, but each date remains
+  a separate application and proceeds through its own approval route.
+</Callout>
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can I edit my original attendance directly?">
+
+No. The original recorded times and status are read-only. A correction is stored as an additional application-generated record.
+
+</Accordion>
+
+<Accordion title="Can I correct more than one date at a time?">
+
+Yes. Enter the corrected time and reason for each date, select **Change**, review each application, then use **Apply All** to submit only the applications you confirmed.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Permissions
+
+| Action | Company Admin | Standard User |
+| --- | :---: | :---: |
+| Correct own attendance | ✅ | ✅ |
+| Prepare corrections for multiple dates | ✅ | ✅ |
+| Review and submit own correction applications | ✅ | ✅ |
+| Correct another employee's attendance | ❌ | ❌ |

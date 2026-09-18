@@ -1,0 +1,5 @@
+{
+  "title": "Chấm công của tôi",
+  "icon": "UserCheck",
+  "pages": ["correct-attendance", "request-leave", "request-overtime", "record-details"]
+}

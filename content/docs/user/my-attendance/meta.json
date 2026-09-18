@@ -1,0 +1,5 @@
+{
+  "title": "My Attendance",
+  "icon": "UserCheck",
+  "pages": ["correct-attendance", "request-leave", "request-overtime", "record-details"]
+}

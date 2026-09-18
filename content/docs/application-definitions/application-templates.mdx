@@ -1,0 +1,110 @@
+---
+title: Application Templates
+description: Install ready-made Application Definitions and their linked feature configuration.
+icon: LayoutTemplate
+---
+
+# Application Templates
+
+Application Templates let Company Admins install ready-made Application Definitions instead of building every form and rule from the beginning.
+
+A template can configure more than the Application Definition itself. It can also create the linked configuration required by another Workflow feature. The currently available templates integrate with Attendance, but the template system can support other features in the future.
+
+---
+
+## Open Application Templates
+
+From **Application Definitions**, open **Create Application Route**, then select **Template Application**.
+
+![Open Template Application from Application Definitions](/images/application-definition-templates.png)
+
+---
+
+## Available Templates
+
+Workflow currently provides three Attendance templates:
+
+| Template | Purpose |
+| --- | --- |
+| **Leave Request** | Creates the application used to associate approved leave with an attendance date or period. |
+| **Overtime Request** | Creates the application used to associate approved overtime with attendance. |
+| **Attendance Correction Request** | Creates the application used to correct missing or incorrect check-in and check-out times. |
+
+All three templates belong to the **Attendance** application category and include the required form structure and input rules for their workflow.
+
+![The three available Attendance application templates](/images/application-definition-install-templates-dialog.png)
+
+An already installed template is marked **Installed** and cannot be selected again. Select one or more available templates, then select **Install**.
+
+---
+
+## What Installation Creates
+
+Installing a template adds its Application Definition to the Application Definitions list with a **System** badge.
+
+![Application Definitions created from the installed templates](/images/application-definition-after-install-templates.png)
+
+Each installed definition is created as **Inactive** with its standard configuration prepared, including:
+
+- Application category and name.
+- Required form fields.
+- Input rules used by the template workflow.
+- The feature linkage required by Attendance.
+
+The Approval Route is company-specific and is not installed automatically. Before employees can use the application:
+
+1. Open the installed Application Definition.
+2. Configure its [Approval Route](/en/docs/application-definitions/approval-route).
+3. Review the generated configuration.
+4. Activate the Application Definition.
+
+After activation, the application is ready for its linked Attendance workflow.
+
+---
+
+## Attendance Integration
+
+Installing the Attendance templates also creates the corresponding [Attendance Statuses](/en/docs/company-administration/attendance/status):
+
+- **Leave**
+- **Overtime**
+- **Regularized (Correct Time)**
+
+![Attendance Statuses created by the installed templates](/images/attendance/attendance-status-after-install-templates.png)
+
+These statuses are already linked to their Application Definition and include the required start-time and end-time field mappings. This connection lets an approved application add a record to the applicable attendance date and participate in the attendance status priority calculation.
+
+### Editable status fields
+
+Template-installed statuses are system-managed. Company Admins can customize only their basic presentation fields:
+
+- Status name
+- Background color
+- Border color
+
+The category, linked application, time-field mappings, and other template-controlled behavior are read-only so the Attendance integration remains valid.
+
+![Editable and system-managed fields of a template-installed Attendance Status](/images/attendance/attendance-status-after-install-templates-detail.png)
+
+<Callout type="info">
+  Changing the visible status name does not break the integration. Workflow uses
+  the underlying template and application linkage when processing Attendance records.
+</Callout>
+
+---
+
+## Employee Workflows
+
+After the corresponding Application Definition has an Approval Route and is active, employees can use it from My Attendance:
+
+- [Correct Attendance](/en/docs/user/my-attendance/correct-attendance)
+- [Request Leave](/en/docs/user/my-attendance/request-leave)
+- [Request Overtime](/en/docs/user/my-attendance/request-overtime)
+
+Applications submitted from these flows add application-generated Attendance records without overwriting the original source records.
+
+---
+
+## Future Template Types
+
+Attendance is the first integration supported by Application Templates. The template model is designed to support additional Workflow features later, where installing a template may create both an Application Definition and the related feature configuration it needs.

@@ -1,0 +1,183 @@
+---
+title: My Attendance
+description: Review your attendance records, switch Work Shifts, navigate by month, and filter by status.
+icon: CalendarDays
+---
+
+# My Attendance
+
+**My Attendance** is a standalone employee self-service page for reviewing your own attendance and starting attendance-related actions.
+
+The page is available to both Standard Users and Company Admins. Regardless of your role, it only displays the attendance records of the account currently signed in.
+
+---
+
+## Access My Attendance
+
+Select **My Attendance** from the sidebar.
+
+<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+  <figure>
+    <ImageZoom
+      src="/images/attendance/access-menu-user-side.png"
+      alt="My Attendance in the Standard User sidebar"
+      width={2551}
+      height={1305}
+      className="w-full rounded-lg border"
+    />
+    <figcaption className="mt-2 text-center text-sm text-fd-muted-foreground">
+      Standard User sidebar
+    </figcaption>
+  </figure>
+  <figure>
+    <ImageZoom
+      src="/images/attendance/access-menu-admin-side.png"
+      alt="My Attendance in the Company Admin sidebar"
+      width={2557}
+      height={1300}
+      className="w-full rounded-lg border"
+    />
+    <figcaption className="mt-2 text-center text-sm text-fd-muted-foreground">
+      Company Admin sidebar
+    </figcaption>
+  </figure>
+</div>
+
+---
+
+## What You Can Do
+
+From My Attendance, you can:
+
+- View your attendance records for the selected month.
+- Switch between the company's active Work Shifts.
+- Navigate to another month and filter records by attendance status.
+- Review your recorded check-in time, check-out time, and current status.
+- Correct one or multiple attendance dates.
+- Request leave or overtime through the company's configured applications.
+- Open the complete record history for a date.
+
+<Cards>
+  <Card
+    title="Correct attendance"
+    description="Correct the time for one or multiple dates and review the applications before submitting."
+    href="/en/docs/user/my-attendance/correct-attendance"
+  />
+  <Card
+    title="Request leave"
+    description="Submit a configured Leave application and understand how approval affects attendance."
+    href="/en/docs/user/my-attendance/request-leave"
+  />
+  <Card
+    title="Request overtime"
+    description="Submit a configured Overtime application and understand how approval affects attendance."
+    href="/en/docs/user/my-attendance/request-overtime"
+  />
+  <Card
+    title="View attendance record details"
+    description="Review original and application-generated records for a selected date."
+    href="/en/docs/user/my-attendance/record-details"
+  />
+</Cards>
+
+---
+
+## Switch Work Shift
+
+The page header shows the currently selected Work Shift, including its name, working days, working hours, and break time.
+
+Use the Work Shift selector on the right side of the header to switch to another active Work Shift. The attendance records are then displayed and evaluated against the selected schedule.
+
+![Switch Work Shift from My Attendance](/images/attendance/switch-workshift.png)
+
+<Callout type="info">
+  Switching the Work Shift changes the schedule used to view your attendance. It
+  does not change your Work Shift assignment or modify the original attendance records.
+</Callout>
+
+---
+
+## Navigate and Filter Records
+
+### Navigate by month
+
+Use the arrows on either side of the month to move to the previous or next month. To move to a different period more quickly, select the displayed month and year, then choose the target month and year from the selector.
+
+### Filter by attendance status
+
+The filter bar shows **All** and the attendance statuses that occur in the selected month. **All** is selected by default. Select a status directly to show only the dates with that status.
+
+![Navigate by month and filter attendance records by status](/images/attendance/my-attendance-filter.png)
+
+The separators in the filter bar identify three status groups:
+
+| Group | Status or application type | Description |
+| --- | --- | --- |
+| Basic attendance status | **On Time** | The recorded working time follows the schedule of the selected Work Shift. |
+| Basic attendance status | **Early** | The employee checked out before the scheduled end time. |
+| Basic attendance status | **Late** | The employee checked in after the scheduled start time. |
+| Basic attendance status | **Missing** | A check-out record is missing. |
+| Basic attendance status | **No Check In** | Both check-in and check-out records are missing. |
+| Application-based status | **Leave** | Attendance affected by an approved leave application. |
+| Application-based status | **Regularized (Correct Time)** | Attendance updated through an approved time-correction application. |
+| Application-based status | **Overtime** | Attendance associated with an approved overtime application. |
+| Custom status | Company-defined | A status defined by the company for its own business rules. |
+
+<Callout type="info">
+  **Leave**, **Regularized (Correct Time)**, and **Overtime** describe application
+  types. Company Admins can change their displayed status names, so the labels in
+  your filter may differ. Custom statuses are also named and configured by the company.
+</Callout>
+
+### Monthly table columns
+
+Each row represents one date and displays:
+
+| Information | Description |
+| --- | --- |
+| Date | The attendance date and day of the week. |
+| Check In | Your recorded check-in time. |
+| Check Out | Your recorded check-out time. |
+| Current Status | The status selected from the records that apply to the date. |
+| Change Time To | The corrected check-in and/or check-out time you want to request. |
+| Reason | The required reason for an attendance correction. |
+
+Original source records are read-only. Applications add new records instead of overwriting them. See [Attendance Record Details](/en/docs/user/my-attendance/record-details) to learn how the history is preserved.
+
+---
+
+## Business Rules
+
+<Accordions>
+
+<Accordion title="Can I see another employee's attendance?">
+
+No. My Attendance only displays records belonging to the account currently signed in.
+
+</Accordion>
+
+<Accordion title="Can Company Admins use My Attendance?">
+
+Yes. A Company Admin can open My Attendance from the admin sidebar, but the page still displays only that admin's own attendance records.
+
+</Accordion>
+
+<Accordion title="Does switching the Work Shift change my assignment?">
+
+No. It changes the schedule used to display and evaluate the records; it does not update your Work Shift assignment or original attendance data.
+
+</Accordion>
+
+</Accordions>
+
+---
+
+## Permissions
+
+| Action | Company Admin | Standard User |
+| --- | :---: | :---: |
+| Open My Attendance | ✅ | ✅ |
+| View own attendance | ✅ | ✅ |
+| View another employee's attendance | ❌ | ❌ |
+| Switch the displayed Work Shift | ✅ | ✅ |
+| Filter own attendance records | ✅ | ✅ |

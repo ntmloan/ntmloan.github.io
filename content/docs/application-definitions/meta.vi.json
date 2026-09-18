@@ -3,6 +3,7 @@
   "icon": "Workflow",
   "pages": [
     "index",
+    "application-templates",
     "application-categories",
     "form-builder",
     "approval-route",

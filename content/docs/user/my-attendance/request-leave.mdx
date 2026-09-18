@@ -1,0 +1,88 @@
+---
+title: Request Leave
+description: Create a Leave application from an attendance date and understand how approval changes its displayed status.
+icon: CalendarOff
+---
+
+# Request Leave
+
+Use a Leave application when an attendance date is recorded as missing even though you were on leave.
+
+In this example, May 4 is displayed as **No Check In**, but the employee was actually on leave that day.
+
+![May 4 incorrectly displayed as No Check In](/images/attendance/example-leave.png)
+
+<Steps>
+
+### Open the attendance record details
+
+Select the date you want to update. My Attendance opens **Detail Attendance Information** for that date.
+
+If you are not familiar with this dialog, see [Attendance Record Details](/en/docs/user/my-attendance/record-details) for instructions and a description of every column.
+
+![Attendance Record Details with the Create Application action](/images/attendance/record-detail.png)
+
+### Select Create Application
+
+Select **Create Application** at the bottom of the dialog. The **Application supplement** dialog opens for the selected date.
+
+Choose the attendance status that corresponds to the application you want to create. In this scenario, select **Leave**.
+
+![Select the Leave status for the selected attendance date](/images/attendance/example-leave-apply-application.png)
+
+<Callout type="info">
+  **Leave** is the example status name. Company Admins can rename the status when
+  configuring the linked application, so the label displayed by your company may differ.
+</Callout>
+
+### Complete and submit the application
+
+After you select the status, Workflow opens [Create Application](/en/docs/applications/create-application) with the linked Leave Application Definition and selected attendance date.
+
+Complete the configured fields, review the approval route, and submit the application using the normal application flow. The exact fields and required information depend on the Application Definition configured by your company.
+
+### Review the pending attendance record
+
+Because the Leave application is linked to attendance, submitting it adds a new application-generated record to the selected date. It does not replace or delete the original **No Check In** record.
+
+The new Leave record appears in Attendance Record Details with the **Pending** approval status.
+
+![Pending Leave record added to the selected date](/images/attendance/example-leave-after-apply.png)
+
+This is the same record-history behavior used by [Correct Attendance](/en/docs/user/my-attendance/correct-attendance): the original source record is preserved and the application creates an additional record.
+
+While the Leave application is being processed, a lightning icon appears on the date in the monthly table. The current badge remains **No Check In** until the application is fully approved.
+
+![Lightning icon for a pending Leave application](/images/attendance/example-after-apply-table.png)
+
+### View the approved result
+
+After the Leave application is fully approved, Workflow recalculates the status displayed for the date using the [attendance status priority rules](/en/docs/company-administration/attendance/status#status-priority).
+
+In this scenario, **Leave** has a higher display priority than the fallback **No Check In** status, so the badge for May 4 changes to **Leave**.
+
+![May 4 displayed as Leave after approval](/images/attendance/example-leave-after-approve-table.png)
+
+</Steps>
+
+---
+
+## Track the Application
+
+Select the application link beside the Leave status in Attendance Record Details to open the referenced application. You can also track it from [My Applications](/en/docs/applications/my-applications).
+
+## Business Rules
+
+- Only attendance statuses linked to an Application Definition can start an application from Attendance Record Details.
+- The status label may differ between companies, but its linked application determines the flow.
+- A submitted Leave application adds a record to the selected date; it does not overwrite the original attendance record.
+- A pending application does not immediately replace the current badge in the monthly table.
+- The displayed badge is recalculated after approval according to status priority.
+
+## Permissions
+
+| Action | Company Admin | Standard User |
+| --- | :---: | :---: |
+| Submit own Leave application | ✅ | ✅ |
+| View the pending record on own attendance | ✅ | ✅ |
+| Open the application linked to own attendance | ✅ | ✅ |

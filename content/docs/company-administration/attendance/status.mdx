@@ -49,10 +49,9 @@ Workflow includes the following default attendance statuses.
 These statuses are available immediately after Attendance Tracking is enabled.
 
 <Callout type="info">
-  Statuses such as **Overtime** or **Paid Leave** are not built in. Configure
-  them as custom statuses (see below) so they can be linked to the
-  corresponding Application Definition — for example, an Overtime or Leave
-  application.
+  Statuses such as **Overtime**, **Leave**, and **Regularized** are not built in.
+  They can be configured manually or created automatically by installing the
+  corresponding [Application Templates](/en/docs/application-definitions/application-templates).
 </Callout>
 
 ---
@@ -60,6 +59,8 @@ These statuses are available immediately after Attendance Tracking is enabled.
 ## Custom Attendance Status
 
 Organizations can create additional attendance statuses — such as Overtime or Paid Leave — to support internal attendance policies.
+
+Installing an Attendance [Application Template](/en/docs/application-definitions/application-templates#attendance-integration) creates a preconfigured, system-managed status automatically. Template-installed statuses keep their application and time-field mappings read-only, while allowing Company Admins to change the status name and colors.
 
 A custom attendance status is always linked to an existing **Application Definition** (for example, an Overtime or Leave application). This is what lets Workflow automatically apply the status to an employee's attendance record when a matching application is approved.
 
@@ -155,6 +156,27 @@ Typical examples include:
 - Weekend Work
 
 When disabled, Workflow evaluates attendance only within the configured Work Shift.
+
+---
+
+## Status Priority
+
+A date may contain multiple attendance records from attendance devices, correction applications, other business applications, or custom sources. As a result, more than one attendance status may apply to the same date.
+
+The configured status priority determines which status appears in the monthly attendance table. A lower priority number has a higher display priority. When multiple statuses apply, Workflow displays the matching status with the lowest priority number.
+
+| Display priority | Matching status or application template | Result |
+| :---: | --- | --- |
+| **0** | **On Time** status | On Time has the highest display priority. |
+| **1** | **Regularization** application template | Displays the status associated with an attendance correction application. |
+| **2** | **Late** or **Early** status | Displays the applicable schedule deviation. |
+| **3** | **Missing** status | Displays an incomplete attendance record. |
+| **4** | **Leave** application template | Displays the status associated with a leave application. |
+| **Fallback** | Any other status or application template | Uses the lowest display priority after the explicitly ranked statuses above. |
+
+Application-based entries are matched by their template code, not by their displayed label. This means Company Admins can rename the visible Regularization or Leave status without changing its position in the priority order.
+
+Status priority controls the displayed result only. It does not overwrite, delete, or otherwise modify the underlying attendance records shown in Attendance Details.
 
 ---
 

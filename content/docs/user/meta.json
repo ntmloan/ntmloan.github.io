@@ -1,0 +1,5 @@
+{
+  "title": "User (Employee)",
+  "icon": "User",
+  "pages": ["my-attendance"]
+}

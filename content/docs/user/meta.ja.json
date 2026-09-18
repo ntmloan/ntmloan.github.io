@@ -1,0 +1,5 @@
+{
+  "title": "ユーザー（従業員）",
+  "icon": "User",
+  "pages": ["my-attendance"]
+}
