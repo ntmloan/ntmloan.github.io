@@ -1,16 +1,14 @@
 ---
 title: Attendance Status
-description: Built-in and custom attendance statuses, colors, and how they are evaluated.
+description: Built-in and application-based statuses used in Attendance Tracking.
 icon: Tag
 ---
 
 # Attendance Status
 
-Attendance Status defines the result of an employee's attendance record after it has been evaluated against the assigned Work Shift.
+Attendance statuses describe an employee's attendance result. Workflow calculates built-in statuses from attendance data and the assigned Work Shift. It can also add statuses from approved applications, such as Leave, Overtime, or a company-specific request.
 
-Workflow provides several built-in attendance statuses and allows administrators to create additional custom statuses to support company-specific attendance policies.
-
-Attendance statuses are displayed throughout the Attendance Tracking module using color-coded labels.
+Statuses appear as color-coded labels in Attendance Tracking.
 
 ![Attendance Status](/images/attendance-status-list.png)
 
@@ -18,256 +16,184 @@ Attendance statuses are displayed throughout the Attendance Tracking module usin
 
 ## Overview
 
-Each attendance record is assigned a status that describes the employee's attendance condition.
-
-Workflow provides six built-in statuses out of the box:
+Workflow provides seven built-in statuses:
 
 - No Check-in
 - No Record
 - Not Started
 - On Time
-- Late / Early
+- Late
+- Early
 - Missing
 
-Administrators can also define additional **custom statuses** — such as Overtime or Paid Leave — when required.
+Company Admins can also configure application-based statuses for approved applications that need to appear in Attendance Tracking.
 
 ---
 
 ## Built-in Statuses
 
-Workflow includes the following default attendance statuses.
+Built-in statuses are evaluated automatically from attendance data and the employee's assigned Work Shift.
 
-| Status           | Description                                                     |
-| ---------------- | ------------------------------------------------------------------ |
-| **No Check-in**  | No attendance record was submitted for a scheduled working day.    |
-| **No Record**    | No attendance data exists for the day.                             |
-| **Not Started**  | The scheduled working period has not started yet.                  |
-| **On Time**      | Attendance falls within the expected working schedule.             |
-| **Late / Early** | Employee checked in late or checked out early.                     |
-| **Missing**      | Attendance information is incomplete or invalid.                   |
-
-These statuses are available immediately after Attendance Tracking is enabled.
+| Status | Description |
+| --- | --- |
+| **No Check-in** | The employee did not check in on a scheduled working day. |
+| **No Record** | No attendance data exists for the day. |
+| **Not Started** | The scheduled working period has not started yet. |
+| **On Time** | The employee's attendance is within the scheduled working hours. |
+| **Late** | The employee checked in after the scheduled start time. |
+| **Early** | The employee checked out before the scheduled end time. |
+| **Missing** | Required attendance information is incomplete or invalid. |
 
 <Callout type="info">
-  Statuses such as **Overtime**, **Leave**, and **Regularized** are not built in.
-  They can be configured manually or created automatically by installing the
-  corresponding [Application Templates](/en/docs/application-definitions/application-templates).
+  **Overtime**, **Leave**, and **Regularized (Correct Time)** are not built-in
+  statuses. Installing the corresponding [Application
+  Template](/en/docs/application-definitions/application-templates#attendance-integration)
+  creates the application and its linked attendance status automatically.
 </Callout>
 
 ---
 
-## Custom Attendance Status
+## Statuses and Applications
 
-Organizations can create additional attendance statuses — such as Overtime or Paid Leave — to support internal attendance policies.
+An application-based status connects an **Application Definition** to Attendance Tracking. The Application Definition provides the form that employees complete and submit, while the attendance status defines how data from an approved application becomes an attendance record.
 
-Installing an Attendance [Application Template](/en/docs/application-definitions/application-templates#attendance-integration) creates a preconfigured, system-managed status automatically. Template-installed statuses keep their application and time-field mappings read-only, while allowing Company Admins to change the status name and colors.
+The numbered fields in the example work as follows:
 
-A custom attendance status is always linked to an existing **Application Definition** (for example, an Overtime or Leave application). This is what lets Workflow automatically apply the status to an employee's attendance record when a matching application is approved.
+1. **Status presentation** — Defines the status name, background color, and border color displayed on the generated attendance record.
+2. **Application** — Selects the Application Definition that provides the form employees complete and submit.
+3. **Start Time** — Maps a date/time field from the application form to the start time of the generated attendance record.
+4. **End Time** — Maps a different date/time field from the application form to the end time of the generated attendance record.
 
-Click **Add Status** from the Attendance Tracking page.
+After an employee completes the form and the application is approved, Workflow creates an application-generated attendance record. It uses the submitted values from the mapped Start Time and End Time fields, together with the configured status name and colors.
 
-![Add Attendance Status](/images/add-attendance-status.png)
+![How an application-based attendance status creates an attendance record](/images/attendance/how-attendance-status-work.jpg)
 
----
+The application-generated record does not replace the employee's original attendance data. Both remain available in Attendance Details, while [status priority](#status-priority) determines which result appears in the monthly attendance table.
 
-## Create a Status
-
-Selecting a **Category** and **Application** loads that application's form fields, which Workflow uses to resolve the applicable time range and, optionally, filter conditions for the status.
-
-Configure the following information.
-
-| Field                          | Required | Description                                                                                          |
-| -------------------------------- | :------: | --------------------------------------------------------------------------------------------------------- |
-| Status Name                       |    ✅    | Display name of the attendance status. Limited to 20 characters.                                          |
-| Background Color                  |    ✅    | Background color used in Attendance Tracking.                                                              |
-| Border Color                       |    ✅    | Border color used for the status label.                                                                    |
-| Category                           |    ✅    | Classification of the attendance status.                                                                   |
-| Application                        |    ✅    | The Application Definition this status is linked to.                                                       |
-| Start Time                         |    ✅    | Date/time form field used as the beginning of the applicable time range. Must differ from End Time.        |
-| End Time                           |    ✅    | Date/time form field used as the end of the applicable time range.                                         |
-| Filter Conditions                  | Optional | Up to 2 conditions, based on the linked application's dropdown/radio/checkbox fields, that narrow when this status applies. |
-| Allow Time Outside Work Shift      | Optional | Allows this status to be applied outside the assigned Work Shift's scheduled hours.                        |
-
-After saving, the new status becomes available throughout Attendance Tracking.
+Installing an Attendance Application Template creates a preconfigured status and mapping for **Overtime**, **Leave**, or **Regularized (Correct Time)**. For these system-managed statuses, Company Admins can change only the status name and colors; the application and time-field mappings remain read-only.
 
 ---
 
-## Status Categories
+## Create a Custom Status
 
-Each attendance status belongs to a category.
+Create a custom status when your company needs to classify an attendance activity that is not covered by Workflow's standard **Leave**, **Regularization**, or **Overtime** processes. Examples include business trips, work from home, training, and client visits.
 
-Categories determine how Workflow interprets the attendance record.
+Do not create a custom status only to rename or recolor one of the standard processes. Install its [Application Template](/en/docs/application-definitions/application-templates#attendance-integration), then customize the generated status instead.
 
-Examples include:
+A custom status does not define the application form or its approval process. Create and activate the Application Definition first, including its form fields and Approval Route. The attendance status can then map data from approved applications into Attendance Tracking.
 
-- Working Time
-- Leave
-- Overtime
-- Missing Attendance
+The following example creates a **Business Trip** status.
 
-The available categories may vary depending on the enabled Workflow features.
+<Steps>
 
----
+### Create the Application Definition
 
-## Color Configuration
+Create and activate a [Business Trip Application Definition](/en/docs/application-definitions). Configure the form employees will complete and the Approval Route the submitted applications must follow.
 
-Each status is displayed using configurable colors.
+The form must include two date/time fields that Attendance can use as the beginning and end of the business trip. In this example, they are **Departure Time** and **Return Time**.
 
-Administrators can define:
+![Business Trip Application Definition with its form fields](/images/attendance/business-trip-application-definition.png)
 
-- Background Color
-- Border Color
+### Select the Work Shift
 
-Consistent colors help users identify attendance conditions quickly.
+Open **Attendance Tracking**, then select the Work Shift where you want to add the status. The custom status becomes available to employees assigned to this Work Shift.
 
-Example:
+![Select the Work Shift to configure](/images/attendance/choose-your-work-shift.png)
 
-| Status                | Example |
-| ---------------------- | ------- |
-| On Time                | Green   |
-| Late / Early           | Yellow  |
-| Missing                | Red     |
-| Paid Leave (custom)    | Purple  |
+### Add the status
 
----
+On the selected Work Shift's Attendance Tracking page, select **Add Status** below the attendance table.
 
-## Time-based Status
+![Add a status to the selected Work Shift](/images/attendance/add-your-status.png)
 
-Some attendance statuses are evaluated using a time range.
+### Configure the Business Trip status
 
-Example:
+Set **Application** to **Business Trip Request**, then map **Start Time** to **Departure Time** and **End Time** to **Return Time**.
 
-| Start Time | End Time |
-| ---------- | -------- |
-| 18:00      | 21:00    |
+![Configure the Business Trip attendance status](/images/attendance/business-trip-attendance-status.png)
 
-Workflow applies the configured status when attendance records fall within the specified period.
+| Field | Required | Description |
+| --- | :---: | --- |
+| Status Name | Yes | Display name of the attendance status. Limited to 20 characters. |
+| Background Color | Yes | Background color used for the status label in Attendance Tracking. |
+| Border Color | Yes | Border color used for the status label. |
+| Category | Yes | Classification of the attendance status. |
+| Application | Yes | Application Definition employees use to submit the request. |
+| Start Time | Yes | Date/time field in the application that supplies the beginning of the attendance period. It must differ from End Time. |
+| End Time | Yes | Date/time field in the application that supplies the end of the attendance period. |
+| Filter Conditions | No | Up to two conditions that limit when the status applies. Conditions can use dropdown, radio, or checkbox fields from the selected application. |
+| Allow Time Outside Work Shift | No | Allows the status to cover time outside the employee's assigned Work Shift. |
+
+Select the **Category** and **Application** first. Workflow then loads the application's eligible fields for the time mappings and Filter Conditions.
+
+Select **Create** to add the status to the Work Shift.
+
+### Submit a Business Trip application from My Attendance
+
+After the status is created, **Business Trip** appears in the Create Application menu for applicable dates in **My Attendance**. Selecting it opens the linked Business Trip form so the employee can complete and submit the application through its configured Approval Route.
+
+![Business Trip available from My Attendance](/images/attendance/business-trip-append-to-my-attendance.png)
+
+The submission flow is the same as [Request Leave](/en/docs/user/my-attendance/request-leave): open an attendance date, select **Create Application**, choose the status, complete the linked form, and submit it for approval.
+
+</Steps>
 
 ---
 
 ## Allow Time Outside Work Shift
 
-Enable **Allow Time Outside Work Shift** when the status should be applied outside normal working hours.
+By default, an application-based status is limited to the employee's scheduled Work Shift. Enable **Allow Time Outside Work Shift** when the approved period should also cover time before the shift starts or after it ends.
 
-Typical examples include:
-
-- Overtime
-- Night Shift
-- Weekend Work
-
-When disabled, Workflow evaluates attendance only within the configured Work Shift.
+For example, an employee's Work Shift ends at 17:30 and an approved Overtime application covers 17:30–20:00. The Overtime status needs this option enabled so the time after 17:30 is included.
 
 ---
 
 ## Status Priority
 
-A date may contain multiple attendance records from attendance devices, correction applications, other business applications, or custom sources. As a result, more than one attendance status may apply to the same date.
+More than one status can apply to the same date. This can happen when attendance devices, correction applications, leave applications, or other sources create separate records for that date.
 
-The configured status priority determines which status appears in the monthly attendance table. A lower priority number has a higher display priority. When multiple statuses apply, Workflow displays the matching status with the lowest priority number.
+Priority determines which status appears in the monthly attendance table. A lower number has a higher display priority.
 
 | Display priority | Matching status or application template | Result |
 | :---: | --- | --- |
 | **0** | **On Time** status | On Time has the highest display priority. |
 | **1** | **Regularization** application template | Displays the status associated with an attendance correction application. |
-| **2** | **Late** or **Early** status | Displays the applicable schedule deviation. |
+| **2** | **Late** or **Early** status | Displays the applicable schedule deviation. Late and Early have the same priority. |
 | **3** | **Missing** status | Displays an incomplete attendance record. |
 | **4** | **Leave** application template | Displays the status associated with a leave application. |
 | **Fallback** | Any other status or application template | Uses the lowest display priority after the explicitly ranked statuses above. |
 
-Application-based entries are matched by their template code, not by their displayed label. This means Company Admins can rename the visible Regularization or Leave status without changing its position in the priority order.
+Application-based entries are matched by their template code, not by their displayed label. Renaming the visible Regularization or Leave status does not change its priority.
 
-Status priority controls the displayed result only. It does not overwrite, delete, or otherwise modify the underlying attendance records shown in Attendance Details.
-
----
-
-## Status Display
-
-Attendance statuses appear consistently throughout the Attendance module.
-
-Statuses are displayed in:
-
-- Attendance Grid
-- Attendance Detail
-- Attendance Summary
-- Status Legend
-
-This ensures users can interpret attendance records consistently across the system.
+Priority controls only the result displayed in the monthly table. It does not overwrite or delete the underlying records in Attendance Details.
 
 ---
 
-## Status Evaluation
-
-Workflow evaluates attendance records in the following order.
-
-```text
-Attendance Record
-        │
-        ▼
-Assigned Work Shift
-        │
-        ▼
-Working Time Rules
-        │
-        ▼
-Attendance Status
-        │
-        ▼
-Attendance Grid
-Attendance Summary
-Reports
-```
-
-Every attendance record is evaluated independently before being displayed.
-
----
-
-## Business Rules
+## FAQ
 
 <Accordions>
 
 <Accordion title="Are Overtime and Paid Leave built-in statuses?">
 
-No.
-
-Workflow's built-in statuses are No Check-in, No Record, Not Started, On Time, Late / Early, and Missing. Overtime, Paid Leave, and similar statuses are common examples of **custom statuses** that administrators configure and link to an Application Definition.
+No. Workflow can create linked statuses automatically when you install the corresponding Attendance Application Templates. If your company uses its own Application Definition, create and map a custom status instead.
 
 </Accordion>
 
-<Accordion title="Can administrators create additional attendance statuses?">
+<Accordion title="When do Filter Conditions appear?">
 
-Yes.
-
-Organizations may create custom attendance statuses to support company-specific attendance policies.
-
-</Accordion>
-
-<Accordion title="Can status colors be customized?">
-
-Yes.
-
-Each attendance status supports configurable background and border colors.
+Select an Application first. Workflow then loads its eligible dropdown, radio, and checkbox fields. You can add up to two conditions to control when the status applies.
 
 </Accordion>
 
 <Accordion title="Can a status apply outside normal working hours?">
 
-Yes.
-
-Enable **Allow Time Outside Work Shift** for statuses such as Overtime or Weekend Work.
+Yes. Enable **Allow Time Outside Work Shift** when the application-based period must include time outside the assigned Work Shift, such as overtime after the scheduled end time.
 
 </Accordion>
 
-<Accordion title="Where are attendance statuses displayed?">
+<Accordion title="Does an approved application replace attendance data?">
 
-Attendance statuses are displayed consistently throughout the Attendance Tracking module, including the Attendance Grid, Attendance Details, Attendance Summary, and Status Legend.
-
-</Accordion>
-
-<Accordion title="Does every attendance record have a status?">
-
-Yes.
-
-Every attendance record is evaluated against the assigned Work Shift and attendance rules before a status is assigned.
+No. It adds an application-generated attendance record. The original records remain available in Attendance Details, and status priority determines which result appears in the monthly table.
 
 </Accordion>
 
@@ -277,10 +203,10 @@ Every attendance record is evaluated against the assigned Work Shift and attenda
 
 ## Permissions
 
-| Action                   | Company Admin | Standard User |
-| ------------------------ | :-----------: | :-----------: |
-| View Attendance Statuses |      ✅       |      ❌       |
-| Create Attendance Status |      ✅       |      ❌       |
-| Edit Attendance Status   |      ✅       |      ❌       |
-| Configure Status Colors  |      ✅       |      ❌       |
-| Configure Status Rules   |      ✅       |      ❌       |
+| Action | Company Admin | Standard User |
+| --- | :---: | :---: |
+| View Attendance Statuses | ✅ | ❌ |
+| Create Attendance Status | ✅ | ❌ |
+| Edit Attendance Status | ✅ | ❌ |
+| Configure Status Colors | ✅ | ❌ |
+| Configure Status Rules | ✅ | ❌ |
