@@ -1,249 +1,118 @@
 ---
-title: Overview & Work Shift
-description: Introduction to Attendance Tracking and how to configure company Work Shifts.
+title: Set up and manage Work Shifts
+description: Create the schedules used to evaluate attendance records for your company.
+icon: Clock
 ---
 
-# Attendance
+A Work Shift defines the working days, start and end times, and optional break period used to evaluate attendance. Complete this setup before importing attendance data or asking employees to use **My Attendance**.
 
-Attendance Tracking enables organizations to define standard working schedules and use them as the foundation for attendance management, status evaluation, and reporting.
+## Before you start
 
-A **Work Shift** specifies when employees are expected to work, including working days, working hours, and optional break periods.
-
-All attendance records are evaluated against the assigned Work Shift to determine attendance statuses such as **On Time**, **Late / Early**, or **Missing**. Additional statuses — such as Overtime or Paid Leave — can be configured as custom attendance statuses.
+- **Required role:** Company Admin
+- **Required feature:** Attendance must be enabled for the company
+- **You'll need:** The working days and hours for the schedule
+- **Estimated completion time:** About 5 minutes per Work Shift
 
 <Callout type="info">
-  Attendance Tracking is an optional feature and is only available for companies
-  that have this module enabled.
+  The Attendance menu is hidden when the Attendance feature is not enabled for the company.
 </Callout>
-
----
-
-## Overview
-
-Attendance Tracking consists of three core components.
-
-```text
-Work Shift
-      │
-      ▼
-Attendance Records
-      │
-      ▼
-Attendance Status & Reports
-```
-
-Administrators can:
-
-- Configure company work shifts.
-- Define working days and working hours.
-- Configure break periods.
-- Set the default work shift.
-- Activate or deactivate work shifts.
-- Manage attendance data based on each work shift.
-
-![Work Shift List](/images/work-shift-list.png)
-
----
-
-## Work Shift
-
-A **Work Shift** defines the standard working schedule used by the company or a group of employees.
-
-Each Work Shift includes:
-
-- Working days
-- Start time
-- End time
-- Optional break period
-- Status
-- Default assignment
-
-Multiple Work Shifts allow organizations to support different schedules, such as office staff, factory workers, or weekend teams.
-
----
-
-## Work Shift List
-
-The Work Shift page displays every configured work shift.
-
-Each card displays:
-
-| Information     | Description                                                       |
-| --------------- | ----------------------------------------------------------------- |
-| Work Shift Name | Display name of the work shift.                                   |
-| Working Days    | Days included in the schedule.                                    |
-| Working Hours   | Daily working time range.                                         |
-| Status          | Active or Inactive.                                               |
-| Default         | Indicates whether the work shift is used as the default schedule. |
-
-![Work Shift List](/images/work-shift-list.png)
-
----
 
 ## Create a Work Shift
 
-Select **Create Work Shift** to define a new working schedule.
+1. In the admin sidebar, go to **Attendance Tracking**.
+2. Select **Create Work Shift**.
+
+**Expected result:** The **Create New Work Shift** dialog opens.
 
 ![Create Work Shift](/images/create-work-shift.png)
 
-Configure the following information.
+3. Enter a **Work Shift Name**, for example `Office hours`.
+4. Select at least one **Working Day**. You can use **All Days**, **Weekday (Mon - Fri)**, **Weekend (Sat - Sun)**, or individual days.
+5. Select a **Start Time** and an **End Time**, for example `08:30` and `17:30`.
+6. If the schedule has a break, select **Break Start Time** and **Break End Time**, for example `12:00` and `13:00`.
+7. Optionally enter a **Description**, for example `Default schedule for office employees`.
+8. Turn on **Active** when the Work Shift is ready to use.
+9. Optionally select **Set as default work shift for attendance tracking**.
+10. Select **Create**.
 
-| Field            | Required | Description                            |
-| ---------------- | :------: | -------------------------------------- |
-| Work Shift Name  |    ✅    | Name of the work shift.                |
-| Working Days     |    ✅    | Days employees are expected to work.   |
-| Start Time       |    ✅    | Beginning of the working day.          |
-| End Time         |    ✅    | End of the working day.                |
-| Break Start Time | Optional | Beginning of the break period.         |
-| Break End Time   | Optional | End of the break period.               |
-| Description      | Optional | Additional notes about the work shift. |
-| Status           | Optional | Active or Inactive.                    |
-| Set as Default   | Optional | Makes this the default work shift.     |
+**Expected result:** The dialog closes and the new Work Shift appears on the **Select Work Shift** page.
 
 <Callout type="warning">
-  Working Days, Start Time, End Time, and Break Time can only be set when the
-  Work Shift is created. Once saved, these fields are locked — editing a Work
-  Shift later only allows changes to the Work Shift Name, Description, Status,
-  and Default assignment.
+  **End Time** must be after **Start Time** on the same day. Overnight Work Shifts are not supported. A break must fall inside the Work Shift and its end time must be after its start time.
 </Callout>
 
----
+## Understand Active and Default
 
-## Working Days
+- **Active** makes the Work Shift available for attendance use. A newly created Work Shift is inactive unless you turn this option on.
+- **Set as Default** makes the Work Shift the first schedule opened in **My Attendance**. Only one Work Shift can be default; selecting a new default replaces the previous one.
+- If no Work Shift is marked as default, **My Attendance** opens the first available Work Shift.
 
-A Work Shift can include one or more working days.
+## Open a Work Shift
 
-Common examples include:
+1. Go to **Attendance Tracking**.
+2. Find the required Work Shift.
+3. Select the arrow on its card.
 
-- Monday – Friday
-- Saturday – Sunday
-- All Days
-- Custom combinations
+**Expected result:** The monthly Attendance Tracking page opens for that Work Shift.
 
-The configured working days determine when attendance is expected.
+![Work Shift list](/images/work-shift-list.png)
 
----
+## Edit a Work Shift
 
-## Working Hours
+1. Go to **Attendance Tracking**.
+2. Select the pencil icon on the Work Shift card.
+3. Update the available fields.
+4. Select **Save**.
 
-Working hours define the expected daily attendance period.
+**Expected result:** The card displays the saved name, schedule, status, and default setting.
 
-Example:
+You can change the working days and times while the Work Shift has no attendance records. After it has been used by a timesheet, you can still change its name, description, **Active** setting, and default setting, but you cannot change its schedule.
 
-| Start Time | End Time |
-| ---------- | -------- |
-| 08:30      | 17:30    |
+## Delete an unused Work Shift
 
-Attendance records are evaluated against this time range.
-
----
-
-## Break Time
-
-Break periods represent unpaid or scheduled breaks during the workday.
-
-Example:
-
-| Break Start | Break End |
-| ----------- | --------- |
-| 12:00       | 13:00     |
-
-Break periods are excluded from working time calculations where applicable.
-
----
-
-## Work Shift Status
-
-Each Work Shift can be either **Active** or **Inactive**.
-
-| Status       | Description                                                                |
-| ------------ | -------------------------------------------------------------------------- |
-| **Active**   | The work shift can be assigned and used for attendance tracking.           |
-| **Inactive** | The work shift is retained but is no longer available for new assignments. |
-
-Inactive Work Shifts remain available for historical attendance records.
-
----
-
-## Default Work Shift
-
-One Work Shift can be designated as the **Default Work Shift**.
-
-The default work shift is automatically assigned when no specific work shift has been configured for attendance tracking.
-
-<Callout type="tip">
-  Only one Work Shift can be configured as the default at any time.
+<Callout type="warning">
+  Deleting a Work Shift cannot be undone. A Work Shift that already has attendance records cannot be deleted.
 </Callout>
 
----
+1. Go to **Attendance Tracking**.
+2. Select the trash icon on the Work Shift card.
+3. Review the confirmation dialog.
+4. Select **Delete**.
 
-## Work Shift Actions
+**Expected result:** The Work Shift is removed from the list. If it is already in use, Workflow keeps it and displays an error instead.
 
-Each Work Shift provides the following actions.
+## Limits
 
-| Action          | Description                                                             |
-| --------------- | ----------------------------------------------------------------------- |
-| View Attendance | Open the Attendance Tracking page for the selected work shift.          |
-| Edit            | Update the work shift name, description, status, or default assignment. |
-| Delete          | Remove the work shift if it is no longer required.                      |
-| Set as Default  | Assign the work shift as the default schedule.                          |
+The current interface allows up to five Work Shifts. When five cards exist, **Create Work Shift** is no longer displayed.
 
----
+## Troubleshooting
 
-## Business Rules
+### The Attendance Tracking menu is missing
 
-<Accordions>
+**Why this happens:** Attendance is not enabled for the company, or your account is not a Company Admin or Super Admin.
 
-<Accordion title="How many Work Shifts can be created?">
+**How to fix it:** Ask the person who manages company features and roles to verify the Attendance feature and your Company Admin role.
 
-A company can configure up to **five Work Shifts**.
+### A time field shows a validation error
 
-</Accordion>
+**Why this happens:** **End Time** is not after **Start Time**, or the break is outside the Work Shift.
 
-<Accordion title="Can more than one Work Shift be the default?">
+**How to fix it:** Keep all times within one calendar day and place the complete break between the Work Shift start and end.
 
-No.
+### The schedule cannot be changed
 
-Only one Work Shift can be designated as the default at any given time.
+**Why this happens:** Attendance records already use this Work Shift.
 
-</Accordion>
+**How to fix it:** Keep the existing Work Shift for historical data and create another Work Shift with the new schedule.
 
-<Accordion title="Can inactive Work Shifts still be viewed?">
+### The Work Shift cannot be deleted
 
-Yes.
+**Why this happens:** The Work Shift already has attendance records.
 
-Inactive Work Shifts remain available for historical reference but cannot be assigned as new attendance schedules.
+**How to fix it:** Turn off **Active** to prevent new use while preserving existing attendance history.
 
-</Accordion>
+## Related guides
 
-<Accordion title="Is Break Time required?">
-
-No.
-
-Break Start Time and Break End Time are optional.
-
-</Accordion>
-
-<Accordion title="Can Work Shift information be modified later?">
-
-Only partially.
-
-Work Shift Name, Description, Status, and the Default assignment can be updated at any time. Working Days, Start Time, End Time, and Break Time are locked once the Work Shift is created — create a new Work Shift if the schedule itself needs to change.
-
-</Accordion>
-
-</Accordions>
-
----
-
-## Permissions
-
-| Action                           | Company Admin | Standard User |
-| -------------------------------- | :-----------: | :-----------: |
-| View Work Shifts                 |      ✅       |      ❌       |
-| Create Work Shift                |      ✅       |      ❌       |
-| Edit Work Shift                  |      ✅       |      ❌       |
-| Delete Work Shift                |      ✅       |      ❌       |
-| Activate / Deactivate Work Shift |      ✅       |      ❌       |
-| Set Default Work Shift           |      ✅       |      ❌       |
-| View Attendance                  |      ✅       |      ❌       |
+- [Import attendance data](/en/docs/company-administration/attendance/import)
+- [Review monthly attendance](/en/docs/company-administration/attendance/tracking)
+- [Configure application-based statuses](/en/docs/company-administration/attendance/status)

@@ -1,0 +1,66 @@
+---
+title: Xem chi tiết chấm công một ngày
+description: Kiểm tra bản ghi nguồn, bản ghi từ đơn và trạng thái phê duyệt.
+icon: ListTree
+---
+
+Chi tiết chấm công giữ lại mọi bản ghi của ngày, gồm dữ liệu từ thiết bị và dữ liệu từ đơn. Đơn không xóa hoặc thay thế dữ liệu nguồn.
+
+## Trước khi bắt đầu
+
+Bạn cần đăng nhập với quyền truy cập **Chấm công của tôi**, công ty đã bật Chấm công và chọn đúng ca/tháng của ngày cần xem.
+
+## Mở chi tiết
+
+1. Mở **Chấm công của tôi**.
+2. Chọn ca và tháng.
+3. Chọn ngày trong bảng.
+
+**Kết quả:** **Thông tin chi tiết chấm công** mở với toàn bộ bản ghi của ngày.
+
+![Chọn ngày](/images/attendance/move-to-detail-records.png)
+
+![Bản ghi nguồn và bản ghi sửa giờ](/images/attendance/record-detail.png)
+
+## Đọc lịch sử
+
+| Cột | Ý nghĩa |
+| --- | --- |
+| STT | Thứ tự bản ghi |
+| Thời gian | Giờ vào và giờ ra của bản ghi |
+| Trạng thái | Trạng thái của bản ghi; biểu tượng liên kết mở đơn |
+| Ghi bởi | Người hoặc nguồn tạo bản ghi |
+| Trạng thái phê duyệt | Đang chờ, Đã duyệt hoặc Đã từ chối |
+| Bổ sung (phê duyệt) | Thông tin phê duyệt bổ sung nếu có |
+
+Dấu gạch thể hiện không có thông tin tương ứng. Ví dụ bản ghi gốc `08:17–12:18` có nhãn Về sớm và bản ghi sửa `08:17–17:30` có nhãn Regularized cùng tồn tại. [Độ ưu tiên](/vi/docs/company-administration/attendance/status) quyết định nhãn trên bảng tháng.
+
+## Mở hoặc tạo đơn
+
+Chọn biểu tượng liên kết cạnh trạng thái để xem thông tin đơn, tuyến duyệt và trạng thái hiện tại ở tab mới.
+
+Chọn **Tạo đơn** để mở **Bổ sung đơn** cho ngày đang xem. Các loại đơn và trường nhập phụ thuộc cấu hình của công ty.
+
+## Quyền
+
+Nhân viên và quản trị viên đều xem được chi tiết và đơn của bản thân. Trang Chấm công của tôi không cho xem dữ liệu người khác.
+
+## Xử lý sự cố
+
+### Không có liên kết đơn
+
+Bản ghi nguồn hoặc bản ghi không gắn với đơn sẽ không có liên kết. Kiểm tra cột Ghi bởi và Trạng thái phê duyệt.
+
+### Nhãn trong chi tiết khác nhãn bảng tháng
+
+Một ngày có nhiều bản ghi; độ ưu tiên chọn một nhãn đại diện. Kiểm tra toàn bộ lịch sử.
+
+### Không có loại đơn phù hợp
+
+Nhờ quản trị viên cài mẫu đơn hoặc cấu hình trạng thái gắn với đơn cho ca này.
+
+## Hướng dẫn liên quan
+
+- [Sửa giờ](/vi/docs/user/my-attendance/correct-attendance)
+- [Nghỉ phép](/vi/docs/user/my-attendance/request-leave)
+- [Làm thêm giờ](/vi/docs/user/my-attendance/request-overtime)

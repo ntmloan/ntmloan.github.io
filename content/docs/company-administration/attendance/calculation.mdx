@@ -1,102 +1,94 @@
 ---
-title: Attendance Calculation & Business Rules
-description: How Workflow evaluates attendance records against a Work Shift to produce statuses and summaries.
+title: Understand attendance calculation
+description: Learn how Workflow compares attendance records with a Work Shift and chooses the displayed status.
+icon: Calculator
 ---
 
-# Attendance Calculation
+Workflow evaluates each attendance date against the selected Work Shift. Use these rules to investigate a result that appears unexpected; attendance values are not entered manually on the administrator timeline.
 
-Workflow determines attendance by comparing attendance records with the assigned Work Shift.
+## Before you start
 
-The evaluation process is illustrated below.
+- **Required role:** Any user who can view the relevant attendance page
+- **Required feature:** Attendance must be enabled
+- **You'll need:** The Work Shift schedule and the records shown in **Detail Attendance Information**
 
-```text
-Work Shift
-      │
-      ▼
-Attendance Records
-      │
-      ▼
-Attendance Rules
-      │
-      ▼
-Attendance Status
-      │
-      ▼
-Attendance Summary
-```
+## How the built-in status is selected
 
----
+For a scheduled working day, Workflow applies the following checks in order:
 
-## Attendance Evaluation
+1. If the date is before the employee's attendance start date, the result is **Not Started**.
+2. If a future date has no check-in, no attendance result is created yet.
+3. If a current or past scheduled date has no check-in, the result is **No Check In**.
+4. If a check-in exists but a current or past date has no check-out, the result is **Missing**.
+5. If check-in is after the Work Shift start, the result is **Late**.
+6. Otherwise, if check-out is before the Work Shift end, the result is **Early**.
+7. Otherwise, the result is **On Time**.
 
-Each attendance record is evaluated independently.
-
-The evaluation considers:
-
-- Working days
-- Working hours
-- Break periods
-- Attendance Status rules
-- Leave applications
-- Overtime records
-
----
-
-## Attendance Timeline
-
-A working day may contain multiple attendance records.
-
-Example:
-
-08:30–12:00 → On Time
-
-13:00–17:30 → On Time
-
-18:00–21:00 → OT
-
-Workflow evaluates every record separately before generating the daily attendance summary.
-
----
-
-## Attendance Summary
-
-The summary stat cards shown above the Attendance Grid aggregate the currently filtered records:
-
-| Item             | Description                                                                |
-| ---------------- | -------------------------------------------------------------------------- |
-| Total            | Total attendance records, excluding **No Check-in**.                       |
-| On Time          | Records with the **On Time** status.                                       |
-| Late / Early     | Records with the **Late / Early** status.                                  |
-| Missing          | Records with the **Missing** status.                                       |
-| Leave            | Records under a paid/unpaid leave or business/out-of-office custom status. |
-| Pending Approval | Records still awaiting approval on their linked application.               |
+Dates outside the configured working days are shown as **Weekly off** in the interface.
 
 <Callout type="info">
-  These stat cards only reflect the currently filtered view (department, status,
-  and search). For a full monthly breakdown per employee — including a column
-  for every custom status — open **Summary** from the toolbar. See [Attendance
-  Summary
-  Report](/en/docs/company-administration/attendance/tracking#attendance-summary-report).
+  Because the checks are ordered, a record that is both late and early displays
+  **Late** as its built-in result.
 </Callout>
 
----
+## How working days are matched
 
-## Reminder Rules
+A Work Shift can contain individual days or the shortcuts **Weekday (Mon - Fri)**, **Weekend (Sat - Sun)**, and **All Days**. Attendance is expected only on a matching working day.
 
-Administrators can send reminders when:
+## How several records become one displayed status
 
-- No attendance exists
-- Attendance is incomplete
-- Missing check-in
-- Missing check-out
+Imported data and approved attendance applications can produce several records for one date. Workflow preserves all of them in **Detail Attendance Information**, then sorts them for the monthly display using this priority:
 
----
+| Priority | Record selected for display |
+| :---: | --- |
+| 0 | **On Time** |
+| 1 | A record created by the **Regularization** template |
+| 2 | **Late** or **Early** |
+| 3 | **Missing** |
+| 4 | A record created by the **Leave** template |
+| Fallback | Any other built-in or application-based status |
 
-## Business Rules
+A lower number wins. Template-created records are identified by template code, so renaming the visible Regularization or Leave status does not change its priority.
 
-- Attendance is always evaluated against the assigned Work Shift.
-- One day may contain multiple attendance records.
-- One attendance record has one Attendance Status.
-- Multiple attendance statuses may appear in one day.
-- Attendance Summary is calculated from attendance records rather than manually entered values.
-- A record generated from a custom status linked to an application may carry a Pending, Approved, or Rejected approval status.
+## How application records are created
+
+An application-based attendance status maps two Date or Date/Time form fields to the attendance start and end. After the linked application is approved, Workflow adds a record using those submitted values. It does not overwrite the imported source record.
+
+If **Allow time outside work shift** is off, the application-based period is limited to the Work Shift. Turn it on for approved periods such as overtime that can occur before or after scheduled hours.
+
+## Investigate an unexpected result
+
+1. Confirm the Work Shift displayed at the top of the attendance page.
+2. Confirm that the date is one of that Work Shift's working days.
+3. Open the date's **Detail Attendance Information**.
+4. Compare check-in and check-out with the scheduled start and end.
+5. Check whether another record is linked to a Regularization, Leave, or custom application.
+6. Check its **Approval status**.
+
+**Expected result:** The built-in rule or display-priority rule explains the status shown in the monthly view.
+
+## Troubleshooting
+
+### A Leave or correction is still not displayed
+
+**Why this happens:** The linked application is still pending or was denied.
+
+**How to fix it:** Open the application from **Detail Attendance Information** and check its approval route and status.
+
+### A correct check-in displays Late
+
+**Why this happens:** The record is being compared with a different Work Shift, or its check-in is later than that Work Shift's start time.
+
+**How to fix it:** Confirm the selected Work Shift and inspect the exact timestamp in the detail dialog.
+
+### One date contains several statuses
+
+**Why this happens:** Source attendance and attendance applications are stored as separate records.
+
+**How to fix it:** No correction is required when the records are valid. Open the detail dialog to review the complete history.
+
+## Related guides
+
+- [Review monthly attendance](/en/docs/company-administration/attendance/tracking)
+- [Configure application-based statuses](/en/docs/company-administration/attendance/status)
+- [Review attendance record details](/en/docs/user/my-attendance/record-details)

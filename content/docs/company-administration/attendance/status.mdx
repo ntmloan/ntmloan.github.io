@@ -1,16 +1,22 @@
 ---
-title: Attendance Status
-description: Built-in and application-based statuses used in Attendance Tracking.
+title: Configure application-based attendance statuses
+description: Connect an Application Definition to Attendance Tracking and control how approved records appear.
 icon: Tag
 ---
-
-# Attendance Status
 
 Attendance statuses describe an employee's attendance result. Workflow calculates built-in statuses from attendance data and the assigned Work Shift. It can also add statuses from approved applications, such as Leave, Overtime, or a company-specific request.
 
 Statuses appear as color-coded labels in Attendance Tracking.
 
 ![Attendance Status](/images/attendance-status-list.png)
+
+## Before you start
+
+- **Required role:** Company Admin
+- **Required feature:** Attendance must be enabled
+- **You'll need:** An active Work Shift and an active Application Definition with an Approval Route
+- **Form requirement:** The application needs two different Date or Date/Time fields for the attendance start and end
+- **Estimated completion time:** About 10 minutes
 
 ---
 
@@ -94,17 +100,23 @@ The form must include two date/time fields that Attendance can use as the beginn
 
 ![Business Trip Application Definition with its form fields](/images/attendance/business-trip-application-definition.png)
 
+**Expected result:** The Application Definition is active and has two eligible date fields available for mapping.
+
 ### Select the Work Shift
 
 Open **Attendance Tracking**, then select the Work Shift where you want to add the status. The custom status becomes available to employees assigned to this Work Shift.
 
 ![Select the Work Shift to configure](/images/attendance/choose-your-work-shift.png)
 
+**Expected result:** Attendance Tracking opens for the selected Work Shift.
+
 ### Add the status
 
 On the selected Work Shift's Attendance Tracking page, select **Add Status** below the attendance table.
 
 ![Add a status to the selected Work Shift](/images/attendance/add-your-status.png)
+
+**Expected result:** The **Add Attendance Status** dialog opens.
 
 ### Configure the Business Trip status
 
@@ -128,6 +140,8 @@ Select the **Category** and **Application** first. Workflow then loads the appli
 
 Select **Create** to add the status to the Work Shift.
 
+**Expected result:** The dialog closes and **Business Trip** appears in the status legend for the Work Shift.
+
 ### Submit a Business Trip application from My Attendance
 
 After the status is created, **Business Trip** appears in the Create Application menu for applicable dates in **My Attendance**. Selecting it opens the linked Business Trip form so the employee can complete and submit the application through its configured Approval Route.
@@ -137,6 +151,12 @@ After the status is created, **Business Trip** appears in the Create Application
 The submission flow is the same as [Request Leave](/en/docs/user/my-attendance/request-leave): open an attendance date, select **Create Application**, choose the status, complete the linked form, and submit it for approval.
 
 </Steps>
+
+<Callout type="warning">
+  After a status has been used by an attendance record, its Application,
+  time-field mappings, conditions, and **Allow time outside work shift** setting
+  cannot be changed. Its display name and colors can still be updated.
+</Callout>
 
 ---
 
@@ -199,6 +219,32 @@ No. It adds an application-generated attendance record. The original records rem
 
 </Accordions>
 
+## Troubleshooting
+
+### No applications appear after selecting a Category
+
+**Why this happens:** The category has no eligible custom Application Definition, or the application is already linked to another active custom attendance status.
+
+**How to fix it:** Create and activate the Application Definition first, or select a different application that is not already used by another status.
+
+### Start Time or End Time has no options
+
+**Why this happens:** The selected application does not contain eligible Date or Date/Time fields.
+
+**How to fix it:** Add two different date fields to the Application Definition, then reopen the attendance status dialog.
+
+### Matching fields are disabled while editing
+
+**Why this happens:** The status is template-managed, has already been used, or its data is still loading.
+
+**How to fix it:** Wait for loading to finish. For a used or template-managed status, update only its permitted display fields or create a new custom status.
+
+### The status cannot be deleted
+
+**Why this happens:** It has already been applied to attendance records.
+
+**How to fix it:** Keep the status for historical records and stop using its linked application for new attendance entries.
+
 ---
 
 ## Permissions
@@ -210,3 +256,9 @@ No. It adds an application-generated attendance record. The original records rem
 | Edit Attendance Status | ✅ | ❌ |
 | Configure Status Colors | ✅ | ❌ |
 | Configure Status Rules | ✅ | ❌ |
+
+## Related guides
+
+- [Install Attendance Application Templates](/en/docs/application-definitions/application-templates#attendance-integration)
+- [Review monthly attendance](/en/docs/company-administration/attendance/tracking)
+- [Understand attendance calculation](/en/docs/company-administration/attendance/calculation)

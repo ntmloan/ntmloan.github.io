@@ -1,314 +1,134 @@
 ---
-title: Attendance Tracking
-description: Manage daily attendance records for employees using the monthly Attendance Grid.
+title: Review monthly attendance
+description: Find attendance issues, inspect daily records, send reminders, and review monthly totals.
 icon: CalendarCheck
 ---
 
-# Attendance Tracking
+Use Attendance Tracking to review employees in one Work Shift across a selected month. Each row is an employee, and each timeline item represents the status recorded for a day.
 
-After selecting a Work Shift, administrators can manage daily attendance records for all employees assigned to that Work Shift.
+## Before you start
 
-Attendance Tracking provides a monthly calendar view where administrators can:
+- **Required role:** Company Admin
+- **Required feature:** Attendance must be enabled
+- **You'll need:** At least one Work Shift
+- **For populated results:** Import attendance data for the selected Work Shift
 
-- View daily attendance records.
-- Search employees.
-- Filter attendance records.
-- Navigate between months.
-- Review attendance details.
-- Send attendance reminders.
-- Access attendance summaries.
-- Import attendance data.
+## Open the monthly view
 
-![Attendance Tracking](/images/attendance-tracking.png)
+1. In the admin sidebar, go to **Attendance Tracking**.
+2. Select the arrow on the Work Shift you want to review.
 
-<Callout type="info">
-  This page is for Company Admins. Employees view and self-service their own
-  attendance from [My Attendance](/en/docs/user/my-attendance) instead.
-</Callout>
+**Expected result:** The Attendance Tracking timeline opens for the current month.
 
----
+![Monthly Attendance Tracking timeline](/images/attendance/monthly-record.png)
 
-## Page Layout
+If no records have been imported, the page displays **No attendance data available yet.** Use **Import Attendance Data** to add records.
 
-The Attendance Tracking page consists of four primary areas.
+## Change the month
 
-| Area            | Description                                                                                 |
-| --------------- | ------------------------------------------------------------------------------------------- |
-| Header          | Displays the selected Work Shift and provides access to Import Attendance Data.             |
-| Toolbar         | Month navigation, employee search, filtering, and the Summary report button.                |
-| Attendance Grid | Displays attendance records for every employee by day.                                      |
-| Footer          | Displays available attendance statuses and allows administrators to create custom statuses. |
+Use the left or right arrow beside the displayed month, or select the month name and choose another month.
 
----
+**Expected result:** The timeline reloads the selected month and returns to the first page of employees.
 
-## Monthly Attendance View
+## Search for an employee
 
-Attendance records are displayed in a calendar format.
+Enter the employee name or External ID in the search field.
 
-Each row represents an employee.
+**Expected result:** The timeline displays matching employees in the selected Work Shift and month.
 
-Each column represents a day within the selected month.
+## Filter the timeline
 
-```text
-Employee
-      │
-      ├── Jul 1
-      ├── Jul 2
-      ├── Jul 3
-      ├── ...
-      └── Jul 31
-```
+1. Select **Filter**.
+2. Select one or more **Departments**.
+3. Select one or more **Statuses**.
+4. Select **Apply**.
 
-This layout allows administrators to quickly identify attendance patterns across the organization.
+**Expected result:** The timeline reloads with records that match the selected filters.
 
----
+![Attendance filters](/images/attendance-filter.png)
 
-## Month Navigation
+Select **Reset** to remove both filters. Filters on the main timeline do not change the filters inside **Attendance Summary**.
 
-Administrators can navigate between attendance periods using the month selector.
+## Read the timeline
 
-Available actions include:
+The legend below the timeline identifies built-in and application-based statuses. A day can contain more than one record, such as regular working time and approved overtime.
 
-- View previous month
-- View next month
-- Jump to a specific month
+| Status | Meaning |
+| --- | --- |
+| **Not Started** | The scheduled date is before the employee's attendance start date. |
+| **No Check In** | A scheduled day has no check-in. |
+| **Missing** | A check-in exists but the check-out is missing. |
+| **Late** | Check-in is after the Work Shift start time. |
+| **Early** | Check-out is before the Work Shift end time. |
+| **On Time** | The record is neither late, early, nor missing. |
+| **Weekly off** | The date is outside the Work Shift's working days. |
 
-Changing the selected month refreshes the attendance records automatically.
+See [Understand attendance statuses](/en/docs/company-administration/attendance/status) for application-based statuses and display priority.
 
----
+## Inspect one day
 
-## Search Employees
+1. Select an attendance item on the timeline.
 
-Use the search box to locate employees by:
+**Expected result:** **Detail Attendance Information** opens for the employee and date.
 
-- Employee Name
-- Employee Code
+![Attendance details](/images/attendance-detail.png)
 
-The attendance grid updates immediately to display matching employees.
+2. Review each record's **Time**, **Status**, **Record by**, **Approval status**, and **Additional (approval)** information.
+3. If a status is linked to an application, select its link icon to open that application in a new tab.
 
----
+**Expected result:** You can distinguish imported source records from records created by attendance applications without changing either one.
 
-## Filter Attendance Records
+## Send an attendance reminder
 
-Select **Filter** to narrow attendance records.
+1. Open **Detail Attendance Information** for the employee and date.
+2. Select **Send Reminder**.
+3. Optionally select a **Status**.
+4. Select **Send Reminder**.
 
-Available filters include:
+**Expected result:** Workflow sends the employee an attendance reminder. When the selected status is linked to an application form, the email includes a direct link to that form; otherwise it sends a general reminder for the date.
 
-| Filter            | Description                                               |
-| ----------------- | --------------------------------------------------------- |
-| Department        | Display employees from selected departments.              |
-| Attendance Status | Display attendance records matching one or more statuses. |
+![Send Attendance Reminder](/images/send-attendance-reminder.png)
 
-Multiple attendance statuses can be selected simultaneously.
+## Review monthly totals
 
-![Attendance Filter](/images/attendance-filter.png)
+1. Select **Summary** above the timeline.
 
----
+**Expected result:** **Attendance Summary** opens with one column for each available status and one row per employee.
 
-## Attendance Summary Report
+![Attendance Summary with month selector, search, department filter, and status totals](/images/attendance-tracking.png)
 
-Select **Summary** from the toolbar to open a detailed monthly report.
+2. Change the month, search for an employee, or select **Filter** to filter by department.
 
-The report has its own month navigation, search box, and pagination, independent from the main Attendance Grid and its filters.
+**Expected result:** The summary reloads independently from the main timeline.
 
-For each employee, the report shows a count for:
+## Troubleshooting
 
-- No Check-in
-- Not Started
-- On Time
-- Late / Early
-- Missing
-- One additional column for every custom attendance status configured for the Work Shift
+### “No attendance data available yet.”
 
-<Callout type="info">
-  The Summary report always covers the full month for the selected Work
-  Shift — it is not affected by the Department or Status filters applied to
-  the Attendance Grid.
-</Callout>
+**Why this happens:** No attendance records exist for the selected Work Shift and period.
 
----
+**How to fix it:** Confirm the Work Shift and month, then [import attendance data](/en/docs/company-administration/attendance/import).
 
-## Attendance Grid
+### An employee is missing from the timeline
 
-The Attendance Grid displays attendance records for every employee.
+**Why this happens:** Search or filters are active, the employee does not belong to the selected result set, or the wrong Work Shift is open.
 
-Each attendance cell represents one working day.
+**How to fix it:** Clear the search, select **Filter** > **Reset**, and confirm the Work Shift.
 
-Information displayed includes:
+### The displayed status is not the latest record chronologically
 
-- Check-in time
-- Check-out time
-- Attendance status
-- Custom attendance status
+**Why this happens:** The monthly display uses status priority when several records apply to one date.
 
-Attendance cells are color-coded according to their status.
+**How to fix it:** Open **Detail Attendance Information** to review all records, then see [status priority](/en/docs/company-administration/attendance/status#status-priority).
 
-![Attendance Grid](/images/attendance-grid.png)
+### The timeline is difficult to use on a small screen
 
----
+**Why this happens:** Attendance Tracking is a wide, day-based timeline.
 
-## Attendance Status Colors
+**How to fix it:** Use a desktop browser and scroll horizontally through the month.
 
-Each attendance status is represented using a dedicated color.
+## Related guides
 
-Example statuses include:
-
-- No Check-in
-- Not Started
-- On Time
-- Late / Early
-- Missing
-- Overtime (custom)
-- Paid Leave (custom)
-
-These colors help administrators identify attendance conditions at a glance.
-
----
-
-## Attendance Details
-
-Selecting an attendance cell opens the attendance detail dialog.
-
-![Attendance Details](/images/attendance-detail.png)
-
-The dialog displays:
-
-| Information          | Description                                   |
-| -------------------- | --------------------------------------------- |
-| Employee Information | Employee profile summary.                     |
-| Attendance Records   | Every attendance record for the selected day. |
-| Status               | Attendance result for each record.            |
-| Recorded By          | Employee who recorded the attendance.         |
-| Additional (Approval) | Shows Pending, Approved, or Rejected when the record is linked to an application awaiting approval. |
-
-An employee may have multiple attendance records for the same day.
-
----
-
-## Attendance Timeline
-
-Multiple attendance records are displayed chronologically.
-
-Example:
-
-| Time          | Status       |
-| ------------- | ------------ |
-| 08:30 – 17:30 | Paid Leave   |
-| 10:44 – 16:30 | Late / Early |
-| 18:00 – 21:00 | Overtime     |
-
-This allows Workflow to support multiple attendance events within a single working day.
-
----
-
-## Send Attendance Reminder
-
-Administrators can remind employees to complete their attendance records.
-
-Select **Send Reminder** from the Attendance Detail dialog.
-
-![Send Reminder](/images/send-attendance-reminder.png)
-
-Configure:
-
-| Field             | Required | Description                                                                    |
-| ------------------- | :------: | ----------------------------------------------------------------------------------- |
-| Attendance Status    | Optional | The custom attendance status this reminder relates to. Leave blank for a generic reminder. |
-
-After confirmation, Workflow sends a reminder notification to the selected employee.
-
-<Callout type="info">
-  Reminders help reduce missing attendance records by notifying employees before
-  attendance is finalized. Employees can also act on a missing record themselves —
-  see [Correct Attendance](/en/docs/user/my-attendance/correct-attendance).
-</Callout>
-
----
-
-## Attendance Workflow
-
-A typical attendance process follows these steps.
-
-<Steps>
-
-### Employee Records Attendance
-
-Attendance data is recorded manually or imported.
-
-### Workflow Evaluates Attendance
-
-Attendance records are evaluated against the assigned Work Shift.
-
-### Attendance Status is Assigned
-
-Workflow determines the attendance status for each record.
-
-### Review Attendance
-
-Administrators review attendance details and make corrections if necessary.
-
-### Send Reminder
-
-If attendance is incomplete, administrators can send reminders to employees.
-
-</Steps>
-
----
-
-## Business Rules
-
-<Accordions>
-
-<Accordion title="Can an employee have multiple attendance records in one day?">
-
-Yes.
-
-Workflow supports multiple attendance records within the same working day, such as regular working hours, overtime, or paid leave.
-
-</Accordion>
-
-<Accordion title="Why do attendance cells have different colors?">
-
-Each color represents a specific attendance status, allowing administrators to identify attendance conditions quickly.
-
-</Accordion>
-
-<Accordion title="Can attendance records be filtered by department?">
-
-Yes.
-
-Attendance records can be filtered by both department and attendance status.
-
-</Accordion>
-
-<Accordion title="Can reminders be sent more than once?">
-
-Yes.
-
-Administrators may send attendance reminders whenever attendance information is incomplete.
-
-</Accordion>
-
-<Accordion title="Does changing the month affect attendance data?">
-
-No.
-
-Changing the selected month only changes the displayed attendance period. Existing attendance records remain unchanged.
-
-</Accordion>
-
-</Accordions>
-
----
-
-## Permissions
-
-| Action                   | Company Admin | Standard User |
-| ------------------------ | :-----------: | :-----------: |
-| View Attendance          |      ✅       |      ❌       |
-| Search Employees         |      ✅       |      ❌       |
-| Filter Attendance        |      ✅       |      ❌       |
-| View Attendance Details  |      ✅       |      ❌       |
-| Send Attendance Reminder |      ✅       |      ❌       |
-| View Attendance Summary  |      ✅       |      ❌       |
-| Import Attendance Data   |      ✅       |      ❌       |
+- [Import attendance data](/en/docs/company-administration/attendance/import)
+- [Understand attendance statuses](/en/docs/company-administration/attendance/status)
+- [View your own attendance](/en/docs/user/my-attendance)

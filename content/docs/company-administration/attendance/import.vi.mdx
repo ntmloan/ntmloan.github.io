@@ -1,0 +1,74 @@
+---
+title: Nhập dữ liệu chấm công
+description: Tải tệp Excel để thêm dữ liệu vào ca làm việc đã chọn.
+icon: FileUp
+---
+
+Nhập tệp Excel xuất từ thiết bị hoặc hệ thống chấm công. Workflow xử lý tệp ở chế độ nền để bạn tiếp tục công việc.
+
+## Trước khi bắt đầu
+
+- **Vai trò:** Quản trị viên công ty; công ty đã bật Chấm công.
+- **Cần chuẩn bị:** Một ca đang hoạt động và một tệp Excel đúng định dạng nguồn được hỗ trợ.
+- **Đối chiếu nhân viên:** Personal ID trong tệp phải khớp External ID của nhân viên trong Workflow.
+- **Thời gian hoàn thành dự kiến:** Tải tệp thường dưới một phút; thời gian xử lý phụ thuộc kích thước tệp.
+
+<Callout type="warning">
+Giữ nguyên thứ tự cột. Hệ thống đọc theo vị trí cố định: thời gian, thông tin sự kiện, Personal ID, tên nhân viên, phòng ban, đầu đọc và phương thức xác thực.
+</Callout>
+
+## Nhập tệp
+
+1. Mở **Theo dõi chấm công** trong menu quản trị.
+2. Mở ca cần nhận dữ liệu.
+3. Chọn **Nhập dữ liệu chấm công**.
+
+**Kết quả:** Hộp thoại nhập dữ liệu mở ra.
+
+![Nhập dữ liệu](/images/import-attendance-data.png)
+
+4. Kéo một tệp Excel vào vùng tải lên hoặc chọn tệp từ máy.
+5. Kiểm tra tên tệp đã xuất hiện.
+6. Chọn **Nhập**.
+
+**Kết quả:** Hộp thoại đóng và thông báo tiến độ xuất hiện ở góc dưới bên phải. Có thể thu gọn hoặc mở rộng thông báo và tiếp tục sử dụng Workflow.
+
+![Collapsed / thu gọn / 最小化](/images/attendance/import-timesheet-uploading-collapse.png)
+
+![Expanded / mở rộng / 展開](/images/attendance/import-timesheet-uploading-expand.png)
+
+## Kiểm tra kết quả
+
+Sau khi xử lý xong, chọn **Xem chi tiết nhập dữ liệu**. Hộp thoại hiển thị số dòng đã xử lý, bản ghi thành công, bản ghi trùng bị bỏ qua, sự kiện chỉ là thao tác bị loại trừ, ID không tìm thấy và bản ghi thiếu ID.
+
+![Chi tiết nhập dữ liệu](/images/attendance/import-detail-dialog.png)
+
+Quay về ca và tháng tương ứng để kiểm tra dữ liệu đã xuất hiện. Personal ID không tồn tại hoặc bị thiếu được báo trong kết quả, không gán sang nhân viên khác.
+
+## Yêu cầu tệp nguồn
+
+Thời gian phải theo định dạng `yyyy-MM-dd HH:mm:ss`. Tệp chứa thời gian sự kiện; khu vực, thiết bị và thông tin sự kiện; Personal ID; họ tên; phòng ban, đầu đọc và phương thức xác thực. Personal ID dùng để đối chiếu External ID; họ tên được dùng trong thông tin cảnh báo.
+
+## Xử lý sự cố
+
+### Chưa chọn tệp
+
+Thêm một tệp Excel và đợi tên tệp xuất hiện trước khi chọn **Nhập**.
+
+### Nhập thất bại
+
+Kiểm tra loại tệp, thứ tự cột và định dạng thời gian. Xuất lại tệp từ nguồn chấm công được hỗ trợ nếu cần.
+
+### Không tìm thấy ID bên ngoài
+
+Personal ID không khớp External ID. Sửa dữ liệu nhân viên hoặc ID trong hệ thống nguồn rồi nhập lại tệp đã sửa.
+
+### Có bản ghi bị bỏ qua hoặc loại trừ
+
+Bản ghi trùng bị bỏ qua; sự kiện chỉ là thao tác trên thiết bị không được tính là chấm công. Mở chi tiết kết quả trước khi quyết định nhập lại.
+
+## Hướng dẫn liên quan
+
+- [Quản lý ca làm việc](/vi/docs/company-administration/attendance)
+- [Kiểm tra theo tháng](/vi/docs/company-administration/attendance/tracking)
+- [Cách tính chấm công](/vi/docs/company-administration/attendance/calculation)

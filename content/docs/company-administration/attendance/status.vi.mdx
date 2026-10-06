@@ -1,0 +1,114 @@
+---
+title: Cấu hình trạng thái chấm công gắn với đơn
+description: Liên kết biểu mẫu đơn với chấm công và cấu hình cách hiển thị bản ghi đã duyệt.
+icon: Tag
+---
+
+Trạng thái cho biết kết quả chấm công. Hệ thống tính trạng thái cơ bản từ giờ ghi nhận và ca làm việc; trạng thái gắn với đơn được tạo từ các đơn đã duyệt như nghỉ phép, sửa giờ, làm thêm giờ hoặc công tác.
+
+![Các trạng thái](/images/attendance-status-list.png)
+
+## Trước khi bắt đầu
+
+- **Vai trò:** Quản trị viên công ty; công ty đã bật Chấm công.
+- **Cần chuẩn bị:** Ca đang hoạt động và cấu hình đơn đang hoạt động có tuyến duyệt.
+- **Yêu cầu biểu mẫu:** Hai trường Ngày hoặc Ngày/Giờ khác nhau để ánh xạ thời gian bắt đầu và kết thúc.
+- **Thời gian hoàn thành dự kiến:** Khoảng 10 phút.
+
+## Trạng thái cơ bản
+
+| Nhãn | Ý nghĩa |
+| --- | --- |
+| Chưa điểm danh | Ngày làm việc không có giờ vào |
+| Không có bản ghi | Không có dữ liệu cho ngày |
+| Chưa bắt đầu | Ngày trước ngày bắt đầu chấm công của nhân viên |
+| Đúng giờ | Bản ghi đáp ứng lịch của ca |
+| Đi muộn | Giờ vào sau giờ bắt đầu |
+| Về sớm | Giờ ra trước giờ kết thúc |
+| Vắng mặt (Missing) | Thông tin chấm công thiếu, điển hình là thiếu giờ ra |
+
+**Leave**, **Overtime** và **Regularized** là trạng thái gắn với mẫu đơn. Cài [mẫu đơn chấm công](/vi/docs/application-definitions/application-templates) để tạo sẵn cấu hình đơn, trạng thái và ánh xạ thời gian. Với trạng thái do mẫu hệ thống quản lý, chỉ sửa tên và màu.
+
+## Trạng thái lấy dữ liệu từ đơn như thế nào?
+
+Tên, màu nền và màu viền quyết định cách hiển thị. **Đơn** xác định biểu mẫu; **Giờ bắt đầu** và **Giờ kết thúc** ánh xạ hai trường ngày/giờ trong biểu mẫu. Khi đơn được duyệt, Workflow thêm bản ghi từ các giá trị đã gửi, giữ nguyên bản ghi nguồn.
+
+![Liên kết trạng thái và đơn](/images/attendance/how-attendance-status-work.jpg)
+
+## Tạo trạng thái tùy chỉnh
+
+Dùng cho công tác, làm việc tại nhà, đào tạo hoặc gặp khách hàng. Nếu chỉ muốn đổi tên hoặc màu Leave/Overtime/Regularized, hãy chỉnh trạng thái được tạo từ mẫu.
+
+1. Tạo và kích hoạt cấu hình đơn, ví dụ **Business Trip Request**, gồm tuyến duyệt và hai trường **Departure Time** và **Return Time**.
+
+**Kết quả:** Biểu mẫu có hai trường thời gian đủ điều kiện để ánh xạ.
+
+![Biểu mẫu công tác](/images/attendance/business-trip-application-definition.png)
+
+2. Mở **Theo dõi chấm công** rồi chọn ca cần cấu hình.
+3. Chọn **Thêm trạng thái** dưới bảng.
+
+**Kết quả:** Hộp thoại thêm trạng thái mở ra.
+
+![Chọn ca](/images/attendance/choose-your-work-shift.png)
+
+![Thêm trạng thái](/images/attendance/add-your-status.png)
+
+4. Nhập **Tên trạng thái**, ví dụ `Business Trip` (tối đa 20 ký tự).
+5. Chọn **Màu nền** và **Màu viền**.
+6. Chọn danh mục và **Đơn** tương ứng.
+7. Ánh xạ **Giờ bắt đầu** và **Giờ kết thúc** tới hai trường khác nhau của đơn.
+8. Nếu cần, chọn **Thêm điều kiện** và giá trị của trường lựa chọn. Tối đa hai điều kiện, từ dropdown, radio hoặc checkbox.
+9. Nếu cần ghi nhận thời gian ngoài ca, bật **Cho phép thời gian ngoài ca làm việc**.
+10. Chọn **Tạo**.
+
+**Kết quả:** Trạng thái xuất hiện trong chú giải của ca và menu tạo đơn ở **Chấm công của tôi**.
+
+![Cấu hình công tác](/images/attendance/business-trip-attendance-status.png)
+
+![Trạng thái công tác trong Chấm công của tôi](/images/attendance/business-trip-append-to-my-attendance.png)
+
+Sau khi chọn danh mục và đơn, hệ thống mới tải các trường đủ điều kiện. Nhân viên chọn trạng thái để mở biểu mẫu, điền thông tin và gửi theo tuyến duyệt.
+
+<Callout type="warning">
+Sau khi trạng thái đã được áp dụng vào bản ghi, không thể sửa đơn, ánh xạ thời gian, điều kiện hoặc phạm vi ngoài ca. Vẫn có thể sửa tên và màu. Trạng thái đã được sử dụng không thể xóa.
+</Callout>
+
+## Thời gian ngoài ca
+
+Mặc định bản ghi gắn với đơn được giới hạn trong ca. Bật tùy chọn ngoài ca cho thời gian trước hoặc sau giờ làm, ví dụ làm thêm từ 17:30 đến 20:00 khi ca kết thúc lúc 17:30.
+
+## Độ ưu tiên hiển thị
+
+Một ngày có nhiều bản ghi. Số nhỏ hơn được ưu tiên cao hơn:
+
+| Ưu tiên | Trạng thái hoặc mẫu |
+| :---: | --- |
+| 0 | Đúng giờ |
+| 1 | Regularization — sửa giờ |
+| 2 | Đi muộn hoặc Về sớm |
+| 3 | Missing |
+| 4 | Leave — nghỉ phép |
+| Sau cùng | Các trạng thái khác |
+
+Mẫu Regularization và Leave được nhận diện theo mã mẫu, nên đổi tên không đổi ưu tiên. Ưu tiên chỉ quyết định nhãn trên bảng, không xóa hay thay bản ghi nguồn.
+
+## Xử lý sự cố
+
+### Không có đơn để chọn
+
+Danh mục chưa có cấu hình đơn phù hợp, hoặc đơn đã liên kết với một trạng thái tùy chỉnh đang hoạt động khác. Tạo/kích hoạt cấu hình đơn hoặc chọn đơn chưa được dùng.
+
+### Không có trường giờ để ánh xạ
+
+Thêm hai trường Ngày hoặc Ngày/Giờ khác nhau vào biểu mẫu rồi mở lại hộp thoại.
+
+### Các trường bị khóa hoặc không xóa được trạng thái
+
+Đợi dữ liệu tải xong. Nếu là trạng thái từ mẫu hoặc đã được sử dụng, chỉ sửa tên/màu; giữ trạng thái để bảo toàn lịch sử.
+
+## Hướng dẫn liên quan
+
+- [Kiểm tra chấm công](/vi/docs/company-administration/attendance/tracking)
+- [Cách tính chấm công](/vi/docs/company-administration/attendance/calculation)
+- [Gửi đơn nghỉ phép](/vi/docs/user/my-attendance/request-leave)

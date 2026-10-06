@@ -1,0 +1,114 @@
+---
+title: Gửi đơn nghỉ phép từ Chấm công của tôi
+description: Tạo đơn nghỉ từ dòng trên bảng hoặc chi tiết ngày và theo dõi kết quả duyệt.
+icon: CalendarOff
+---
+
+Bạn có thể tạo đơn nghỉ trực tiếp trên bảng tháng hoặc qua **Thông tin chi tiết chấm công**. Với ngày trong lịch, cách trên bảng chuyển giờ và lý do sang đơn. Cách qua chi tiết dùng được cho mọi ngày, kể cả ngày nghỉ ngoài lịch.
+
+## Trước khi bắt đầu
+
+- Có quyền dùng **Chấm công của tôi**; công ty đã bật Chấm công.
+- Ca có trạng thái Leave liên kết với cấu hình đơn đang hoạt động.
+- Chuẩn bị ngày nghỉ, khoảng giờ, lý do và thông tin biểu mẫu yêu cầu.
+- **Thời gian hoàn thành dự kiến:** Khoảng 3 phút, chưa tính thời gian duyệt.
+
+Tên **Leave** chỉ là ví dụ; công ty có thể đặt tên khác.
+
+## Cách nhanh: Tạo từ dòng trên bảng
+
+Áp dụng cho ngày làm việc trong lịch của ca.
+
+1. Mở **Chấm công của tôi**.
+2. Chọn ca và tháng.
+3. Tìm ngày cần nghỉ, ví dụ ngày 4/5.
+
+**Kết quả:** Dòng có trường nhập trong **Thay đổi thời gian thành** và **Lý do**.
+
+![Ngày làm việc cần nghỉ](/images/attendance/request-leave-in-table-start.png)
+
+4. Nhập giờ bắt đầu và kết thúc nghỉ, ví dụ `08:30–17:30` cho cả ngày.
+5. Nhập lý do, ví dụ `Việc cá nhân`.
+6. Mở menu ba chấm trong cột thao tác.
+7. Chọn trạng thái gắn với đơn Leave.
+
+**Kết quả:** **Tạo đơn mới** mở cho ngày đã chọn.
+
+![Nhập giờ, lý do và chọn Leave](/images/attendance/request-leave-in-table-fill.png)
+
+## Hoàn thành đơn đã điền sẵn
+
+Workflow chuyển ngày, giờ bắt đầu, giờ kết thúc, lý do và tiêu đề tạo tự động sang đơn.
+
+![Các trường được điền sẵn](/images/attendance/request-leave-in-table-application.png)
+
+1. Kiểm tra các giá trị được điền sẵn.
+2. Hoàn thành trường còn thiếu, chẳng hạn loại nghỉ và hình thức nghỉ.
+3. Chọn **Tiếp theo**.
+4. Kiểm tra tuyến duyệt và gửi theo [luồng tạo đơn](/vi/docs/applications/create-application).
+
+**Kết quả:** Dòng chấm công có biểu tượng tia sét khi đơn đang chờ.
+
+![Biểu tượng đơn đang chờ](/images/attendance/example-after-apply-table.png)
+
+## Cách thay thế: Tạo qua chi tiết ngày
+
+Dùng cho cả ngày trong lịch và ngoài lịch, ví dụ cuối tuần. Với ngày ngoài lịch, bạn cần tự điền giờ nghỉ trong đơn.
+
+1. Chọn ngày trong **Chấm công của tôi**.
+2. Chọn **Tạo đơn** trong **Thông tin chi tiết chấm công**.
+3. Trong **Bổ sung đơn**, chọn trạng thái Leave.
+
+**Kết quả:** Trang tạo đơn mở với ngày đã chọn.
+
+![Chọn Leave từ chi tiết ngày](/images/attendance/example-leave-apply-application.png)
+
+4. Nhập hoặc kiểm tra giờ bắt đầu và kết thúc nghỉ.
+5. Hoàn thành các trường còn lại.
+6. Kiểm tra tuyến duyệt và gửi đơn.
+
+**Kết quả:** Chi tiết ngày có bản ghi Leave **Đang chờ**, bảng tháng có tia sét.
+
+![Bản ghi Leave đang chờ](/images/attendance/example-leave-after-apply.png)
+
+## Sau phê duyệt
+
+Bản ghi nguồn được giữ nguyên; Workflow thêm bản ghi nghỉ đã duyệt rồi tính lại nhãn theo ưu tiên.
+
+### Nghỉ cả ngày
+
+Nếu ngày gốc là **Chưa điểm danh** và đơn nghỉ bao phủ cả ca, Leave có thể trở thành nhãn trên bảng thay cho Chưa điểm danh.
+
+![Nghỉ cả ngày đã duyệt](/images/attendance/example-leave-after-approve-table.png)
+
+### Nghỉ nửa ngày
+
+Nếu nhân viên có bản ghi làm việc trong phần còn lại của ngày và bản ghi đó mang nhãn **Đi muộn** hoặc **Về sớm**, bảng vẫn hiển thị nhãn đó vì ưu tiên cao hơn Leave. Bản ghi nghỉ nửa ngày đã duyệt vẫn có trong chi tiết; không bị mất.
+
+## Theo dõi đơn
+
+Mở ngày rồi chọn liên kết cạnh bản ghi Leave, hoặc mở [Danh sách đơn của bạn](/vi/docs/applications/my-applications).
+
+## Xử lý sự cố
+
+### Không có Leave trong menu
+
+Nhờ quản trị viên cấu hình trạng thái Leave và đơn cho ca.
+
+### Không nhập được giờ hoặc lý do trên dòng
+
+Ngày nằm ngoài lịch hoặc là ngày tương lai. Mở menu ba chấm hoặc chi tiết ngày rồi tự nhập trong đơn.
+
+### Đã gửi nhưng còn Chưa điểm danh
+
+Đơn có thể đang chờ hoặc bị từ chối. Kiểm tra trạng thái phê duyệt.
+
+### Nghỉ nửa ngày đã duyệt nhưng vẫn Đi muộn/Về sớm
+
+Đây là kết quả ưu tiên hiển thị. Mở chi tiết để xác nhận bản ghi Leave đã duyệt.
+
+## Hướng dẫn liên quan
+
+- [Chi tiết một ngày](/vi/docs/user/my-attendance/record-details)
+- [Làm thêm giờ](/vi/docs/user/my-attendance/request-overtime)
+- [Cách tính chấm công](/vi/docs/company-administration/attendance/calculation)

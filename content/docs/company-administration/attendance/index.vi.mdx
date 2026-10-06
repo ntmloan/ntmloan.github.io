@@ -1,10 +1,88 @@
 ---
-title: Chấm công
-description: Cấu hình ca làm việc, ngày làm việc cho toàn công ty
+title: Thiết lập và quản lý ca làm việc
+description: Tạo lịch làm việc để đánh giá dữ liệu chấm công của công ty.
+icon: Clock
 ---
 
-Cấu hình ca làm việc cho toàn công ty (tối đa 5 ca) và ngày làm việc.
+Ca làm việc xác định ngày làm việc, giờ bắt đầu, giờ kết thúc và giờ nghỉ. Hãy thiết lập ca trước khi nhập dữ liệu hoặc yêu cầu nhân viên sử dụng **Chấm công của tôi**.
 
-<Callout type="info">
-  Tính năng này chỉ áp dụng cho một số công ty nhất định.
+## Trước khi bắt đầu
+
+- **Vai trò:** Quản trị viên công ty.
+- **Tính năng:** Công ty đã bật Chấm công.
+- **Cần chuẩn bị:** Ngày làm việc và các mốc giờ của ca.
+- **Thời gian hoàn thành dự kiến:** Khoảng 5 phút cho mỗi ca.
+
+## Tạo ca làm việc
+
+1. Trong menu quản trị, mở **Theo dõi chấm công**.
+2. Chọn **Tạo ca làm việc**.
+
+**Kết quả:** Hộp thoại **Tạo ca làm việc mới** mở ra.
+
+![Tạo ca làm việc](/images/create-work-shift.png)
+
+3. Nhập **Tên ca làm việc**, ví dụ `Giờ hành chính`.
+4. Chọn ít nhất một **Ngày làm việc**: tất cả các ngày, thứ 2–thứ 6, cuối tuần hoặc từng ngày.
+5. Nhập **Giờ bắt đầu**, ví dụ `08:30`.
+6. Nhập **Giờ kết thúc**, ví dụ `17:30`.
+7. Nếu có giờ nghỉ, nhập **Giờ bắt đầu nghỉ** và **Giờ kết thúc nghỉ**, ví dụ `12:00–13:00`.
+8. Có thể nhập **Mô tả**, ví dụ `Lịch mặc định cho nhân viên văn phòng`.
+9. Bật **Đang hoạt động** khi ca sẵn sàng sử dụng.
+10. Nếu cần, chọn **Đặt làm ca làm việc mặc định cho chấm công**.
+11. Chọn **Tạo**.
+
+**Kết quả:** Ca mới xuất hiện trong trang **Chọn ca làm việc**.
+
+<Callout type="warning">
+Giờ kết thúc phải sau giờ bắt đầu trong cùng ngày. Ca qua đêm chưa được hỗ trợ. Khoảng nghỉ phải nằm trong ca và giờ kết thúc nghỉ phải sau giờ bắt đầu nghỉ.
 </Callout>
+
+## Ca đang hoạt động và ca mặc định
+
+Ca mới mặc định chưa hoạt động. Bật **Đang hoạt động** để đưa ca vào sử dụng. Chỉ một ca được đặt làm mặc định; chọn ca mặc định mới sẽ thay ca cũ.
+
+**Chấm công của tôi** mở ca mặc định trước. Nếu không có ca mặc định, trang mở ca đầu tiên có sẵn.
+
+## Mở và chỉnh sửa ca
+
+1. Mở **Theo dõi chấm công**.
+2. Chọn mũi tên trên thẻ ca để xem dữ liệu tháng.
+
+**Kết quả:** Bảng chấm công của ca được mở.
+
+![Danh sách ca](/images/work-shift-list.png)
+
+Để sửa ca, chọn biểu tượng bút chì, cập nhật các trường rồi chọn **Lưu**. Khi ca chưa có bản ghi chấm công, bạn có thể sửa ngày và giờ. Sau khi đã được sử dụng, chỉ có thể sửa tên, mô tả, trạng thái hoạt động và thiết lập mặc định.
+
+## Xóa ca chưa sử dụng
+
+<Callout type="warning">
+Xóa ca không thể hoàn tác. Không thể xóa ca đã có bản ghi chấm công.
+</Callout>
+
+1. Chọn biểu tượng thùng rác trên thẻ ca.
+2. Kiểm tra hộp thoại xác nhận.
+3. Chọn **Xóa**.
+
+**Kết quả:** Ca bị xóa khỏi danh sách; nếu đã được sử dụng, hệ thống giữ lại ca và báo lỗi. Giao diện cho phép tối đa 5 ca; khi đủ 5 ca, nút tạo không còn hiển thị.
+
+## Xử lý sự cố
+
+### Không thấy menu Theo dõi chấm công
+
+Kiểm tra quyền quản trị viên công ty và việc bật tính năng Chấm công với người quản lý công ty.
+
+### Giờ không hợp lệ
+
+Đảm bảo giờ kết thúc sau giờ bắt đầu và toàn bộ khoảng nghỉ nằm trong ca, trong cùng ngày.
+
+### Không sửa được lịch hoặc không xóa được ca
+
+Ca đã có dữ liệu chấm công. Giữ ca cũ cho lịch sử và tạo ca mới nếu cần đổi lịch. Có thể tắt **Đang hoạt động** để ngừng sử dụng ca cũ.
+
+## Hướng dẫn liên quan
+
+- [Nhập dữ liệu chấm công](/vi/docs/company-administration/attendance/import)
+- [Kiểm tra chấm công theo tháng](/vi/docs/company-administration/attendance/tracking)
+- [Cấu hình trạng thái gắn với đơn](/vi/docs/company-administration/attendance/status)

@@ -1,12 +1,18 @@
 ---
-title: Correct Attendance
-description: Correct one or multiple attendance dates and submit the resulting applications in bulk.
+title: Correct your attendance time
+description: Prepare, review, and submit corrections for one or more attendance dates.
 icon: Clock3
 ---
 
-# Correct Attendance
-
 Use this flow when your recorded check-in or check-out time is missing or incorrect. Original source records remain unchanged; Workflow creates a separate correction application for each date.
+
+## Before you start
+
+- **Required role:** Any signed-in user with access to My Attendance
+- **Required feature:** Attendance must be enabled
+- **Company setup:** The Regularization Attendance Application Template must be installed and active
+- **You'll need:** The correct time and a reason for every date
+- **Estimated completion time:** About 3 minutes, plus approval time
 
 The following example shows five dates in May that are marked **Early**. The employee did not actually leave early; they forgot to check out correctly on those dates.
 
@@ -121,3 +127,35 @@ Yes. Enter the corrected time and reason for each date, select **Change**, revie
 | Prepare corrections for multiple dates | ✅ | ✅ |
 | Review and submit own correction applications | ✅ | ✅ |
 | Correct another employee's attendance | ❌ | ❌ |
+
+## Troubleshooting
+
+### Change does not open the review dialog
+
+**Why this happens:** A prepared row has an invalid time or is missing its required **Reason**.
+
+**How to fix it:** Read the validation message on each edited row, correct the value, and select **Change** again.
+
+### Apply All is not displayed
+
+**Why this happens:** One or more prepared applications has not been marked **Confirm** or **Skip**.
+
+**How to fix it:** Open every application in the review list and choose one of the two options.
+
+### The monthly status did not change after submission
+
+**Why this happens:** Submission creates a pending application. The status is recalculated only after approval.
+
+**How to fix it:** Use the lightning icon or Attendance Record Details to track the application.
+
+### A submitted correction failed
+
+**Why this happens:** Each date is validated and submitted separately, so one application can fail while others succeed.
+
+**How to fix it:** Review the result dialog, correct the retained row, and submit that date again.
+
+## Related guides
+
+- [Review one attendance date](/en/docs/user/my-attendance/record-details)
+- [Request leave](/en/docs/user/my-attendance/request-leave)
+- [Understand attendance calculation](/en/docs/company-administration/attendance/calculation)

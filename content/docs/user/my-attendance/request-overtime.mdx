@@ -1,37 +1,105 @@
 ---
-title: Request Overtime
-description: Create an Overtime application from an attendance date and understand how approval affects My Attendance.
+title: Request overtime from My Attendance
+description: Start an Overtime application from the monthly table or from an attendance date's details.
 icon: TimerReset
 ---
 
-# Request Overtime
+You can start an Overtime application directly from the monthly table or from **Detail Attendance Information**. Use the monthly table when the date is part of your Work Shift and you want Workflow to copy the time and reason into the application. Use the detail dialog as an alternative for any date, including weekly off days.
 
-The Overtime flow follows the same attendance-linked application process as Leave.
+## Before you start
 
-Follow the complete [Request Leave flow](/en/docs/user/my-attendance/request-leave), with one difference: in the **Application supplement** dialog, select the status linked to the company's Overtime Application Definition instead of Leave.
-
-The flow is:
-
-1. Select the relevant date in My Attendance.
-2. Select **Create Application** from Attendance Record Details.
-3. Select the configured **Overtime** status.
-4. Complete and submit the linked application through [Create Application](/en/docs/applications/create-application).
-5. Review the new pending record and lightning icon in My Attendance.
-6. After approval, Workflow recalculates the displayed badge using the [attendance status priority rules](/en/docs/company-administration/attendance/status#status-priority).
+- **Required role:** Any signed-in user with access to My Attendance
+- **Required feature:** Attendance must be enabled
+- **Company setup:** An Overtime status must be linked to an active Application Definition
+- **You'll need:** The overtime date, start and end time, reason, and any other information required by your company's form
+- **Estimated completion time:** About 3 minutes, plus approval time
 
 <Callout type="info">
-  **Overtime** is an example status name. Its visible label, form fields, required
-  information, and approval route depend on the configuration of your company.
+  **Overtime** is an example status name. Your Company Admin can give the linked status a different display name.
 </Callout>
 
-As with Leave and [Correct Attendance](/en/docs/user/my-attendance/correct-attendance), the application adds a new attendance record and preserves the original source record.
+## Recommended: Start the request from the monthly table
 
-To follow the application after submission, open its link from Attendance Record Details or use [My Applications](/en/docs/applications/my-applications).
+This method is available for scheduled working days. It copies the time and reason from My Attendance into the linked application.
 
-## Permissions
+1. In the sidebar, go to **My Attendance**.
+2. Select the correct Work Shift and month.
+3. Find the scheduled date where the overtime occurred.
+4. Under **Change Time To**, enter the overtime start and end times.
+5. Under **Reason**, enter the business reason for the overtime.
+6. In the row's **Action** column, select the three-dot menu.
+7. Select the status linked to the Overtime Application Definition.
 
-| Action | Company Admin | Standard User |
-| --- | :---: | :---: |
-| Submit own Overtime application | ✅ | ✅ |
-| View the pending record on own attendance | ✅ | ✅ |
-| Open the application linked to own attendance | ✅ | ✅ |
+**Expected result:** Workflow opens **Create New Application** and prefills the selected date, start time, end time, reason, and generated title.
+
+8. Confirm the prefilled information.
+9. Complete any remaining required fields.
+10. Select **Next**.
+11. Review the Approval Route and submit the application using the normal [Create Application](/en/docs/applications/create-application) flow.
+
+**Expected result:** A lightning icon appears on the attendance row while the Overtime application is pending.
+
+![Lightning icon for a pending attendance application](/images/attendance/example-after-apply-table.png)
+
+## Alternative: Start the request from attendance details
+
+Use this method for any date, including a date outside the Work Shift. On a non-scheduled day, Workflow cannot take times from the monthly row, so you must enter the overtime period in the application.
+
+For example, the following image starts an Overtime application for Sunday, May 7, which is marked **Weekly off**. The time and reason fields are unavailable on that row, but the application remains available from the three-dot menu.
+
+![Select Overtime from the Action menu for a Weekly off date](/images/attendance/request-overtime-in-table-weekly-off.png)
+
+You can continue directly from the monthly table:
+
+1. Select the three-dot menu on the non-scheduled date.
+2. Select the status linked to the Overtime Application Definition.
+
+**Expected result:** Workflow opens **Create New Application** for the selected date.
+
+3. Enter the overtime start time, end time, and reason.
+4. Complete the remaining required fields.
+5. Review the Approval Route and submit the application.
+
+**Expected result:** **Detail Attendance Information** includes a new Overtime record with **Pending** approval status, and the monthly row shows a lightning icon.
+
+You can also select the date and use **Detail Attendance Information** > **Create Application** > **Overtime**. This opens the same application flow and is available for both scheduled and non-scheduled dates.
+
+## After approval
+
+Workflow preserves the source attendance and adds an approved Overtime record using the mapped start and end fields. Whether Overtime becomes the main monthly badge depends on [attendance status priority](/en/docs/company-administration/attendance/status#status-priority). Open **Detail Attendance Information** to see every record when another status remains on the monthly row.
+
+## Track the application
+
+Select the date, then select the application link beside the Overtime record in **Detail Attendance Information**. You can also track it from [My Applications](/en/docs/applications/my-applications).
+
+## Troubleshooting
+
+### Overtime is not available in the Action menu or Application supplement
+
+**Why this happens:** The selected Work Shift has no active status linked to an Overtime Application Definition.
+
+**How to fix it:** Ask a Company Admin to install or configure the Overtime attendance integration.
+
+### Change Time To and Reason cannot be edited
+
+**Why this happens:** The date is outside the Work Shift, is in the future, or otherwise cannot be edited from the monthly row.
+
+**How to fix it:** Use the three-dot menu or **Detail Attendance Information** to start the application, then enter the required information in **Create New Application**.
+
+### Overtime hours outside the Work Shift are missing
+
+**Why this happens:** The linked status may be limited to time inside the Work Shift.
+
+**How to fix it:** Ask a Company Admin to verify **Allow time outside work shift** on the Overtime status.
+
+### The monthly badge did not change after approval
+
+**Why this happens:** Another record has a higher display priority.
+
+**How to fix it:** Open **Detail Attendance Information** to confirm that the approved Overtime record exists.
+
+## Related guides
+
+- [Review one attendance date](/en/docs/user/my-attendance/record-details)
+- [Request leave](/en/docs/user/my-attendance/request-leave)
+- [Understand attendance calculation](/en/docs/company-administration/attendance/calculation)

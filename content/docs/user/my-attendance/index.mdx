@@ -1,20 +1,26 @@
 ---
-title: My Attendance
-description: Review your attendance records, switch Work Shifts, navigate by month, and filter by status.
+title: View and filter your attendance
+description: Review your own attendance by Work Shift, month, and status.
 icon: CalendarDays
 ---
-
-# My Attendance
 
 **My Attendance** is a standalone employee self-service page for reviewing your own attendance and starting attendance-related actions.
 
 The page is available to both Standard Users and Company Admins. Regardless of your role, it only displays the attendance records of the account currently signed in.
+
+## Before you start
+
+- **Required role:** Standard User or Company Admin
+- **Required feature:** Attendance must be enabled for your company
+- **You'll need:** At least one Work Shift created by a Company Admin
 
 ---
 
 ## Access My Attendance
 
 Select **My Attendance** from the sidebar.
+
+**Expected result:** Workflow opens your attendance using the default Work Shift. If no Work Shift is default, it opens the first available Work Shift.
 
 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
   <figure>
@@ -181,3 +187,29 @@ No. It changes the schedule used to display and evaluate the records; it does no
 | View another employee's attendance | ❌ | ❌ |
 | Switch the displayed Work Shift | ✅ | ✅ |
 | Filter own attendance records | ✅ | ✅ |
+
+## Troubleshooting
+
+### My Attendance is missing from the sidebar
+
+**Why this happens:** Attendance is not enabled for your company.
+
+**How to fix it:** Ask a Company Admin or Super Admin to check the company feature configuration.
+
+### “No attendance data available yet.”
+
+**Why this happens:** No records exist for the selected Work Shift and month.
+
+**How to fix it:** Confirm the Work Shift and month. If they are correct, ask a Company Admin whether attendance data has been imported.
+
+### Switching Work Shift does not change my assignment
+
+**Why this happens:** The selector changes only the schedule used to display and evaluate the page.
+
+**How to fix it:** Ask a Company Admin if your Work Shift setup needs to change.
+
+## Related guides
+
+- [Review one attendance date](/en/docs/user/my-attendance/record-details)
+- [Correct attendance time](/en/docs/user/my-attendance/correct-attendance)
+- [Request leave](/en/docs/user/my-attendance/request-leave)

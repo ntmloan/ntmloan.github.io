@@ -1,5 +1,5 @@
 {
   "title": "自分の勤怠",
   "icon": "UserCheck",
-  "pages": ["correct-attendance", "request-leave", "request-overtime", "record-details"]
+  "pages": ["index", "record-details", "correct-attendance", "request-leave", "request-overtime"]
 }

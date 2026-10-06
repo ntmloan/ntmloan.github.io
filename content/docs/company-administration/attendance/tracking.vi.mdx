@@ -1,0 +1,100 @@
+---
+title: Kiểm tra chấm công theo tháng
+description: Tìm vấn đề chấm công, xem chi tiết, gửi nhắc nhở và xem tổng hợp tháng.
+icon: CalendarCheck
+---
+
+Mỗi dòng trên bảng là một nhân viên; các ô ngày hiển thị dữ liệu và trạng thái của ca đang chọn.
+
+## Trước khi bắt đầu
+
+Bạn cần quyền quản trị viên công ty, tính năng Chấm công đã bật và ít nhất một ca. Nhập dữ liệu cho ca để có kết quả cần kiểm tra.
+
+## Mở bảng theo tháng
+
+1. Mở **Theo dõi chấm công**.
+2. Chọn mũi tên trên thẻ ca.
+
+**Kết quả:** Bảng mở cho tháng hiện tại.
+
+![Bảng chấm công tháng](/images/attendance/monthly-record.png)
+
+Nếu thấy **Chưa có dữ liệu chấm công.**, chọn **Nhập dữ liệu chấm công** sau khi kiểm tra đúng ca và tháng.
+
+## Đổi tháng, tìm và lọc nhân viên
+
+Dùng mũi tên cạnh tháng hoặc chọn tên tháng để đổi tháng. Bảng tải lại và trở về trang nhân viên đầu tiên.
+
+Nhập tên hoặc External ID để tìm nhân viên. Để lọc:
+
+1. Chọn **Lọc**.
+2. Chọn một hoặc nhiều phòng ban.
+3. Chọn một hoặc nhiều trạng thái.
+4. Chọn **Áp Dụng**.
+
+**Kết quả:** Bảng chỉ hiển thị dữ liệu phù hợp. Chọn **Đặt lại** để bỏ các bộ lọc.
+
+![Bộ lọc chấm công](/images/attendance-filter.png)
+
+## Đọc trạng thái
+
+- **Chưa bắt đầu:** Ngày trước ngày bắt đầu chấm công của nhân viên.
+- **Chưa điểm danh:** Ngày làm việc chưa có giờ vào.
+- **Vắng mặt (Missing):** Có giờ vào nhưng thiếu giờ ra.
+- **Đi muộn / Về sớm:** Giờ vào sau giờ bắt đầu / giờ ra trước giờ kết thúc.
+- **Đúng giờ:** Không rơi vào các trường hợp trên.
+- **Ngày nghỉ:** Ngày nằm ngoài lịch của ca.
+
+Một ngày có thể có nhiều bản ghi, chẳng hạn giờ làm thường và làm thêm giờ. Chú giải dưới bảng cho biết màu của từng trạng thái.
+
+## Xem chi tiết một ngày
+
+1. Chọn ô chấm công.
+2. Kiểm tra **Thời gian**, **Trạng thái**, **Ghi bởi**, **Trạng thái phê duyệt** và **Bổ sung (phê duyệt)**.
+3. Nếu bản ghi có biểu tượng liên kết đơn, chọn biểu tượng đó.
+
+**Kết quả:** **Thông tin chi tiết chấm công** hiển thị lịch sử; liên kết mở đơn tương ứng ở tab mới.
+
+![Chi tiết chấm công](/images/attendance-detail.png)
+
+## Gửi nhắc nhở
+
+1. Trong chi tiết của nhân viên và ngày cần nhắc, chọn **Gửi nhắc nhở**.
+2. Có thể chọn **Trạng thái**.
+3. Chọn **Gửi nhắc nhở**.
+
+**Kết quả:** Nhân viên nhận email nhắc nhở. Nếu trạng thái gắn với biểu mẫu, email có liên kết trực tiếp đến biểu mẫu; nếu không, email là lời nhắc chung cho ngày đó.
+
+![Gửi nhắc nhở](/images/send-attendance-reminder.png)
+
+## Xem tổng hợp tháng
+
+1. Chọn **Summary** phía trên bảng.
+
+**Kết quả:** **Attendance Summary** mở với mỗi dòng là một nhân viên và mỗi cột là một trạng thái.
+
+![Tổng hợp chấm công](/images/attendance-tracking.png)
+
+2. Đổi tháng, tìm nhân viên hoặc mở bộ lọc phòng ban trong hộp thoại.
+
+**Kết quả:** Tổng hợp được tải lại độc lập với tháng, tìm kiếm và bộ lọc ở bảng chính.
+
+## Xử lý sự cố
+
+### Không có dữ liệu hoặc thiếu nhân viên
+
+Kiểm tra ca, tháng, dữ liệu đã nhập; xóa nội dung tìm kiếm và đặt lại bộ lọc.
+
+### Nhãn không phải bản ghi mới nhất
+
+Nhãn được chọn theo độ ưu tiên, không chỉ theo thời gian tạo. Mở chi tiết để xem toàn bộ lịch sử.
+
+### Khó xem trên màn hình nhỏ
+
+Bảng có nhiều cột ngày. Dùng trình duyệt máy tính và cuộn ngang để xem hết tháng.
+
+## Hướng dẫn liên quan
+
+- [Nhập dữ liệu](/vi/docs/company-administration/attendance/import)
+- [Trạng thái và độ ưu tiên](/vi/docs/company-administration/attendance/status)
+- [Chấm công của tôi](/vi/docs/user/my-attendance)

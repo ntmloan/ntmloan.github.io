@@ -1,0 +1,88 @@
+---
+title: Gửi đơn làm thêm từ Chấm công của tôi
+description: Tạo đơn làm thêm từ bảng tháng hoặc chi tiết ngày, kể cả ngày ngoài lịch.
+icon: TimerReset
+---
+
+Tạo đơn Overtime trực tiếp từ dòng trong bảng để chuyển giờ và lý do sang biểu mẫu. Có thể dùng menu hoặc **Thông tin chi tiết chấm công** cho ngày ngoài lịch và tự điền thông tin trong đơn.
+
+## Trước khi bắt đầu
+
+- Có quyền dùng **Chấm công của tôi**, công ty đã bật Chấm công.
+- Ca có trạng thái Overtime liên kết với cấu hình đơn đang hoạt động.
+- Chuẩn bị ngày, giờ bắt đầu/kết thúc, lý do và thông tin bắt buộc.
+- **Thời gian hoàn thành dự kiến:** Khoảng 3 phút, chưa tính thời gian duyệt.
+
+Tên Overtime có thể được công ty đổi.
+
+## Cách nhanh: Ngày nằm trong lịch
+
+1. Mở **Chấm công của tôi**.
+2. Chọn ca và tháng.
+3. Tìm ngày làm thêm.
+4. Nhập khoảng giờ làm thêm trong **Thay đổi thời gian thành**.
+5. Nhập **Lý do**.
+6. Mở menu ba chấm của dòng.
+7. Chọn trạng thái gắn với Overtime.
+
+**Kết quả:** **Tạo đơn mới** mở và điền sẵn ngày, giờ bắt đầu/kết thúc, lý do và tiêu đề.
+
+8. Kiểm tra dữ liệu đã điền.
+9. Hoàn thành các trường còn lại.
+10. Chọn **Tiếp theo**.
+11. Kiểm tra tuyến duyệt và gửi theo [luồng tạo đơn](/vi/docs/applications/create-application).
+
+**Kết quả:** Dòng có tia sét khi đơn đang chờ duyệt.
+
+![Biểu tượng đang chờ của đơn chấm công](/images/attendance/example-after-apply-table.png)
+
+## Ngày ngoài lịch: Tự nhập giờ trong đơn
+
+Ngày nghỉ không có trường nhập giờ/lý do trên bảng, nhưng menu tạo đơn vẫn có sẵn.
+
+![Chọn Overtime trên dòng Ngày nghỉ](/images/attendance/request-overtime-in-table-weekly-off.png)
+
+1. Mở menu ba chấm của ngày ngoài lịch.
+2. Chọn trạng thái Overtime.
+
+**Kết quả:** Trang tạo đơn mở cho ngày đã chọn.
+
+3. Tự nhập giờ bắt đầu, giờ kết thúc và lý do.
+4. Hoàn thành các trường còn lại.
+5. Kiểm tra tuyến duyệt và gửi.
+
+**Kết quả:** Chi tiết có bản ghi Overtime Đang chờ và bảng có tia sét.
+
+## Cách thay thế: Qua chi tiết ngày
+
+Chọn ngày rồi mở **Thông tin chi tiết chấm công** > **Tạo đơn** > chọn Overtime trong **Bổ sung đơn**. Cách này dùng cho cả ngày trong và ngoài lịch. Kiểm tra/nhập khoảng giờ và lý do rồi gửi theo quy trình thông thường.
+
+## Sau phê duyệt và theo dõi
+
+Workflow giữ dữ liệu nguồn và thêm bản ghi Overtime đã duyệt. Nhãn chính phụ thuộc [độ ưu tiên](/vi/docs/company-administration/attendance/status); mở chi tiết để xem Overtime ngay cả khi bảng vẫn hiện nhãn khác.
+
+Để theo dõi, mở liên kết cạnh bản ghi Overtime trong chi tiết hoặc [Danh sách đơn của bạn](/vi/docs/applications/my-applications).
+
+## Xử lý sự cố
+
+### Không có Overtime để chọn
+
+Nhờ quản trị viên kiểm tra trạng thái và cấu hình đơn cho ca.
+
+### Không nhập được giờ/lý do trên bảng
+
+Dùng menu hoặc chi tiết ngày rồi tự nhập trong đơn; thường xảy ra ở ngày nghỉ hoặc ngày tương lai.
+
+### Không ghi nhận thời gian ngoài ca
+
+Nhờ quản trị viên kiểm tra **Cho phép thời gian ngoài ca làm việc** trong trạng thái Overtime.
+
+### Đã duyệt nhưng nhãn không đổi
+
+Bản ghi khác có ưu tiên cao hơn. Mở chi tiết để xác nhận Overtime đã duyệt.
+
+## Hướng dẫn liên quan
+
+- [Chi tiết một ngày](/vi/docs/user/my-attendance/record-details)
+- [Nghỉ phép](/vi/docs/user/my-attendance/request-leave)
+- [Cách tính chấm công](/vi/docs/company-administration/attendance/calculation)

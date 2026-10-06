@@ -1,87 +1,79 @@
 ---
-title: Permissions, FAQ & Best Practices
-description: Attendance permissions, frequently asked questions, best practices, and related features.
+title: Resolve attendance access and common issues
+description: Check roles, feature access, limitations, and answers to common attendance questions.
+icon: Settings
 ---
 
-# Best Practices
+Use this page when an Attendance menu, action, or result is not available as expected.
 
-<Callout type="tip">
+## Before you start
 
-For the best attendance tracking experience:
+- **Required feature:** Attendance must be enabled for the company
+- **Administrator tasks:** Require the Company Admin role
+- **Employee tasks:** Available from **My Attendance** to Standard Users and Company Admins
 
-- Configure Work Shifts before importing attendance.
-- Use the system [Application Templates](/en/docs/application-definitions/application-templates)
-  for Leave, Overtime, and Attendance Correction instead of configuring these
-  workflows manually. Installing a template prepares the Application Definition
-  and its linked Attendance Status, reducing setup time and configuration errors.
-- Create any additional custom Attendance Statuses before importing data.
-- Review attendance after each import.
-- Use reminders to reduce missing attendance.
-- Archive unused Work Shifts instead of deleting them.
+## Access requirements
 
-</Callout>
+Attendance pages require the company's Attendance feature to be enabled. The interface also separates administrator and employee tasks:
 
----
+| Task | Company Admin | Standard User |
+| --- | :---: | :---: |
+| Open **My Attendance** and view own records | Yes | Yes |
+| Create applications from own attendance | Yes | Yes |
+| Open **Attendance Tracking** | Yes | No |
+| Create, edit, activate, or delete Work Shifts | Yes | No |
+| Import and review employee attendance | Yes | No |
+| Configure attendance statuses | Yes | No |
+| Send reminders | Yes | No |
 
-# Permissions
+## Recommended setup order
 
-| Action                      | Company Admin | Standard User |
-| --------------------------- | :-----------: | :-----------: |
-| View Attendance             |      ✅       |      ❌       |
-| Configure Work Shift        |      ✅       |      ❌       |
-| Configure Attendance Status |      ✅       |      ❌       |
-| Import Attendance           |      ✅       |      ❌       |
-| Send Reminder               |      ✅       |      ❌       |
+1. Enable Attendance for the company.
+2. Create and activate a Work Shift.
+3. Mark the preferred Work Shift as default.
+4. Install the Attendance Application Templates required by the company.
+5. Configure any company-specific application-based statuses.
+6. Import attendance data.
+7. Ask employees to review **My Attendance**.
 
----
+## Frequently asked questions
 
-# Frequently Asked Questions
+### Can one employee have several records on the same date?
 
-## Can one employee have multiple attendance records in one day?
+Yes. Imported attendance, corrections, leave, overtime, and other approved applications can create separate records. **Detail Attendance Information** preserves them, while status priority selects the result displayed in the monthly view.
 
-Yes.
+### Does an application overwrite imported attendance?
 
-Workflow supports multiple attendance records for the same day.
+No. It creates an additional record. The source record remains in the history.
 
----
+### Can a Work Shift cross midnight?
 
-## Can attendance exist outside working hours?
+No. The current Work Shift form and backend require **End Time** to be after **Start Time** on the same day.
 
-Yes.
+### Can an existing Work Shift schedule be changed?
 
-When the Attendance Status allows **Outside Work Shift**, attendance outside the normal schedule can be recorded.
+Yes, until attendance records use it. Once it is in use, its working days and time fields are locked. Name, description, active status, and default status can still be changed.
 
----
+### Can an in-use Work Shift be deleted?
 
-## Can Work Shifts be modified?
+No. Turn off **Active** instead so historical data remains available.
 
-Only partially.
+### Why does My Attendance open a different Work Shift?
 
-Name, description, status, and the default assignment can be updated at any time. Working Days, Start Time, End Time, and Break Time are locked once the Work Shift is created, so changing the schedule itself requires creating a new Work Shift.
+It opens the default Work Shift. If none is default, it opens the first available Work Shift. Selecting another Work Shift changes only the displayed schedule; it does not reassign the employee.
 
-Historical attendance remains unchanged regardless of later edits.
+### Does changing a status name change its priority?
 
----
+No. Template-created Regularization and Leave records are identified by template code, not by their visible label.
 
-## Can I delete a Work Shift?
+## Troubleshooting information to provide to support
 
-Yes.
+Include the following when the steps in these guides do not resolve the problem:
 
-However, it is recommended to deactivate unused Work Shifts instead of deleting them to preserve historical attendance information.
-
----
-
-## Can attendance be imported multiple times?
-
-Yes.
-
-Every import operation is recorded separately in Upload History.
-
----
-
-## Related Features
-
-- Upload History
-- Employee Management
-- Organization Chart
-- Leave Management
+- Company and employee name
+- Work Shift name
+- Attendance date and month
+- Exact error message
+- Import file name, if applicable
+- Screenshot of the page or dialog
+- The guide step where the problem occurred

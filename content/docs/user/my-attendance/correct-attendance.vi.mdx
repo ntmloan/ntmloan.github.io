@@ -1,0 +1,96 @@
+---
+title: Sửa giờ chấm công của bạn
+description: Chuẩn bị, kiểm tra và gửi yêu cầu sửa giờ cho một hoặc nhiều ngày.
+icon: Clock3
+---
+
+Dùng khi giờ vào/ra bị thiếu hoặc không đúng. Workflow tạo một đơn sửa riêng cho mỗi ngày và giữ nguyên dữ liệu nguồn.
+
+## Trước khi bắt đầu
+
+- Có quyền dùng **Chấm công của tôi** và công ty đã bật Chấm công.
+- Mẫu đơn **Regularization** đã được cài và kích hoạt.
+- Có giờ chính xác và lý do cho từng ngày.
+- **Thời gian hoàn thành dự kiến:** Khoảng 3 phút, chưa tính thời gian duyệt.
+
+Ví dụ dưới đây có năm ngày tháng 5 bị ghi nhận Về sớm do quên ghi nhận giờ ra đúng.
+
+![Các ngày cần sửa](/images/attendance/example-wrong-time.png)
+
+## Nhập giờ và lý do
+
+1. Mở **Chấm công của tôi** và chọn ca/tháng.
+2. Với từng ngày, nhập giờ cần sửa trong **Thay đổi thời gian thành**.
+3. Nhập **Lý do**.
+
+**Kết quả:** Các dòng cần sửa có dữ liệu để tạo đơn.
+
+![Nhập giờ và lý do](/images/attendance/example-correct-time.png)
+
+Chỉ nhập giờ cần thay đổi: sửa giờ ra nếu giờ vào đã đúng; sửa giờ vào nếu giờ ra đã đúng; nhập cả hai khi đều thiếu/sai. Lý do bắt buộc cho mỗi đơn.
+
+## Kiểm tra các đơn
+
+1. Chọn **Thay đổi**.
+2. Nếu có lỗi trên dòng, sửa thời gian hoặc lý do rồi thực hiện lại.
+
+**Kết quả:** Khi dữ liệu hợp lệ, **Xem lại chi tiết đơn** mở và mỗi ngày có một đơn riêng.
+
+![Xem lại đơn](/images/attendance/review-applications-dialog.png)
+
+3. Chọn từng đơn bên trái để kiểm tra thông tin và tuyến duyệt.
+4. Chọn **Xác nhận và đóng** khi đúng hoặc **Bỏ qua** nếu chưa muốn gửi.
+
+**Kết quả:** Mỗi đơn được đánh dấu xác nhận hoặc bỏ qua. Xác nhận tại đây chưa gửi đơn; bạn có thể đổi lựa chọn trước khi gửi.
+
+## Gửi các đơn đã xác nhận
+
+Sau khi mọi đơn được xác nhận hoặc bỏ qua, nút **Áp dụng tất cả** xuất hiện. Số trên nút là số đơn được xác nhận, không gồm đơn bỏ qua.
+
+![Bốn đơn xác nhận và một đơn bỏ qua](/images/attendance/reviewed-applications-dialog.png)
+
+1. Chọn **Áp dụng tất cả**.
+2. Kiểm tra số đơn gửi thành công trong kết quả.
+3. Chọn **Xác nhận và đóng** để trở lại trang.
+
+**Kết quả:** Các ngày đã gửi có biểu tượng tia sét báo đang chờ xử lý.
+
+![Kết quả gửi](/images/attendance/bulk-apply-result-dialog.png)
+
+Dòng bỏ qua giữ lại giờ và lý do; bạn có thể sửa rồi gửi lại. Di chuột lên tia sét để xem tóm tắt hoặc mở chi tiết ngày để xem đơn.
+
+![Giữ dữ liệu dòng bỏ qua](/images/attendance/after-apply-application.png)
+
+## Sau phê duyệt
+
+Khi đang chờ, nhãn gốc vẫn hiển thị. Sau duyệt, Workflow thêm bản ghi sửa và tính lại nhãn theo độ ưu tiên. Regularization ưu tiên hơn Về sớm, nên ngày 8/5 trong ví dụ hiển thị giờ sửa và Regularized.
+
+![Đơn được duyệt](/images/attendance/example-approve-application.png)
+
+![Chấm công sau duyệt](/images/attendance/corrected-my-attendance.png)
+
+Mỗi ngày là một đơn với tuyến duyệt riêng. Nhân viên và quản trị viên chỉ sửa dữ liệu của bản thân trong trang này.
+
+## Xử lý sự cố
+
+### Không mở được bước xem lại
+
+Kiểm tra lỗi thời gian hoặc Lý do còn thiếu trên các dòng.
+
+### Không có Áp dụng tất cả
+
+Đánh dấu Xác nhận hoặc Bỏ qua cho mọi đơn; cần ít nhất một đơn xác nhận để gửi.
+
+### Nhãn chưa đổi sau gửi
+
+Đơn còn chờ phê duyệt. Mở chi tiết hoặc liên kết đơn để theo dõi.
+
+### Một số đơn gửi thất bại
+
+Các ngày được kiểm tra riêng. Xem kết quả và sửa dòng được giữ lại trước khi gửi lại.
+
+## Hướng dẫn liên quan
+
+- [Chi tiết một ngày](/vi/docs/user/my-attendance/record-details)
+- [Nghỉ phép](/vi/docs/user/my-attendance/request-leave)
+- [Cách tính chấm công](/vi/docs/company-administration/attendance/calculation)

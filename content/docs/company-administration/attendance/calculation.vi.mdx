@@ -1,0 +1,78 @@
+---
+title: Hiểu cách tính chấm công
+description: Kiểm tra cách hệ thống so sánh bản ghi với ca và chọn nhãn hiển thị.
+icon: Calculator
+---
+
+Workflow đánh giá từng ngày theo ca đang chọn. Dùng các quy tắc dưới đây để tìm nguyên nhân khi kết quả khác với dự kiến.
+
+## Trước khi bắt đầu
+
+Bạn cần quyền xem trang chấm công tương ứng, công ty đã bật Chấm công, lịch của ca và các bản ghi trong **Thông tin chi tiết chấm công**.
+
+## Thứ tự đánh giá trạng thái cơ bản
+
+Với ngày nằm trong lịch làm việc, hệ thống kiểm tra theo thứ tự:
+
+1. Ngày trước ngày bắt đầu chấm công của nhân viên: **Chưa bắt đầu**.
+2. Ngày tương lai chưa có giờ vào: chưa tạo kết quả.
+3. Ngày hiện tại hoặc quá khứ không có giờ vào: **Chưa điểm danh**.
+4. Có giờ vào nhưng chưa có giờ ra cho ngày hiện tại hoặc quá khứ: **Vắng mặt (Missing)**.
+5. Giờ vào sau giờ bắt đầu ca: **Đi muộn**.
+6. Nếu không đi muộn nhưng giờ ra trước giờ kết thúc: **Về sớm**.
+7. Các trường hợp còn lại: **Đúng giờ**.
+
+Ngày nằm ngoài lịch được hiển thị là **Ngày nghỉ**. Nếu một bản ghi vừa đi muộn vừa về sớm, nhãn cơ bản là **Đi muộn** do thứ tự kiểm tra.
+
+## Ngày làm việc
+
+Ca có thể gồm các ngày riêng lẻ hoặc nhóm tất cả các ngày, thứ 2–thứ 6, thứ 7–chủ nhật. Chỉ ngày khớp lịch mới được yêu cầu chấm công.
+
+## Chọn nhãn khi có nhiều bản ghi
+
+| Ưu tiên | Bản ghi |
+| :---: | --- |
+| 0 | Đúng giờ |
+| 1 | Từ mẫu Regularization |
+| 2 | Đi muộn / Về sớm |
+| 3 | Missing |
+| 4 | Từ mẫu Leave |
+| Sau cùng | Các trạng thái khác |
+
+Số nhỏ hơn được ưu tiên. Regularization và Leave nhận diện bằng mã mẫu, không phải tên hiển thị. Tất cả bản ghi vẫn được giữ trong chi tiết.
+
+## Bản ghi từ đơn
+
+Trạng thái gắn với đơn ánh xạ hai trường Ngày hoặc Ngày/Giờ. Sau phê duyệt, hệ thống thêm bản ghi với các giá trị đã gửi và giữ nguyên bản ghi nguồn.
+
+Nếu không bật **Cho phép thời gian ngoài ca làm việc**, khoảng thời gian được giới hạn trong ca. Bật tùy chọn này cho làm thêm hoặc hoạt động trước/sau giờ làm.
+
+## Kiểm tra kết quả bất thường
+
+1. Xác nhận ca đang xem.
+2. Xác nhận ngày thuộc lịch làm việc.
+3. Mở **Thông tin chi tiết chấm công**.
+4. So sánh giờ vào/ra với lịch.
+5. Kiểm tra các bản ghi gắn với đơn và **Trạng thái phê duyệt**.
+
+**Kết quả:** Bạn xác định được quy tắc tính hoặc độ ưu tiên giải thích nhãn hiện tại.
+
+## Xử lý sự cố
+
+### Đơn nghỉ hoặc sửa giờ chưa hiển thị
+
+Đơn có thể đang chờ hoặc bị từ chối. Mở liên kết đơn để kiểm tra trạng thái và tuyến duyệt.
+
+### Giờ vào có vẻ đúng nhưng vẫn Đi muộn
+
+Kiểm tra đúng ca và thời gian chính xác trong chi tiết. Giờ vào đang được so sánh với giờ bắt đầu của ca đó.
+
+### Một ngày có nhiều trạng thái
+
+Đây có thể là bản ghi nguồn và bản ghi từ đơn. Nếu các bản ghi đúng, không cần sửa; xem lịch sử đầy đủ trong chi tiết.
+
+## Hướng dẫn liên quan
+
+- [Kiểm tra theo tháng](/vi/docs/company-administration/attendance/tracking)
+- [Cấu hình trạng thái](/vi/docs/company-administration/attendance/status)
+- [Chi tiết một ngày](/vi/docs/user/my-attendance/record-details)

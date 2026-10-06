@@ -1,12 +1,16 @@
 ---
-title: Attendance Record Details
-description: Review original and application-generated attendance records for a selected date.
+title: Review one attendance date
+description: Inspect source records, application records, and approval status for a selected date.
 icon: ListTree
 ---
 
-# Attendance Record Details
-
 Attendance Record Details preserves every record associated with a date instead of replacing the original attendance data.
+
+## Before you start
+
+- **Required role:** Any signed-in user with access to My Attendance
+- **Required feature:** Attendance must be enabled
+- **You'll need:** A Work Shift and month containing the date you want to inspect
 
 ## How Attendance Records Are Stored
 
@@ -21,6 +25,8 @@ The application-generated record may change the status displayed in the monthly 
 ## Open Attendance Record Details
 
 Select a date in the monthly table to open **Detail Attendance Information** for that day.
+
+**Expected result:** The dialog displays every source and application-generated record for the selected date.
 
 ![Select a date to open its attendance details](/images/attendance/move-to-detail-records.png)
 
@@ -52,3 +58,29 @@ The **Create Application** action starts a new application for the selected atte
 | View own attendance record details | ✅ | ✅ |
 | Open an application linked to own attendance | ✅ | ✅ |
 | View another employee's attendance records | ❌ | ❌ |
+
+## Troubleshooting
+
+### The application link is not displayed
+
+**Why this happens:** The row is a source record or is not linked to an application.
+
+**How to fix it:** Check **Record by** and **Approval status**. Only application-generated rows can open a related application.
+
+### The monthly status differs from one row in the dialog
+
+**Why this happens:** Several records apply to the date and display priority selects one result for the monthly table.
+
+**How to fix it:** Review every row, then see [status priority](/en/docs/company-administration/attendance/status#status-priority).
+
+### Create Application has no suitable option
+
+**Why this happens:** Your company has not configured an application-based status for this Work Shift.
+
+**How to fix it:** Ask a Company Admin to install an Attendance Application Template or configure a custom attendance status.
+
+## Related guides
+
+- [Correct attendance time](/en/docs/user/my-attendance/correct-attendance)
+- [Request leave](/en/docs/user/my-attendance/request-leave)
+- [Request overtime](/en/docs/user/my-attendance/request-overtime)

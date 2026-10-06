@@ -1,88 +1,139 @@
 ---
-title: Request Leave
-description: Create a Leave application from an attendance date and understand how approval changes its displayed status.
+title: Request leave from My Attendance
+description: Start a Leave application from the monthly table or from an attendance date's details.
 icon: CalendarOff
 ---
 
-# Request Leave
+You can start a Leave application directly from the monthly table or from **Detail Attendance Information**. Use the monthly table when the date is part of your Work Shift and you want Workflow to copy the time and reason into the application. Use the detail dialog as an alternative for any date, including weekly off days.
 
-Use a Leave application when an attendance date is recorded as missing even though you were on leave.
+## Before you start
 
-In this example, May 4 is displayed as **No Check In**, but the employee was actually on leave that day.
-
-![May 4 incorrectly displayed as No Check In](/images/attendance/example-leave.png)
-
-<Steps>
-
-### Open the attendance record details
-
-Select the date you want to update. My Attendance opens **Detail Attendance Information** for that date.
-
-If you are not familiar with this dialog, see [Attendance Record Details](/en/docs/user/my-attendance/record-details) for instructions and a description of every column.
-
-![Attendance Record Details with the Create Application action](/images/attendance/record-detail.png)
-
-### Select Create Application
-
-Select **Create Application** at the bottom of the dialog. The **Application supplement** dialog opens for the selected date.
-
-Choose the attendance status that corresponds to the application you want to create. In this scenario, select **Leave**.
-
-![Select the Leave status for the selected attendance date](/images/attendance/example-leave-apply-application.png)
+- **Required role:** Any signed-in user with access to My Attendance
+- **Required feature:** Attendance must be enabled
+- **Company setup:** A Leave status must be linked to an active Application Definition
+- **You'll need:** The leave date, leave period, reason, and any other information required by your company's form
+- **Estimated completion time:** About 3 minutes, plus approval time
 
 <Callout type="info">
-  **Leave** is the example status name. Company Admins can rename the status when
-  configuring the linked application, so the label displayed by your company may differ.
+  **Leave** is an example status name. Your Company Admin can give the linked status a different display name.
 </Callout>
 
-### Complete and submit the application
+## Recommended: Start the request from the monthly table
 
-After you select the status, Workflow opens [Create Application](/en/docs/applications/create-application) with the linked Leave Application Definition and selected attendance date.
+This method is available for scheduled working days. It copies the time and reason from My Attendance into the linked application.
 
-Complete the configured fields, review the approval route, and submit the application using the normal application flow. The exact fields and required information depend on the Application Definition configured by your company.
+### Select the attendance date
 
-### Review the pending attendance record
+1. In the sidebar, go to **My Attendance**.
+2. Select the correct Work Shift and month.
+3. Find the scheduled date you want to request leave for.
 
-Because the Leave application is linked to attendance, submitting it adds a new application-generated record to the selected date. It does not replace or delete the original **No Check In** record.
+**Expected result:** The row contains editable fields under **Change Time To** and **Reason**.
 
-The new Leave record appears in Attendance Record Details with the **Pending** approval status.
+![Scheduled date available for a Leave request](/images/attendance/request-leave-in-table-start.png)
+
+### Enter the leave period and reason
+
+1. Under **Change Time To**, enter the leave start and end times. For example, enter `08:30` and `17:30` for a full-day request.
+2. Under **Reason**, enter the reason, for example `Personal reason`.
+3. In the row's **Action** column, select the three-dot menu.
+4. Select the status linked to the Leave Application Definition.
+
+**Expected result:** Workflow opens **Create New Application** for the selected date.
+
+![Enter the leave period and select the Leave application](/images/attendance/request-leave-in-table-fill.png)
+
+### Complete the prefilled application
+
+Workflow copies the following values from My Attendance:
+
+- The selected attendance date
+- The start time entered under **Change Time To**
+- The end time entered under **Change Time To**
+- The text entered under **Reason**
+- A generated application title
+
+![Leave application with the start time, end time, and reason filled from My Attendance](/images/attendance/request-leave-in-table-application.png)
+
+1. Confirm the prefilled start time, end time, and reason.
+2. Complete the remaining required fields, such as **Leave Type** or **Absence Type**.
+3. Select **Next**.
+4. Review the Approval Route and submit the application using the normal [Create Application](/en/docs/applications/create-application) flow.
+
+**Expected result:** A lightning icon appears on the attendance row while the Leave application is pending.
+
+![Lightning icon for a pending attendance application](/images/attendance/example-after-apply-table.png)
+
+## Alternative: Start the request from attendance details
+
+Use this method for any date, including a date outside the Work Shift such as a weekend or weekly off day. On a non-scheduled day, Workflow cannot take times from the monthly row, so you must enter the correct leave period in the application.
+
+1. In **My Attendance**, select the date.
+2. In **Detail Attendance Information**, select **Create Application**.
+3. In **Application supplement**, select the status linked to the Leave Application Definition.
+
+**Expected result:** Workflow opens **Create New Application** for the selected date.
+
+![Select the Leave status from Attendance Record Details](/images/attendance/example-leave-apply-application.png)
+
+4. Enter or confirm the required leave start and end times.
+5. Complete the remaining required fields.
+6. Review the Approval Route and submit the application.
+
+**Expected result:** **Detail Attendance Information** includes a new Leave record with **Pending** approval status, and the monthly row shows a lightning icon.
 
 ![Pending Leave record added to the selected date](/images/attendance/example-leave-after-apply.png)
 
-This is the same record-history behavior used by [Correct Attendance](/en/docs/user/my-attendance/correct-attendance): the original source record is preserved and the application creates an additional record.
+## After approval
 
-While the Leave application is being processed, a lightning icon appears on the date in the monthly table. The current badge remains **No Check In** until the application is fully approved.
+Workflow preserves the original attendance record and adds an approved Leave record. It then recalculates the badge displayed in the monthly table.
 
-![Lightning icon for a pending Leave application](/images/attendance/example-after-apply-table.png)
+### Full-day leave
 
-### View the approved result
+When the original date is **No Check In** and the approved Leave covers the full Work Shift, the Leave record can replace **No Check In** as the displayed badge.
 
-After the Leave application is fully approved, Workflow recalculates the status displayed for the date using the [attendance status priority rules](/en/docs/company-administration/attendance/status#status-priority).
+![Full-day Leave displayed after approval](/images/attendance/example-leave-after-approve-table.png)
 
-In this scenario, **Leave** has a higher display priority than the fallback **No Check In** status, so the badge for May 4 changes to **Leave**.
+### Half-day leave
 
-![May 4 displayed as Leave after approval](/images/attendance/example-leave-after-approve-table.png)
+For half-day leave, the employee may also have a source attendance record for the part of the day they worked. If that record is **Late** or **Early**, the monthly table continues to display **Late** or **Early** because those statuses have a higher display priority than Leave.
 
-</Steps>
+<Callout type="info">
+  The approved half-day Leave record is not lost. Open **Detail Attendance Information** to see both the source attendance and the approved Leave record.
+</Callout>
 
----
+## Track the application
 
-## Track the Application
+Select the date, then select the application link beside the Leave record in **Detail Attendance Information**. You can also track it from [My Applications](/en/docs/applications/my-applications).
 
-Select the application link beside the Leave status in Attendance Record Details to open the referenced application. You can also track it from [My Applications](/en/docs/applications/my-applications).
+## Troubleshooting
 
-## Business Rules
+### Leave is not available in the Action menu or Application supplement
 
-- Only attendance statuses linked to an Application Definition can start an application from Attendance Record Details.
-- The status label may differ between companies, but its linked application determines the flow.
-- A submitted Leave application adds a record to the selected date; it does not overwrite the original attendance record.
-- A pending application does not immediately replace the current badge in the monthly table.
-- The displayed badge is recalculated after approval according to status priority.
+**Why this happens:** The selected Work Shift has no active status linked to a Leave Application Definition.
 
-## Permissions
+**How to fix it:** Ask a Company Admin to install or configure the Leave attendance integration.
 
-| Action | Company Admin | Standard User |
-| --- | :---: | :---: |
-| Submit own Leave application | ✅ | ✅ |
-| View the pending record on own attendance | ✅ | ✅ |
-| Open the application linked to own attendance | ✅ | ✅ |
+### Change Time To and Reason cannot be edited
+
+**Why this happens:** The date is outside the Work Shift, is in the future, or otherwise cannot be edited from the monthly row.
+
+**How to fix it:** Use the three-dot menu or **Detail Attendance Information** to start the application, then enter the required times and reason in **Create New Application**.
+
+### The badge still shows No Check In
+
+**Why this happens:** The Leave application is pending or was denied.
+
+**How to fix it:** Open the linked application and check its approval status. The displayed badge is recalculated after full approval.
+
+### Approved half-day Leave still displays Late or Early
+
+**Why this happens:** **Late** and **Early** have a higher display priority than Leave.
+
+**How to fix it:** Open **Detail Attendance Information** to confirm that the approved Leave record exists. The displayed Late or Early badge is expected behavior.
+
+## Related guides
+
+- [Review one attendance date](/en/docs/user/my-attendance/record-details)
+- [Request overtime](/en/docs/user/my-attendance/request-overtime)
+- [Understand attendance calculation](/en/docs/company-administration/attendance/calculation)
